@@ -1,0 +1,450 @@
+sistema SaaS das Secretarias Municipais de Agricultura. O conteúdo inclui:
+
+Arquitetura SaaS profissional (multi-tenant por município – código IBGE)
+
+DER lógico com +40 tabelas
+
+Documento de Requisitos Funcionais atualizado
+
+A modelagem considera seu stack:
+
+Backend: Node.js + Express.js
+
+Frontend: React
+
+Banco: MySQL
+
+O sistema pode atender os 141 municípios de Mato Grosso e integrar dados estaduais da
+Secretaria de Estado de Agricultura Familiar de Mato Grosso.
+
+1. Arquitetura SaaS Profissional (Multi-Tenant)
+Modelo de tenancy
+
+Estratégia:
+
+Single Database + Tenant Column
+
+Tenant = codigo_ibge
+
+municipio = tenant
+
+Cada registro contém:
+
+codigo_ibge
+Arquitetura geral
+                Internet
+                    |
+                    |
+              Load Balancer
+                    |
+             API Gateway (Nginx)
+                    |
+         ----------------------------
+         |                          |
+      API Node.js               Worker Jobs
+      Express                   Filas / emails
+         |
+     Service Layer
+         |
+      Repository
+         |
+       MySQL
+Camadas da aplicação
+Frontend
+
+React SPA
+
+React
+ ├ dashboard
+ ├ produtores
+ ├ propriedades
+ ├ atendimentos
+ ├ programas
+ ├ insumos
+ ├ maquinas
+ ├ eventos
+ └ relatorios
+Backend
+
+Arquitetura limpa:
+
+src
+ ├ controllers
+ ├ services
+ ├ repositories
+ ├ routes
+ ├ middlewares
+ ├ models
+ ├ config
+ └ utils
+Autenticação
+
+JWT
+
+Token contém:
+
+user_id
+codigo_ibge
+perfil
+
+Perfis:
+
+ADMIN_ESTADO
+GESTOR_MUNICIPAL
+TECNICO
+OPERADOR
+Controle de acesso
+
+Regra principal:
+
+WHERE codigo_ibge = user.codigo_ibge
+
+Exceto perfil estadual.
+
+2. DER Completo (50 Tabelas)
+Núcleo do Sistema
+municipios
+id
+codigo_ibge
+nome
+estado
+regiao
+ativo
+created_at
+usuarios
+id
+codigo_ibge
+nome
+email
+senha_hash
+perfil
+telefone
+ativo
+ultimo_login
+created_at
+logs_acesso
+id
+usuario_id
+ip
+data_login
+user_agent
+logs_sistema
+id
+usuario_id
+acao
+tabela
+registro_id
+data
+Produtores Rurais
+produtores
+id
+codigo_ibge
+nome
+cpf
+data_nascimento
+telefone
+email
+sexo
+caf_dap
+associacao_id
+created_at
+enderecos_produtor
+id
+produtor_id
+logradouro
+numero
+bairro
+cidade
+cep
+associacoes
+id
+codigo_ibge
+nome
+tipo
+telefone
+cooperativas
+id
+codigo_ibge
+nome
+cnpj
+telefone
+Propriedades
+propriedades
+id
+codigo_ibge
+produtor_id
+nome
+area_total
+area_produtiva
+latitude
+longitude
+tipo
+documentos_propriedade
+id
+propriedade_id
+tipo
+arquivo
+data_upload
+tipos_propriedade
+id
+descricao
+Produção Agrícola
+culturas
+id
+nome
+tipo
+propriedade_culturas
+id
+codigo_ibge
+propriedade_id
+cultura_id
+area_plantada
+safra
+producao_estimada
+sistemas_producao
+id
+descricao
+propriedade_sistemas
+id
+propriedade_id
+sistema_id
+Atendimentos Técnicos
+tecnicos
+id
+codigo_ibge
+nome
+formacao
+registro
+telefone
+tipos_atendimento
+id
+descricao
+atendimentos
+id
+codigo_ibge
+produtor_id
+tecnico_id
+tipo_atendimento_id
+data_atendimento
+descricao
+latitude
+longitude
+fotos_atendimento
+id
+atendimento_id
+arquivo
+recomendacoes_tecnicas
+id
+atendimento_id
+descricao
+Programas Governamentais
+programas
+id
+codigo_ibge
+nome
+orgao
+data_inicio
+data_fim
+orcamento
+programa_produtores
+id
+programa_id
+produtor_id
+beneficio
+valor
+tipos_beneficio
+id
+descricao
+Insumos
+insumos
+id
+codigo_ibge
+nome
+tipo
+unidade
+estoque_insumos
+id
+insumo_id
+quantidade
+data_entrada
+distribuicao_insumos
+id
+insumo_id
+produtor_id
+quantidade
+data_entrega
+Patrulha Mecanizada
+maquinas
+id
+codigo_ibge
+nome
+modelo
+ano
+status
+operadores
+id
+codigo_ibge
+nome
+telefone
+agendamentos_maquinas
+id
+maquina_id
+produtor_id
+data_inicio
+data_fim
+operador_id
+horas_maquina
+id
+agendamento_id
+horas_trabalhadas
+manutencoes_maquinas
+id
+maquina_id
+descricao
+data
+custo
+Eventos
+eventos
+id
+codigo_ibge
+nome
+local
+data
+instrutor
+participantes_evento
+id
+evento_id
+produtor_id
+Relatórios
+relatorios_gerados
+id
+usuario_id
+tipo
+data
+arquivo
+Configurações
+configuracoes_municipio
+id
+codigo_ibge
+chave
+valor
+notificacoes
+id
+usuario_id
+mensagem
+lida
+data
+anexos
+id
+tabela
+registro_id
+arquivo
+auditoria
+id
+usuario_id
+acao
+data
+ip
+
+Total aproximado:
+
+50 tabelas
+
+3. Documento de Requisitos Funcionais Atualizado
+1. Autenticação
+
+RF01 Login de usuário
+RF02 Recuperação de senha
+RF03 Alteração de senha
+RF04 Controle de sessão
+RF05 Log de acesso
+
+2. Gestão de Usuários
+
+RF06 Cadastrar usuário
+RF07 Editar usuário
+RF08 Desativar usuário
+RF09 Definir perfil
+RF10 Associar usuário ao município
+
+3. Gestão de Produtores
+
+RF11 Cadastrar produtor
+RF12 Editar produtor
+RF13 Inativar produtor
+RF14 Buscar produtor por CPF
+RF15 Buscar produtor por nome
+RF16 Associar produtor a associação
+RF17 Registrar CAF/DAP
+
+4. Propriedades Rurais
+
+RF18 Cadastrar propriedade
+RF19 Editar propriedade
+RF20 Registrar coordenadas GPS
+RF21 Registrar área total
+RF22 Registrar área produtiva
+
+5. Produção Agrícola
+
+RF23 Registrar cultura
+RF24 Associar cultura à propriedade
+RF25 Registrar safra
+RF26 Registrar produção estimada
+
+6. Atendimentos Técnicos
+
+RF27 Registrar atendimento
+RF28 Registrar técnico
+RF29 Upload de fotos
+RF30 Registrar localização
+RF31 Histórico de atendimentos
+
+7. Programas
+
+RF32 Cadastrar programa
+RF33 Associar produtores
+RF34 Registrar benefícios
+RF35 Relatório de beneficiários
+
+8. Insumos
+
+RF36 Cadastro de insumos
+RF37 Controle de estoque
+RF38 Distribuição de insumos
+
+9. Máquinas
+
+RF39 Cadastro de máquinas
+RF40 Agendamento
+RF41 Registro de horas
+RF42 Registro de manutenção
+
+10. Eventos
+
+RF43 Cadastro de eventos
+RF44 Registro de participantes
+
+11. Relatórios
+
+RF45 Relatório de produtores
+RF46 Relatório de atendimentos
+RF47 Relatório de produção
+RF48 Relatório de programas
+RF49 Relatório de máquinas
+
+12. Dashboard
+
+RF50 Visualização de indicadores
+RF51 Estatísticas de atendimentos
+RF52 Estatísticas de produção
+
+4. Requisitos Não Funcionais
+
+RNF01 Sistema SaaS multi-município
+RNF02 Autenticação JWT
+RNF03 API REST
+RNF04 Responsivo (mobile)
+RNF05 Escalável para 141 municípios
+RNF06 Backup automático
+RNF07 Logs e auditoria
