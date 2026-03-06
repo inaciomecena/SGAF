@@ -1,0 +1,108 @@
+PLANO DE EXECUÇÃO - SISTEMA SGAF (SaaS Secretarias Municipais de Agricultura)
+
+ESTRATÉGIA DE DESENVOLVIMENTO:
+O desenvolvimento foi dividido em BLOCOS LÓGICOS sequenciais. 
+Instrução de uso: Copie o conteúdo de um BLOCO inteiro e envie no chat para que eu execute as tarefas correspondentes. Aguarde a finalização de um bloco antes de enviar o próximo.
+
+---
+
+BLOCO 01: PREPARAÇÃO DO AMBIENTE E BANCO DE DADOS
+Objetivo: Configurar o projeto Node.js, instalar dependências iniciais e criar a estrutura do banco de dados MySQL.
+Tarefas que serão executadas:
+1. Inicializar projeto Node.js (package.json).
+2. Instalar dependências essenciais (express, mysql2, dotenv, cors, helmet, jsonwebtoken, bcryptjs, multer).
+3. Criar arquivo .env base.
+4. Conectar ao MySQL e executar o script do arquivo 'banco.txt' para criar todas as 50 tabelas e relacionamentos.
+5. Criar estrutura de pastas da Arquitetura Limpa (src/controllers, services, repositories, routes, middlewares, models, config, utils).
+
+---
+
+BLOCO 02: CORE DO BACKEND E AUTENTICAÇÃO
+Objetivo: Criar a base da API, servidor HTTP e sistema de segurança.
+Tarefas que serão executadas:
+1. Configurar ponto de entrada (server.js/app.js).
+2. Implementar módulo de conexão com banco de dados (pool de conexões).
+3. Criar Middleware de Autenticação (JWT) para proteger rotas.
+4. Criar Middleware de Multi-tenancy (Lógica para injetar e filtrar 'codigo_ibge' automaticamente em todas as requisições).
+5. Implementar Rotas e Controllers de Autenticação (Login, Refresh, Logout).
+
+---
+
+BLOCO 03: GESTÃO ADMINISTRATIVA (MUNICÍPIOS E USUÁRIOS)
+Objetivo: Permitir o cadastro de municípios e gestão de usuários do sistema.
+Tarefas que serão executadas:
+1. Implementar Repository, Service e Controller para Municípios.
+2. Implementar Repository, Service e Controller para Usuários (CRUD completo, hash de senha).
+3. Implementar rotas para Logs de Acesso e Logs do Sistema.
+4. Testar fluxos de cadastro de usuário admin e login.
+
+---
+
+BLOCO 04: MÓDULO DE PRODUTORES E PROPRIEDADES
+Objetivo: Gestão dos dados principais dos produtores rurais e suas terras.
+Tarefas que serão executadas:
+1. Implementar CRUD de Associações e Cooperativas.
+2. Implementar CRUD de Produtores (incluindo endereços).
+3. Implementar CRUD de Propriedades (incluindo upload de documentos).
+4. Implementar CRUD de Culturas e Produção Agrícola.
+5. Garantir isolamento dos dados por município (tenant).
+
+---
+
+BLOCO 05: MÓDULO DE ASSISTÊNCIA TÉCNICA
+Objetivo: Registro de atendimentos e visitas técnicas no campo.
+Tarefas que serão executadas:
+1. Implementar CRUD de Técnicos e Tipos de Atendimento.
+2. Implementar Registro de Atendimentos (Cabeçalho).
+3. Implementar detalhes do atendimento: Fotos, Recomendações Técnicas e Geolocalização.
+4. Criar rota para histórico de atendimentos do produtor.
+
+---
+
+BLOCO 06: MÓDULO DE RECURSOS (PROGRAMAS, INSUMOS, MÁQUINAS)
+Objetivo: Gestão de benefícios, estoque e maquinário municipal.
+Tarefas que serão executadas:
+1. Implementar Gestão de Programas Governamentais e Beneficiários.
+2. Implementar Insumos: Cadastro, Estoque (Entrada) e Distribuição (Saída).
+3. Implementar Máquinas: Cadastro, Operadores, Agendamentos, Horas trabalhadas e Manutenções.
+4. Implementar CRUD de Eventos e Participantes.
+
+---
+
+BLOCO 07: FRONTEND - ESTRUTURA E AUTH
+Objetivo: Iniciar o projeto React e tela de login.
+Tarefas que serão executadas:
+1. Criar projeto React com Vite.
+2. Configurar Tailwind CSS e bibliotecas de UI (ícones, alertas).
+3. Configurar React Router e Estrutura de Pastas do Frontend.
+4. Criar Contexto de Autenticação (AuthContext) e serviços de API (Axios interceptors).
+5. Implementar Tela de Login e Layout Base (Sidebar/Header).
+
+---
+
+BLOCO 08: FRONTEND - MÓDULOS DE CADASTRO
+Objetivo: Interfaces para gestão de pessoas e propriedades.
+Tarefas que serão executadas:
+1. Implementar Telas de Gestão de Usuários.
+2. Implementar Telas de Produtores (Listagem, Cadastro, Edição).
+3. Implementar Telas de Propriedades e Vínculos.
+4. Conectar frontend com os endpoints criados nos Blocos 03 e 04.
+
+---
+
+BLOCO 09: FRONTEND - MÓDULOS OPERACIONAIS
+Objetivo: Interfaces para o dia a dia (Atendimentos e Recursos).
+Tarefas que serão executadas:
+1. Implementar Telas de Assistência Técnica (Agenda, Novo Atendimento).
+2. Implementar Telas de Gestão de Maquinário e Agendamentos.
+3. Implementar Telas de Estoque de Insumos.
+4. Implementar Dashboard com gráficos e indicadores principais.
+
+---
+
+BLOCO 10: FINALIZAÇÃO E REVISÃO
+Objetivo: Polimento e entrega.
+Tarefas que serão executadas:
+1. Revisão geral de segurança e validações.
+2. Testes manuais dos fluxos principais.
+3. Geração de documentação básica de API e Instalação (README).

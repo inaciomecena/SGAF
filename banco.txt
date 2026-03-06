@@ -1,0 +1,411 @@
+-- =====================================================
+-- BANCO
+-- =====================================================
+
+CREATE DATABASE IF NOT EXISTS agricultura_municipal
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+USE agricultura_municipal;
+
+-- =====================================================
+-- MUNICIPIOS
+-- =====================================================
+
+CREATE TABLE municipios (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10) UNIQUE NOT NULL,
+ nome VARCHAR(120) NOT NULL,
+ estado VARCHAR(2),
+ regiao VARCHAR(50),
+ ativo BOOLEAN DEFAULT TRUE,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- USUARIOS
+-- =====================================================
+
+CREATE TABLE usuarios (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ email VARCHAR(150) UNIQUE,
+ senha_hash VARCHAR(255),
+ perfil VARCHAR(50),
+ telefone VARCHAR(20),
+ ativo BOOLEAN DEFAULT TRUE,
+ ultimo_login DATETIME,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ INDEX idx_usuario_ibge(codigo_ibge)
+);
+
+-- =====================================================
+-- LOGS
+-- =====================================================
+
+CREATE TABLE logs_acesso (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ usuario_id INT,
+ ip VARCHAR(50),
+ data_login DATETIME,
+ user_agent TEXT,
+ FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE logs_sistema (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ usuario_id INT,
+ acao VARCHAR(100),
+ tabela VARCHAR(100),
+ registro_id INT,
+ data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- =====================================================
+-- ASSOCIACOES E COOPERATIVAS
+-- =====================================================
+
+CREATE TABLE associacoes (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ tipo VARCHAR(50),
+ telefone VARCHAR(20),
+ INDEX idx_associacao_ibge(codigo_ibge)
+);
+
+CREATE TABLE cooperativas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ cnpj VARCHAR(20),
+ telefone VARCHAR(20),
+ INDEX idx_coop_ibge(codigo_ibge)
+);
+
+-- =====================================================
+-- PRODUTORES
+-- =====================================================
+
+CREATE TABLE produtores (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ cpf VARCHAR(14),
+ data_nascimento DATE,
+ telefone VARCHAR(20),
+ email VARCHAR(120),
+ sexo VARCHAR(10),
+ caf_dap VARCHAR(50),
+ associacao_id INT,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ INDEX idx_produtores_ibge(codigo_ibge),
+ FOREIGN KEY (associacao_id) REFERENCES associacoes(id)
+);
+
+CREATE TABLE enderecos_produtor (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ produtor_id INT,
+ logradouro VARCHAR(150),
+ numero VARCHAR(20),
+ bairro VARCHAR(100),
+ cidade VARCHAR(100),
+ cep VARCHAR(10),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id)
+);
+
+-- =====================================================
+-- PROPRIEDADES
+-- =====================================================
+
+CREATE TABLE tipos_propriedade (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ descricao VARCHAR(100)
+);
+
+CREATE TABLE propriedades (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ produtor_id INT,
+ nome VARCHAR(150),
+ area_total DECIMAL(10,2),
+ area_produtiva DECIMAL(10,2),
+ latitude DECIMAL(10,6),
+ longitude DECIMAL(10,6),
+ tipo INT,
+ INDEX idx_prop_ibge(codigo_ibge),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id),
+ FOREIGN KEY (tipo) REFERENCES tipos_propriedade(id)
+);
+
+CREATE TABLE documentos_propriedade (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ propriedade_id INT,
+ tipo VARCHAR(100),
+ arquivo VARCHAR(255),
+ data_upload TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (propriedade_id) REFERENCES propriedades(id)
+);
+
+-- =====================================================
+-- CULTURAS
+-- =====================================================
+
+CREATE TABLE culturas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ nome VARCHAR(120),
+ tipo VARCHAR(100)
+);
+
+CREATE TABLE propriedade_culturas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ propriedade_id INT,
+ cultura_id INT,
+ area_plantada DECIMAL(10,2),
+ safra VARCHAR(20),
+ producao_estimada DECIMAL(10,2),
+ INDEX idx_pc_ibge(codigo_ibge),
+ FOREIGN KEY (propriedade_id) REFERENCES propriedades(id),
+ FOREIGN KEY (cultura_id) REFERENCES culturas(id)
+);
+
+CREATE TABLE sistemas_producao (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ descricao VARCHAR(120)
+);
+
+CREATE TABLE propriedade_sistemas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ propriedade_id INT,
+ sistema_id INT,
+ FOREIGN KEY (propriedade_id) REFERENCES propriedades(id),
+ FOREIGN KEY (sistema_id) REFERENCES sistemas_producao(id)
+);
+
+-- =====================================================
+-- TECNICOS
+-- =====================================================
+
+CREATE TABLE tecnicos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ formacao VARCHAR(120),
+ registro VARCHAR(100),
+ telefone VARCHAR(20),
+ INDEX idx_tecnico_ibge(codigo_ibge)
+);
+
+CREATE TABLE tipos_atendimento (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ descricao VARCHAR(120)
+);
+
+CREATE TABLE atendimentos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ produtor_id INT,
+ tecnico_id INT,
+ tipo_atendimento_id INT,
+ data_atendimento DATE,
+ descricao TEXT,
+ latitude DECIMAL(10,6),
+ longitude DECIMAL(10,6),
+ INDEX idx_atend_ibge(codigo_ibge),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id),
+ FOREIGN KEY (tecnico_id) REFERENCES tecnicos(id),
+ FOREIGN KEY (tipo_atendimento_id) REFERENCES tipos_atendimento(id)
+);
+
+CREATE TABLE fotos_atendimento (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ atendimento_id INT,
+ arquivo VARCHAR(255),
+ FOREIGN KEY (atendimento_id) REFERENCES atendimentos(id)
+);
+
+CREATE TABLE recomendacoes_tecnicas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ atendimento_id INT,
+ descricao TEXT,
+ FOREIGN KEY (atendimento_id) REFERENCES atendimentos(id)
+);
+
+-- =====================================================
+-- PROGRAMAS
+-- =====================================================
+
+CREATE TABLE programas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ orgao VARCHAR(150),
+ data_inicio DATE,
+ data_fim DATE,
+ orcamento DECIMAL(12,2),
+ INDEX idx_programa_ibge(codigo_ibge)
+);
+
+CREATE TABLE programa_produtores (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ programa_id INT,
+ produtor_id INT,
+ beneficio VARCHAR(150),
+ valor DECIMAL(12,2),
+ FOREIGN KEY (programa_id) REFERENCES programas(id),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id)
+);
+
+-- =====================================================
+-- INSUMOS
+-- =====================================================
+
+CREATE TABLE insumos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ tipo VARCHAR(100),
+ unidade VARCHAR(50),
+ INDEX idx_insumo_ibge(codigo_ibge)
+);
+
+CREATE TABLE estoque_insumos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ insumo_id INT,
+ quantidade DECIMAL(12,2),
+ data_entrada DATE,
+ FOREIGN KEY (insumo_id) REFERENCES insumos(id)
+);
+
+CREATE TABLE distribuicao_insumos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ insumo_id INT,
+ produtor_id INT,
+ quantidade DECIMAL(10,2),
+ data_entrega DATE,
+ FOREIGN KEY (insumo_id) REFERENCES insumos(id),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id)
+);
+
+-- =====================================================
+-- MAQUINAS
+-- =====================================================
+
+CREATE TABLE maquinas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ modelo VARCHAR(120),
+ ano INT,
+ status VARCHAR(50),
+ INDEX idx_maquina_ibge(codigo_ibge)
+);
+
+CREATE TABLE operadores (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ telefone VARCHAR(20)
+);
+
+CREATE TABLE agendamentos_maquinas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ maquina_id INT,
+ produtor_id INT,
+ data_inicio DATE,
+ data_fim DATE,
+ operador_id INT,
+ FOREIGN KEY (maquina_id) REFERENCES maquinas(id),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id),
+ FOREIGN KEY (operador_id) REFERENCES operadores(id)
+);
+
+CREATE TABLE horas_maquina (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ agendamento_id INT,
+ horas_trabalhadas DECIMAL(10,2),
+ FOREIGN KEY (agendamento_id) REFERENCES agendamentos_maquinas(id)
+);
+
+CREATE TABLE manutencoes_maquinas (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ maquina_id INT,
+ descricao TEXT,
+ data DATE,
+ custo DECIMAL(12,2),
+ FOREIGN KEY (maquina_id) REFERENCES maquinas(id)
+);
+
+-- =====================================================
+-- EVENTOS
+-- =====================================================
+
+CREATE TABLE eventos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ nome VARCHAR(150),
+ local VARCHAR(150),
+ data DATE,
+ instrutor VARCHAR(150),
+ INDEX idx_evento_ibge(codigo_ibge)
+);
+
+CREATE TABLE participantes_evento (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ evento_id INT,
+ produtor_id INT,
+ FOREIGN KEY (evento_id) REFERENCES eventos(id),
+ FOREIGN KEY (produtor_id) REFERENCES produtores(id)
+);
+
+-- =====================================================
+-- RELATORIOS
+-- =====================================================
+
+CREATE TABLE relatorios_gerados (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ usuario_id INT,
+ tipo VARCHAR(100),
+ data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ arquivo VARCHAR(255),
+ FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- =====================================================
+-- CONFIGURACOES
+-- =====================================================
+
+CREATE TABLE configuracoes_municipio (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ codigo_ibge VARCHAR(10),
+ chave_config VARCHAR(100),
+ valor TEXT
+);
+
+CREATE TABLE notificacoes (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ usuario_id INT,
+ mensagem TEXT,
+ lida BOOLEAN DEFAULT FALSE,
+ data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE anexos (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ tabela VARCHAR(100),
+ registro_id INT,
+ arquivo VARCHAR(255)
+);
+
+CREATE TABLE auditoria (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ usuario_id INT,
+ acao VARCHAR(150),
+ data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ ip VARCHAR(50),
+ FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
