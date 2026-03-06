@@ -16,6 +16,10 @@ import AtendimentoForm from './pages/Atendimentos/AtendimentoForm';
 import MaquinaList from './pages/Recursos/MaquinaList';
 import MaquinaForm from './pages/Recursos/MaquinaForm';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Relatorios from './pages/Relatorios/Relatorios';
+import RelatorioProdutores from './pages/Relatorios/RelatorioProdutores';
+import RelatorioAtendimentos from './pages/Relatorios/RelatorioAtendimentos';
+import RelatorioPropriedades from './pages/Relatorios/RelatorioPropriedades';
 
 // Componente para rotas protegidas
 const PrivateRoute = ({ children }) => {
