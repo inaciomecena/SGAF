@@ -63,6 +63,16 @@ class ProdutorController {
       res.status(500).json({ message: 'Erro ao cadastrar propriedade' });
     }
   }
+
+  async listarPropriedades(req, res) {
+    try {
+      const propriedades = await propriedadeRepository.findAllByIbge(req.tenantId);
+      res.json(propriedades);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao listar propriedades' });
+    }
+  }
 }
 
 module.exports = new ProdutorController();

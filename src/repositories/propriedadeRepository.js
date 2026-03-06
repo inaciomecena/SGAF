@@ -9,6 +9,17 @@ class PropriedadeRepository {
     return rows;
   }
 
+  async findAllByIbge(codigoIbge) {
+    const [rows] = await pool.execute(
+      `SELECT p.*, pr.nome as produtor_nome 
+       FROM propriedades p 
+       JOIN produtores pr ON p.produtor_id = pr.id 
+       WHERE p.codigo_ibge = ?`,
+      [codigoIbge]
+    );
+    return rows;
+  }
+
   async create(data) {
     const { codigo_ibge, produtor_id, nome, area_total, area_produtiva, latitude, longitude, tipo } = data;
     const [result] = await pool.execute(

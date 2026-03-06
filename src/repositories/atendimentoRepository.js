@@ -14,6 +14,20 @@ class AtendimentoRepository {
     return rows;
   }
 
+  async findAllByIbge(codigoIbge) {
+    const [rows] = await pool.execute(
+      `SELECT a.*, u.nome as tecnico_nome, p.nome as produtor_nome, prop.nome as propriedade_nome 
+       FROM atendimentos a
+       JOIN usuarios u ON a.tecnico_id = u.id
+       JOIN produtores p ON a.produtor_id = p.id
+       LEFT JOIN propriedades prop ON a.propriedade_id = prop.id
+       WHERE a.codigo_ibge = ?
+       ORDER BY a.data_visita DESC`,
+      [codigoIbge]
+    );
+    return rows;
+  }
+
   async findById(id) {
     const [rows] = await pool.execute(
       `SELECT a.*, u.nome as tecnico_nome 

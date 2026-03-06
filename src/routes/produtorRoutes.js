@@ -14,5 +14,6 @@ router.get('/produtores/:id', produtorController.detalhar);
 
 // Propriedades (Sub-recurso de produtor)
 router.post('/produtores/:produtorId/propriedades', produtorController.criarPropriedade);
+router.get('/propriedades', produtorController.listarPropriedades);
 
 module.exports = router;

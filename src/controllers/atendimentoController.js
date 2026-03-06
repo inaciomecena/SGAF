@@ -11,6 +11,16 @@ class AtendimentoController {
     }
   }
 
+  async listar(req, res) {
+    try {
+      const atendimentos = await atendimentoService.listarAtendimentos(req.tenantId);
+      res.json(atendimentos);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao listar atendimentos' });
+    }
+  }
+
   async registrar(req, res) {
     try {
       const dados = req.body;

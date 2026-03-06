@@ -10,6 +10,7 @@ router.use(authMiddleware, tenantMiddleware);
 router.get('/tecnicos', atendimentoController.listarTecnicos);
 
 // Atendimentos
+router.get('/atendimentos', atendimentoController.listar);
 router.post('/atendimentos', atendimentoController.registrar);
 router.get('/atendimentos/:id', atendimentoController.detalhar);
 

@@ -6,6 +6,10 @@ class AtendimentoService {
     return await tecnicoRepository.findAllByIbge(codigoIbge);
   }
 
+  async listarAtendimentos(codigoIbge) {
+    return await atendimentoRepository.findAllByIbge(codigoIbge);
+  }
+
   async registrarAtendimento(dadosAtendimento) {
     // Futuramente: Validar se técnico pertence ao município, se produtor existe, etc.
     return await atendimentoRepository.create(dadosAtendimento);
