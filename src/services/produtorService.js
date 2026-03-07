@@ -15,7 +15,7 @@ class ProdutorService {
   async detalharProdutor(id, codigoIbge) {
     const produtor = await produtorRepository.findById(id, codigoIbge);
     if (produtor) {
-      produtor.propriedades = await propriedadeRepository.findAllByProdutor(id);
+      produtor.propriedades = await propriedadeRepository.findAllByProdutor(id, codigoIbge);
     }
     return produtor;
   }

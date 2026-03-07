@@ -70,7 +70,7 @@ export default function RelatorioProdutores() {
             </tr>
           </thead>
           <tbody>
-            {produtores.map((produtor, index) => (
+            {produtores.map((produtor) => (
               <tr key={produtor.id} className="border-b border-gray-100 text-sm">
                 <td className="py-2">{produtor.nome}</td>
                 <td className="py-2">{produtor.cpf}</td>

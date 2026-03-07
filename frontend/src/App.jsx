@@ -20,8 +20,12 @@ import Relatorios from './pages/Relatorios/Relatorios';
 import RelatorioProdutores from './pages/Relatorios/RelatorioProdutores';
 import RelatorioAtendimentos from './pages/Relatorios/RelatorioAtendimentos';
 import RelatorioPropriedades from './pages/Relatorios/RelatorioPropriedades';
+import AdminPanel from './pages/Admin/AdminPanel';
+import AdminLogs from './pages/Admin/AdminLogs';
+import CulturaList from './pages/Tabelas/CulturaList';
+import CulturaForm from './pages/Tabelas/CulturaForm';
+import { canManageUsers } from './utils/roles';
 
-// Componente para rotas protegidas
 const PrivateRoute = ({ children }) => {
   const { signed, loading } = useAuth();
 
@@ -30,6 +34,11 @@ const PrivateRoute = ({ children }) => {
   }
 
   return signed ? children : <Navigate to="/login" />;
+};
+
+const AdminRoute = ({ children }) => {
+  const { user } = useAuth();
+  return canManageUsers(user?.perfil) ? children : <Navigate to="/" />;
 };
 
 function AppRoutes() {
@@ -43,35 +52,108 @@ function AppRoutes() {
         </PrivateRoute>
       }>
         <Route index element={<Dashboard />} />
-        
-        {/* Rotas de Usuários */}
-        <Route path="admin/usuarios" element={<UserList />} />
-        <Route path="admin/usuarios/novo" element={<UserForm />} />
-        
-        {/* Rotas de Produtores */}
+
+        <Route
+          path="secretaria"
+          element={(
+            <AdminRoute>
+              <AdminPanel />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="secretaria/usuarios"
+          element={(
+            <AdminRoute>
+              <UserList />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="secretaria/usuarios/novo"
+          element={(
+            <AdminRoute>
+              <UserForm />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="secretaria/usuarios/:id/editar"
+          element={(
+            <AdminRoute>
+              <UserForm />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="secretaria/logs"
+          element={(
+            <AdminRoute>
+              <AdminLogs />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="admin"
+          element={(
+            <AdminRoute>
+              <AdminPanel />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="admin/usuarios"
+          element={(
+            <AdminRoute>
+              <UserList />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="admin/usuarios/novo"
+          element={(
+            <AdminRoute>
+              <UserForm />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="admin/usuarios/:id/editar"
+          element={(
+            <AdminRoute>
+              <UserForm />
+            </AdminRoute>
+          )}
+        />
+        <Route
+          path="admin/logs"
+          element={(
+            <AdminRoute>
+              <AdminLogs />
+            </AdminRoute>
+          )}
+        />
+
         <Route path="produtores" element={<ProdutorList />} />
         <Route path="produtores/novo" element={<ProdutorForm />} />
-        
-        {/* Rotas de Propriedades */}
+
         <Route path="propriedades" element={<PropriedadeList />} />
         <Route path="propriedades/novo" element={<PropriedadeForm />} />
-        
-        {/* Rotas de Atendimentos */}
+        <Route path="propriedades/:id/editar" element={<PropriedadeForm />} />
+
         <Route path="atendimentos" element={<AtendimentoList />} />
         <Route path="atendimentos/novo" element={<AtendimentoForm />} />
-        
-        {/* Rotas de Recursos */}
+
         <Route path="recursos" element={<MaquinaList />} />
         <Route path="recursos/maquinas" element={<MaquinaList />} />
         <Route path="recursos/maquinas/novo" element={<MaquinaForm />} />
 
-        {/* Rotas de Relatórios */}
         <Route path="relatorios" element={<Relatorios />} />
         <Route path="relatorios/produtores" element={<RelatorioProdutores />} />
         <Route path="relatorios/atendimentos" element={<RelatorioAtendimentos />} />
         <Route path="relatorios/propriedades" element={<RelatorioPropriedades />} />
-
-        <Route path="admin" element={<div>Módulo Administrativo</div>} />
+        <Route path="tabelas/culturas" element={<CulturaList />} />
+        <Route path="tabelas/culturas/nova" element={<CulturaForm />} />
       </Route>
     </Routes>
   );

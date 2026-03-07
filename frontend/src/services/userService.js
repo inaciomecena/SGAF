@@ -1,25 +1,32 @@
 import api from './api';
 
 const userService = {
-  listar: async () => {
-    try {
-      const response = await api.get('/admin/usuarios');
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+  listar: async (codigoIbge) => {
+    const response = await api.get('/admin/usuarios', {
+      params: codigoIbge ? { codigo_ibge: codigoIbge } : undefined
+    });
+    return response.data;
   },
 
   criar: async (dados) => {
-    try {
-      const response = await api.post('/admin/usuarios', dados);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.post('/admin/usuarios', dados);
+    return response.data;
   },
 
-  // Implementar update e delete se necessário futuramente
+  detalhar: async (id) => {
+    const response = await api.get(`/admin/usuarios/${id}`);
+    return response.data;
+  },
+
+  atualizar: async (id, dados) => {
+    const response = await api.put(`/admin/usuarios/${id}`, dados);
+    return response.data;
+  },
+
+  desativar: async (id) => {
+    const response = await api.delete(`/admin/usuarios/${id}`);
+    return response.data;
+  },
 };
 
 export default userService;

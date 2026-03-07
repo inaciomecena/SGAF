@@ -38,7 +38,7 @@ export default function MaquinaList() {
         </div>
         <button
           onClick={() => navigate('/recursos/maquinas/novo')}
-          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
         >
           <Plus className="w-5 h-5" />
           Nova Máquina
@@ -52,7 +52,7 @@ export default function MaquinaList() {
             <input
               type="text"
               placeholder="Buscar por nome ou modelo..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -73,11 +73,11 @@ export default function MaquinaList() {
             filteredMaquinas.map((maquina) => (
               <div key={maquina.id} className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="p-3 bg-green-50 rounded-lg">
-                    <Tractor className="w-8 h-8 text-green-600" />
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <Tractor className="w-8 h-8 text-blue-600" />
                   </div>
                   <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                    maquina.status === 'ATIVO' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                    maquina.status === 'ATIVO' ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700'
                   }`}>
                     {maquina.status}
                   </span>

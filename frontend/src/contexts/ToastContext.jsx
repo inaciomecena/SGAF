@@ -6,6 +6,10 @@ const ToastContext = createContext({});
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
+  const removeToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id));
+  }, []);
+
   const addToast = useCallback(({ type, title, message, duration = 3000 }) => {
     const id = Math.random().toString(36).substr(2, 9);
     setToasts((prev) => [...prev, { id, type, title, message }]);
@@ -13,11 +17,7 @@ export function ToastProvider({ children }) {
     setTimeout(() => {
       removeToast(id);
     }, duration);
-  }, []);
-
-  const removeToast = useCallback((id) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  }, []);
+  }, [removeToast]);
 
   const toast = {
     success: (message, title = 'Sucesso') => addToast({ type: 'success', title, message }),
@@ -34,13 +34,13 @@ export function ToastProvider({ children }) {
             key={t.id}
             className={`
               pointer-events-auto flex w-full transform rounded-lg bg-white p-4 shadow-lg ring-1 transition-all duration-300 ease-in-out
-              ${t.type === 'success' ? 'ring-green-500/20' : ''}
+              ${t.type === 'success' ? 'ring-blue-500/20' : ''}
               ${t.type === 'error' ? 'ring-red-500/20' : ''}
               ${t.type === 'info' ? 'ring-blue-500/20' : ''}
             `}
           >
             <div className="flex-shrink-0">
-              {t.type === 'success' && <CheckCircle className="h-6 w-6 text-green-500" />}
+              {t.type === 'success' && <CheckCircle className="h-6 w-6 text-blue-500" />}
               {t.type === 'error' && <AlertCircle className="h-6 w-6 text-red-500" />}
               {t.type === 'info' && <Info className="h-6 w-6 text-blue-500" />}
             </div>

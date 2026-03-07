@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Sprout, Tractor, ClipboardList, TrendingUp, Calendar } from 'lucide-react';
+import { Users, Sprout, Tractor, ClipboardList, TrendingUp, Calendar, ArrowUpRight, BarChart3, Settings2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import dashboardService from '../../services/dashboardService';
 
@@ -32,72 +32,90 @@ export default function Dashboard() {
   };
 
   const stats = [
-    { label: 'Produtores', value: data.stats.produtores, icon: Users, color: 'bg-blue-500', path: '/produtores' },
-    { label: 'Propriedades', value: data.stats.propriedades, icon: Sprout, color: 'bg-green-500', path: '/propriedades' },
-    { label: 'Atendimentos', value: data.stats.atendimentos, icon: ClipboardList, color: 'bg-purple-500', path: '/atendimentos' },
-    { label: 'Máquinas', value: data.stats.maquinas, icon: Tractor, color: 'bg-orange-500', path: '/recursos' },
+    { label: 'Total Produtores', value: data.stats.produtores, icon: Users, color: 'from-cyan-500 to-blue-600', path: '/produtores' },
+    { label: 'Total Propriedades', value: data.stats.propriedades, icon: Sprout, color: 'from-emerald-500 to-teal-600', path: '/propriedades' },
+    { label: 'Total Atendimentos', value: data.stats.atendimentos, icon: ClipboardList, color: 'from-violet-500 to-indigo-600', path: '/atendimentos' },
+    { label: 'Total Máquinas', value: data.stats.maquinas, icon: Tractor, color: 'from-amber-500 to-orange-600', path: '/recursos' },
   ];
+  const totalBase = stats.reduce((acc, item) => acc + Number(item.value || 0), 0);
+  const dateLabel = new Date().toLocaleDateString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="w-8 h-8 border-4 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
+    <div className="space-y-5">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 px-5 py-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Visão Geral</h1>
-          <p className="text-gray-500 text-sm">Resumo das atividades do município</p>
+          <h1 className="text-2xl font-bold text-slate-800">Visão Geral</h1>
+          <p className="text-slate-500 text-sm">Painel consolidado de operação municipal e estadual</p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500 bg-white px-3 py-1 rounded-lg border border-gray-200 shadow-sm">
-          <Calendar className="w-4 h-4" />
-          {new Date().toLocaleDateString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 text-sm text-slate-500 bg-slate-50 px-3 py-2 rounded-lg border border-slate-200">
+            <Calendar className="w-4 h-4" />
+            {dateLabel}
+          </div>
+          <div className="flex items-center gap-2 text-sm text-emerald-700 bg-emerald-50 px-3 py-2 rounded-lg border border-emerald-100">
+            <TrendingUp className="w-4 h-4" />
+            Base operacional: {totalBase}
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {stats.map((stat, index) => (
-          <div 
+          <button
             key={index} 
             onClick={() => navigate(stat.path)}
-            className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center justify-between cursor-pointer hover:shadow-md transition-all hover:-translate-y-1"
+            className="text-left bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:shadow-md transition-all hover:-translate-y-0.5"
           >
-            <div>
-              <p className="text-sm font-medium text-gray-500">{stat.label}</p>
-              <p className="text-3xl font-bold text-gray-900 mt-1">{stat.value}</p>
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="text-xs uppercase tracking-wide font-semibold text-slate-500">{stat.label}</p>
+                <p className="text-3xl font-bold text-slate-900 mt-2">{stat.value}</p>
+                <p className="text-xs text-slate-500 mt-1">Clique para abrir módulo</p>
+              </div>
+              <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${stat.color} text-white flex items-center justify-center shadow-sm`}>
+                <stat.icon className="w-5 h-5" />
+              </div>
             </div>
-            <div className={`p-3 rounded-lg ${stat.color} bg-opacity-10`}>
-              <stat.icon className={`w-6 h-6 ${stat.color.replace('bg-', 'text-')}`} />
+            <div className="mt-4 flex items-center justify-between text-xs font-medium">
+              <span className="text-emerald-600 inline-flex items-center gap-1">
+                <ArrowUpRight className="w-3.5 h-3.5" />
+                Acompanhamento
+              </span>
+              <span className="text-slate-400">Tempo real</span>
             </div>
-          </div>
+          </button>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-green-600" />
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
+        <div className="xl:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <h3 className="text-lg font-bold text-slate-800 mb-5 flex items-center gap-2">
+            <TrendingUp className="w-5 h-5 text-blue-600" />
             Atividades Recentes
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {data.recentActivities.length === 0 ? (
-              <p className="text-gray-500 text-sm text-center py-4">Nenhuma atividade recente.</p>
+              <p className="text-slate-500 text-sm text-center py-4">Nenhuma atividade recente.</p>
             ) : (
               data.recentActivities.map((activity) => (
-                <div key={activity.id} className="flex items-center gap-4 pb-4 border-b border-gray-50 last:border-0 last:pb-0">
-                  <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 font-bold text-xs">
-                    {activity.tecnico_nome.charAt(0)}
+                <div key={activity.id} className="flex items-center gap-4 p-3 rounded-xl border border-slate-100 bg-slate-50/70">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-xs">
+                    {(activity.tecnico_nome || 'T').charAt(0)}
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">Visita Técnica realizada</p>
-                    <p className="text-xs text-gray-500">{activity.tecnico_nome} • {activity.produtor_nome}</p>
+                    <p className="text-sm font-semibold text-slate-900">Visita técnica realizada</p>
+                    <p className="text-xs text-slate-500">{activity.tecnico_nome || 'Sem técnico'} • {activity.produtor_nome}</p>
                   </div>
-                  <span className="text-xs text-gray-400">
-                    {new Date(activity.created_at).toLocaleDateString()}
+                  <span className="text-xs text-slate-400">
+                    {activity.created_at ? new Date(activity.created_at).toLocaleDateString() : '-'}
                   </span>
                 </div>
               ))
@@ -105,34 +123,53 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <Tractor className="w-5 h-5 text-orange-600" />
-            Disponibilidade de Máquinas
-          </h3>
-          {/* Mocked data for now as per requirement, but could be dynamic later */}
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600">Tratores</span>
-              <div className="flex gap-1">
-                <span className="w-20 h-2 bg-green-500 rounded-full"></span>
-                <span className="w-10 h-2 bg-gray-200 rounded-full"></span>
-              </div>
+        <div className="space-y-4">
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+            <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <BarChart3 className="w-5 h-5 text-violet-600" />
+              Distribuição Geral
+            </h3>
+            <div className="space-y-3">
+              {stats.map((stat) => {
+                const percent = totalBase ? Math.round((Number(stat.value || 0) / totalBase) * 100) : 0;
+                return (
+                  <div key={stat.label}>
+                    <div className="flex justify-between text-xs text-slate-500 mb-1">
+                      <span>{stat.label.replace('Total ', '')}</span>
+                      <span>{percent}%</span>
+                    </div>
+                    <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                      <div className={`h-full bg-gradient-to-r ${stat.color}`} style={{ width: `${percent}%` }} />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600">Caminhões</span>
-              <div className="flex gap-1">
-                <span className="w-12 h-2 bg-green-500 rounded-full"></span>
-                <span className="w-16 h-2 bg-gray-200 rounded-full"></span>
-              </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+            <h3 className="text-base font-bold text-slate-800 mb-4 flex items-center gap-2">
+              <Settings2 className="w-5 h-5 text-cyan-600" />
+              Acesso Rápido
+            </h3>
+            <div className="grid grid-cols-2 gap-2">
+              <button onClick={() => navigate('/secretaria')} className="px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-sm text-slate-700 text-left">Secretaria</button>
+              <button onClick={() => navigate('/produtores')} className="px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-sm text-slate-700 text-left">Produtores</button>
+              <button onClick={() => navigate('/propriedades')} className="px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-sm text-slate-700 text-left">Propriedades</button>
+              <button onClick={() => navigate('/atendimentos')} className="px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-sm text-slate-700 text-left">Atendimentos</button>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-600">Implementos</span>
-              <div className="flex gap-1">
-                <span className="w-24 h-2 bg-green-500 rounded-full"></span>
-                <span className="w-4 h-2 bg-gray-200 rounded-full"></span>
-              </div>
-            </div>
+          </div>
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+            <h3 className="text-base font-bold text-slate-800 mb-3 flex items-center gap-2">
+              <Tractor className="w-5 h-5 text-orange-600" />
+              Máquinas Disponíveis
+            </h3>
+            <p className="text-sm text-slate-600">
+              Total no cadastro atual: <span className="font-semibold text-slate-900">{data.stats.maquinas}</span>
+            </p>
+            <button onClick={() => navigate('/recursos')} className="mt-3 w-full px-3 py-2 rounded-lg bg-orange-50 text-orange-700 hover:bg-orange-100 text-sm font-medium">
+              Abrir recursos e máquinas
+            </button>
           </div>
         </div>
       </div>

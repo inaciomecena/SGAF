@@ -1,61 +1,34 @@
 import api from './api';
 
 const recursoService = {
-  // --- MÁQUINAS ---
   listarMaquinas: async () => {
-    try {
-      const response = await api.get('/recursos/maquinas');
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.get('/recursos/maquinas');
+    return response.data;
   },
 
   criarMaquina: async (dados) => {
-    try {
-      const response = await api.post('/recursos/maquinas', dados);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.post('/recursos/maquinas', dados);
+    return response.data;
   },
 
-  // --- AGENDAMENTOS ---
   listarAgendamentos: async () => {
-    try {
-      const response = await api.get('/recursos/agendamentos');
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.get('/recursos/agendamentos');
+    return response.data;
   },
 
   criarAgendamento: async (dados) => {
-    try {
-      const response = await api.post('/recursos/agendamentos', dados);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.post('/recursos/agendamentos', dados);
+    return response.data;
   },
 
-  // --- INSUMOS ---
   listarInsumos: async () => {
-    try {
-      const response = await api.get('/recursos/insumos');
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.get('/recursos/insumos');
+    return response.data;
   },
 
   criarInsumo: async (dados) => {
-    try {
-      const response = await api.post('/recursos/insumos', dados);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
+    const response = await api.post('/recursos/insumos', dados);
+    return response.data;
   }
 };
 

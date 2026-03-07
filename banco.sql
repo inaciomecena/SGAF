@@ -809,7 +809,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Copiando dados para a tabela agricultura_municipal.usuarios: ~2 rows (aproximadamente)
 DELETE FROM `usuarios`;
 INSERT INTO `usuarios` (`id`, `codigo_ibge`, `nome`, `email`, `senha_hash`, `perfil`, `telefone`, `ativo`, `ultimo_login`, `created_at`) VALUES
-	(1, '1234567', 'Administrador', 'admin@sgaf.com', '$2b$10$.7GVy47/OIRmnG/eDt6XWuQncAAaZG8b9a4O8lzEiCjVzPepMU7Ee', 'admin', NULL, 1, NULL, '2026-03-06 21:16:43'),
+	(1, NULL, 'Administrador', 'admin@sgaf.com', '$2b$10$.7GVy47/OIRmnG/eDt6XWuQncAAaZG8b9a4O8lzEiCjVzPepMU7Ee', 'ADMIN_ESTADO', NULL, 1, NULL, '2026-03-06 21:16:43'),
 	(2, '1234567', 'Técnico João', 'joao@sgaf.com', '$2b$10$.7GVy47/OIRmnG/eDt6XWuQncAAaZG8b9a4O8lzEiCjVzPepMU7Ee', 'tecnico', NULL, 1, NULL, '2026-03-06 21:16:43');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;

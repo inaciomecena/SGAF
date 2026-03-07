@@ -60,7 +60,7 @@ export default function MaquinaForm() {
               required
               value={formData.nome}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               placeholder="Ex: Trator John Deere 01"
             />
           </div>
@@ -71,7 +71,7 @@ export default function MaquinaForm() {
               name="tipo"
               value={formData.tipo}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none bg-white"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
             >
               <option value="TRATOR">Trator</option>
               <option value="CAMINHAO">Caminhão</option>
@@ -88,7 +88,7 @@ export default function MaquinaForm() {
               name="modelo"
               value={formData.modelo}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               placeholder="Ex: 5078E"
             />
           </div>
@@ -100,7 +100,7 @@ export default function MaquinaForm() {
               name="placa"
               value={formData.placa}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               placeholder="ABC-1234"
             />
           </div>
@@ -112,7 +112,7 @@ export default function MaquinaForm() {
               name="ano"
               value={formData.ano}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
@@ -122,7 +122,7 @@ export default function MaquinaForm() {
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none bg-white"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
             >
               <option value="ATIVO">Ativo</option>
               <option value="MANUTENCAO">Em Manutenção</option>
@@ -135,7 +135,7 @@ export default function MaquinaForm() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
             Salvar Máquina

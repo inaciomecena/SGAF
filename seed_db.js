@@ -23,11 +23,11 @@ async function seedDatabase() {
     console.log('Criando usuários...');
     const hashedPassword = await bcrypt.hash('123456', 10);
     
-    // Admin do município 1234567
+    // Admin estadual sem vínculo municipal
     await connection.execute(`
       INSERT INTO usuarios (nome, email, senha_hash, perfil, codigo_ibge, ativo) 
       VALUES (?, ?, ?, ?, ?, ?)
-    `, ['Administrador', 'admin@sgaf.com', hashedPassword, 'admin', '1234567', true]);
+    `, ['Administrador', 'admin@sgaf.com', hashedPassword, 'ADMIN_ESTADO', null, true]);
 
     // Técnico do município 1234567
     const [tecnicoResult] = await connection.execute(`

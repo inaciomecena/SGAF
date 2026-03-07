@@ -17,7 +17,7 @@ export default function Relatorios() {
       title: 'Lista de Propriedades',
       description: 'Relatório das propriedades rurais com área e localização.',
       icon: Sprout,
-      color: 'bg-green-500',
+      color: 'bg-blue-500',
       path: '/relatorios/propriedades'
     },
     {

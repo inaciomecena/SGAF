@@ -71,7 +71,7 @@ export default function ProdutorForm() {
         {/* Dados Pessoais */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center gap-2 mb-6 border-b border-gray-100 pb-2">
-            <User className="w-5 h-5 text-green-600" />
+            <User className="w-5 h-5 text-blue-600" />
             <h2 className="font-semibold text-gray-800">Dados Pessoais</h2>
           </div>
           
@@ -84,7 +84,7 @@ export default function ProdutorForm() {
                 required
                 value={produtor.nome}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -96,7 +96,7 @@ export default function ProdutorForm() {
                 required
                 value={produtor.cpf}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 placeholder="000.000.000-00"
               />
             </div>
@@ -108,7 +108,7 @@ export default function ProdutorForm() {
                 name="data_nascimento"
                 value={produtor.data_nascimento}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -119,7 +119,7 @@ export default function ProdutorForm() {
                 name="telefone"
                 value={produtor.telefone}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -130,7 +130,7 @@ export default function ProdutorForm() {
                 name="email"
                 value={produtor.email}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -140,7 +140,7 @@ export default function ProdutorForm() {
                 name="sexo"
                 value={produtor.sexo}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none bg-white"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
               >
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
@@ -155,7 +155,7 @@ export default function ProdutorForm() {
                 name="caf_dap"
                 value={produtor.caf_dap}
                 onChange={handleChangeProdutor}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                 placeholder="Número do documento"
               />
             </div>
@@ -165,7 +165,7 @@ export default function ProdutorForm() {
         {/* Endereço */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center gap-2 mb-6 border-b border-gray-100 pb-2">
-            <MapPin className="w-5 h-5 text-green-600" />
+            <MapPin className="w-5 h-5 text-blue-600" />
             <h2 className="font-semibold text-gray-800">Endereço Principal</h2>
           </div>
           
@@ -177,7 +177,7 @@ export default function ProdutorForm() {
                 name="cep"
                 value={endereco.cep}
                 onChange={handleChangeEndereco}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -188,7 +188,7 @@ export default function ProdutorForm() {
                 name="logradouro"
                 value={endereco.logradouro}
                 onChange={handleChangeEndereco}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -199,7 +199,7 @@ export default function ProdutorForm() {
                 name="numero"
                 value={endereco.numero}
                 onChange={handleChangeEndereco}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -210,7 +210,7 @@ export default function ProdutorForm() {
                 name="bairro"
                 value={endereco.bairro}
                 onChange={handleChangeEndereco}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
 
@@ -221,7 +221,7 @@ export default function ProdutorForm() {
                 name="cidade"
                 value={endereco.cidade}
                 onChange={handleChangeEndereco}
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
               />
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function ProdutorForm() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
             Salvar Cadastro

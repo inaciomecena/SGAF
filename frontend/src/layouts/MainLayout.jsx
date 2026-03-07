@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { canManageUsers } from '../utils/roles';
 import { 
-  Menu, X, Home, Users, Sprout, Tractor, 
-  ClipboardList, LogOut, Settings, FileText 
+  Menu, Home, Users, Sprout, Tractor,
+  ClipboardList, LogOut, FileText, Building2, TableProperties, ChevronDown
 } from 'lucide-react';
 
 export default function MainLayout() {
@@ -12,8 +13,8 @@ export default function MainLayout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     navigate('/login');
   };
 
@@ -24,12 +25,13 @@ export default function MainLayout() {
     { icon: ClipboardList, label: 'Atendimentos', path: '/atendimentos' },
     { icon: Tractor, label: 'Recursos & Máquinas', path: '/recursos' },
     { icon: FileText, label: 'Relatórios', path: '/relatorios' },
-    { icon: Settings, label: 'Administração', path: '/admin', adminOnly: true },
+    { icon: Building2, label: 'SECRETARIA', path: '/secretaria', adminOnly: true },
   ];
 
+  const tabelasOpen = location.pathname.startsWith('/tabelas');
+
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Mobile Sidebar Overlay */}
+    <div className="min-h-screen bg-slate-100 flex">
       {sidebarOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -37,23 +39,24 @@ export default function MainLayout() {
         />
       )}
 
-      {/* Sidebar */}
       <aside 
         className={`
-          fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out
+          fixed lg:static inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 transform transition-transform duration-200 ease-in-out
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
         <div className="h-full flex flex-col">
-          <div className="h-16 flex items-center px-6 border-b border-gray-200">
-            <span className="text-xl font-bold text-green-700">SGAF</span>
+          <div className="h-16 flex items-center px-6 border-b border-slate-800">
+            <span className="text-lg font-bold text-white tracking-wide">SGAF</span>
           </div>
 
           <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
             {menuItems.map((item) => {
-              if (item.adminOnly && user?.perfil !== 'ADMIN') return null;
+              if (item.adminOnly && !canManageUsers(user?.perfil)) return null;
               
-              const isActive = location.pathname === item.path;
+              const isActive = item.path === '/'
+                ? location.pathname === '/'
+                : location.pathname.startsWith(item.path);
               return (
                 <Link
                   key={item.path}
@@ -61,31 +64,60 @@ export default function MainLayout() {
                   className={`
                     flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors
                     ${isActive 
-                      ? 'bg-green-50 text-green-700' 
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}
+                      ? 'bg-slate-700 text-white' 
+                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'}
                   `}
                   onClick={() => setSidebarOpen(false)}
                 >
-                  <item.icon className={`w-5 h-5 mr-3 ${isActive ? 'text-green-600' : 'text-gray-400'}`} />
+                  <item.icon className={`w-5 h-5 mr-3 ${isActive ? 'text-cyan-300' : 'text-slate-400'}`} />
                   {item.label}
                 </Link>
               );
             })}
+
+            <div className="mt-2">
+              <div
+                className={`
+                  flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg
+                  ${tabelasOpen ? 'bg-slate-700 text-white' : 'text-slate-300'}
+                `}
+              >
+                <div className="flex items-center">
+                  <TableProperties className={`w-5 h-5 mr-3 ${tabelasOpen ? 'text-cyan-300' : 'text-slate-400'}`} />
+                  Tabela
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${tabelasOpen ? 'rotate-180 text-cyan-300' : 'text-slate-400'}`} />
+              </div>
+              <div className="mt-1 ml-6 space-y-1">
+                <Link
+                  to="/tabelas/culturas"
+                  className={`
+                    flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors
+                    ${location.pathname.startsWith('/tabelas/culturas')
+                      ? 'bg-slate-700 text-white'
+                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'}
+                  `}
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  Culturas
+                </Link>
+              </div>
+            </div>
           </nav>
 
-          <div className="p-4 border-t border-gray-200">
+          <div className="p-4 border-t border-slate-800">
             <div className="flex items-center mb-4 px-2">
-              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold text-xs mr-3">
+              <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold text-xs mr-3">
                 {user?.nome?.charAt(0) || 'U'}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">{user?.nome}</p>
-                <p className="text-xs text-gray-500 truncate">{user?.email}</p>
+                <p className="text-sm font-medium text-slate-100 truncate">{user?.nome}</p>
+                <p className="text-xs text-slate-400 truncate">{user?.email}</p>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="w-full flex items-center justify-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+              className="w-full flex items-center justify-center px-4 py-2 text-sm text-rose-200 hover:bg-rose-500/20 rounded-lg transition-colors"
             >
               <LogOut className="w-4 h-4 mr-2" />
               Sair
@@ -94,20 +126,32 @@ export default function MainLayout() {
         </div>
       </aside>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Mobile Header */}
-        <header className="lg:hidden h-16 bg-white border-b border-gray-200 flex items-center px-4 justify-between">
-          <span className="font-bold text-gray-800">SGAF</span>
-          <button 
-            onClick={() => setSidebarOpen(true)}
-            className="p-2 rounded-md text-gray-600 hover:bg-gray-100"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+        <header className="h-16 bg-white border-b border-slate-200 flex items-center px-4 lg:px-8 justify-between shadow-sm">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setSidebarOpen(true)}
+              className="p-2 rounded-md text-slate-600 hover:bg-slate-100 lg:hidden"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+            <div>
+              <p className="text-sm text-slate-500">Sistema de Gestão Agrícola Familiar</p>
+              <p className="text-base font-semibold text-slate-800">Painel de Controle</p>
+            </div>
+          </div>
+          <div className="hidden sm:flex items-center gap-3">
+            <div className="text-right">
+              <p className="text-sm font-semibold text-slate-800">{user?.nome}</p>
+              <p className="text-xs text-slate-500">{user?.perfil}</p>
+            </div>
+            <div className="w-9 h-9 rounded-full bg-slate-200 flex items-center justify-center text-slate-700 text-sm font-bold">
+              {user?.nome?.charAt(0) || 'U'}
+            </div>
+          </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-4 lg:p-8">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
           <Outlet />
         </main>
       </div>

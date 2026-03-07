@@ -70,12 +70,12 @@ export default function RelatorioPropriedades() {
             </tr>
           </thead>
           <tbody>
-            {propriedades.map((prop, index) => (
+            {propriedades.map((prop) => (
               <tr key={prop.id} className="border-b border-gray-100 text-sm">
                 <td className="py-2">{prop.nome}</td>
                 <td className="py-2">{prop.produtor_nome}</td>
                 <td className="py-2">{prop.area_total}</td>
-                <td className="py-2">{prop.localidade || '-'}</td>
+                <td className="py-2">{prop.latitude ? `${prop.latitude}, ${prop.longitude}` : '-'}</td>
               </tr>
             ))}
           </tbody>

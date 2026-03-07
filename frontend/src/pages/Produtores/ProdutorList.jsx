@@ -33,26 +33,34 @@ export default function ProdutorList() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Produtores Rurais</h1>
-          <p className="text-gray-500 text-sm">Gerencie o cadastro de produtores e suas atividades</p>
+          <h1 className="text-2xl font-bold text-slate-800">Produtores Rurais</h1>
+          <p className="text-slate-500 text-sm">Gerencie o cadastro de produtores e suas atividades</p>
         </div>
         <button
           onClick={() => navigate('/produtores/novo')}
-          className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
+          className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors shadow-sm"
         >
           <Plus className="w-5 h-5" />
           Novo Produtor
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="p-4 border-b border-gray-100 bg-gray-50/50">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="px-4 py-3 border-b border-slate-200 bg-slate-50 flex flex-wrap items-center justify-between gap-2">
+          <div className="text-sm text-slate-600">
+            {filteredProdutores.length} de {produtores.length} produtores
+          </div>
+          <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-medium">
+            Cadastro ativo
+          </div>
+        </div>
+        <div className="p-4 border-b border-slate-200 bg-slate-50/70">
           <div className="relative max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
             <input
               type="text"
               placeholder="Buscar por nome, CPF ou DAP..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+              className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -61,7 +69,7 @@ export default function ProdutorList() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left">
-            <thead className="bg-gray-50 text-gray-600 text-xs uppercase font-semibold">
+            <thead className="bg-slate-100 text-slate-600 text-xs uppercase font-semibold">
               <tr>
                 <th className="px-6 py-4">Produtor</th>
                 <th className="px-6 py-4">Contato</th>
@@ -75,7 +83,7 @@ export default function ProdutorList() {
                 <tr>
                   <td colSpan="5" className="px-6 py-12 text-center text-gray-500">
                     <div className="flex justify-center items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-slate-700 border-t-transparent rounded-full animate-spin"></div>
                       Carregando registros...
                     </div>
                   </td>
@@ -91,10 +99,10 @@ export default function ProdutorList() {
                 </tr>
               ) : (
                 filteredProdutores.map((produtor) => (
-                  <tr key={produtor.id} className="hover:bg-gray-50 transition-colors cursor-pointer" onClick={() => navigate(`/produtores/${produtor.id}`)}>
+                  <tr key={produtor.id} className="hover:bg-slate-50 transition-colors cursor-pointer" onClick={() => navigate(`/produtores/${produtor.id}`)}>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 font-bold">
+                          <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
                           {produtor.nome.charAt(0)}
                         </div>
                         <div>
@@ -123,7 +131,7 @@ export default function ProdutorList() {
                     </td>
                     <td className="px-6 py-4">
                       {produtor.caf_dap ? (
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                           DAP/CAF Ativo
                         </span>
                       ) : (
@@ -133,7 +141,7 @@ export default function ProdutorList() {
                       )}
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button className="text-sm font-medium text-green-600 hover:text-green-800">
+                      <button className="text-sm font-medium text-slate-700 hover:text-slate-900">
                         Detalhes
                       </button>
                     </td>

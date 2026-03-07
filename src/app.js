@@ -9,6 +9,7 @@ const produtorRoutes = require('./routes/produtorRoutes');
 const aterRoutes = require('./routes/aterRoutes');
 const recursoRoutes = require('./routes/recursoRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const tabelaRoutes = require('./routes/tabelaRoutes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api/rural', produtorRoutes);
 app.use('/api/ater', aterRoutes);
 app.use('/api/recursos', recursoRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/tabelas', tabelaRoutes);
 
 // Rota de Health Check
 app.get('/', (req, res) => {

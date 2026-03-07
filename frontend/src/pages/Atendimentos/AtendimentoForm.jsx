@@ -44,13 +44,8 @@ export default function AtendimentoForm() {
 
   const loadPropriedades = async (produtorId) => {
     try {
-      // Idealmente teríamos um endpoint para filtrar propriedades por produtor
-      // Por enquanto listamos todas e filtramos no front, ou usamos a rota de listar propriedades
-      // Como implementamos o listarPropriedades geral, vamos filtrar no front por enquanto para simplificar
-      // O correto seria um endpoint /produtores/:id/propriedades
-      const data = await propriedadeService.listar();
-      const filtradas = data.filter(p => p.produtor_id == produtorId);
-      setPropriedades(filtradas);
+      const data = await propriedadeService.listarPorProdutor(produtorId);
+      setPropriedades(data);
     } catch (error) {
       console.error('Erro ao carregar propriedades:', error);
     }
@@ -99,7 +94,7 @@ export default function AtendimentoForm() {
               required
               value={formData.produtor_id}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none bg-white"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
             >
               <option value="">Selecione...</option>
               {produtores.map(p => (
@@ -115,7 +110,7 @@ export default function AtendimentoForm() {
               value={formData.propriedade_id}
               onChange={handleChange}
               disabled={!formData.produtor_id}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none bg-white disabled:bg-gray-50"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white disabled:bg-gray-50"
             >
               <option value="">Selecione (Opcional)...</option>
               {propriedades.map(p => (
@@ -132,7 +127,7 @@ export default function AtendimentoForm() {
               required
               value={formData.data_visita}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
@@ -145,7 +140,7 @@ export default function AtendimentoForm() {
               value={formData.motivo}
               onChange={handleChange}
               placeholder="Ex: Análise de solo, Pragas, etc."
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
@@ -156,7 +151,7 @@ export default function AtendimentoForm() {
               rows="3"
               value={formData.observacoes}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none resize-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"
               placeholder="Descreva o que foi observado..."
             ></textarea>
           </div>
@@ -168,7 +163,7 @@ export default function AtendimentoForm() {
               rows="4"
               value={formData.recomendacoes}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 outline-none resize-none"
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"
               placeholder="Orientações passadas ao produtor..."
             ></textarea>
           </div>
@@ -178,7 +173,7 @@ export default function AtendimentoForm() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
             Registrar Atendimento

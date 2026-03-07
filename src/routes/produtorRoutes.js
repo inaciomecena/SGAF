@@ -14,6 +14,15 @@ router.get('/produtores/:id', produtorController.detalhar);
 
 // Propriedades (Sub-recurso de produtor)
 router.post('/produtores/:produtorId/propriedades', produtorController.criarPropriedade);
+router.get('/produtores/:produtorId/propriedades', produtorController.listarPropriedadesPorProdutor);
 router.get('/propriedades', produtorController.listarPropriedades);
+router.get('/propriedades/:id', produtorController.detalharPropriedade);
+router.put('/propriedades/:id', produtorController.atualizarPropriedade);
+router.delete('/propriedades/:id', produtorController.excluirPropriedade);
+router.get('/culturas', produtorController.listarCulturasDisponiveis);
+router.get('/propriedades/:id/culturas', produtorController.listarCulturasPropriedade);
+router.post('/propriedades/:id/culturas', produtorController.adicionarCulturaPropriedade);
+router.put('/propriedades/:id/culturas/:culturaRegistroId', produtorController.atualizarCulturaPropriedade);
+router.delete('/propriedades/:id/culturas/:culturaRegistroId', produtorController.excluirCulturaPropriedade);
 
 module.exports = router;
