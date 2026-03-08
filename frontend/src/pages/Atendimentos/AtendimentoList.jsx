@@ -99,7 +99,7 @@ export default function AtendimentoList() {
                 </tr>
               ) : (
                 filteredAtendimentos.map((atendimento) => (
-                  <tr key={atendimento.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={atendimento.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2 text-sm text-gray-600">
                         <Calendar className="w-4 h-4 text-gray-400" />

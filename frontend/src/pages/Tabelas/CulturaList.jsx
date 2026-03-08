@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Search } from 'lucide-react';
+import { Pencil, Plus, Search } from 'lucide-react';
 import culturaService from '../../services/culturaService';
 
 const CATEGORIAS = ['', 'ANUAL', 'FRUTIFERA', 'FLORESTAL', 'PERENE', 'MEDICINAL', 'CONDIMENTAR', 'ADUBACAO_VERDE', 'OLEAGINOSA', 'ENERGETICA'];
@@ -105,12 +105,13 @@ export default function CulturaList() {
                 <th className="px-6 py-4">Ciclo</th>
                 <th className="px-6 py-4">Finalidade</th>
                 <th className="px-6 py-4 text-right">Produção (anos)</th>
+                <th className="px-6 py-4 text-right">Ações</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {loading ? (
                 <tr>
-                  <td colSpan="6" className="px-6 py-8 text-center text-slate-500">
+                  <td colSpan="7" className="px-6 py-8 text-center text-slate-500">
                     <div className="inline-flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-slate-700 border-t-transparent rounded-full animate-spin" />
                       Carregando culturas...
@@ -119,11 +120,11 @@ export default function CulturaList() {
                 </tr>
               ) : culturas.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="px-6 py-8 text-center text-slate-500">Nenhuma cultura encontrada.</td>
+                  <td colSpan="7" className="px-6 py-8 text-center text-slate-500">Nenhuma cultura encontrada.</td>
                 </tr>
               ) : (
                 culturas.map((item) => (
-                  <tr key={item.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={item.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors">
                     <td className="px-6 py-4 font-medium text-slate-800">{item.nome_cultura}</td>
                     <td className="px-6 py-4 text-slate-700">{item.nome_cientifico || '-'}</td>
                     <td className="px-6 py-4">
@@ -134,6 +135,16 @@ export default function CulturaList() {
                     <td className="px-6 py-4 text-slate-700">{item.tipo_ciclo || '-'}</td>
                     <td className="px-6 py-4 text-slate-700">{item.finalidade || '-'}</td>
                     <td className="px-6 py-4 text-right text-slate-700">{item.tempo_producao_anos || '-'}</td>
+                    <td className="px-6 py-4 text-right">
+                      <Link
+                        to={`/tabelas/culturas/${item.id}/editar`}
+                        state={{ cultura: item }}
+                        className="inline-flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-slate-900"
+                      >
+                        <Pencil className="w-4 h-4" />
+                        Editar
+                      </Link>
+                    </td>
                   </tr>
                 ))
               )}

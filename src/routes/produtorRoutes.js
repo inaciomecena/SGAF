@@ -11,6 +11,7 @@ router.use(authMiddleware, tenantMiddleware);
 router.get('/produtores', produtorController.listar);
 router.post('/produtores', produtorController.criar);
 router.get('/produtores/:id', produtorController.detalhar);
+router.put('/produtores/:id', produtorController.atualizar);
 
 // Propriedades (Sub-recurso de produtor)
 router.post('/produtores/:produtorId/propriedades', produtorController.criarPropriedade);

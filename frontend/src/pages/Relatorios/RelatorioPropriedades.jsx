@@ -71,7 +71,7 @@ export default function RelatorioPropriedades() {
           </thead>
           <tbody>
             {propriedades.map((prop) => (
-              <tr key={prop.id} className="border-b border-gray-100 text-sm">
+              <tr key={prop.id} className="border-b border-gray-100 text-sm odd:bg-white even:bg-gray-50/70">
                 <td className="py-2">{prop.nome}</td>
                 <td className="py-2">{prop.produtor_nome}</td>
                 <td className="py-2">{prop.area_total}</td>

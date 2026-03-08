@@ -57,13 +57,50 @@ class ProdutorRepository {
     }
   }
 
-  async update(id, codigoIbge, produtorData) {
-    const { nome, telefone, email, caf_dap, associacao_id } = produtorData;
-    await pool.execute(
-      `UPDATE produtores SET nome = ?, telefone = ?, email = ?, caf_dap = ?, associacao_id = ? 
-       WHERE id = ? AND codigo_ibge = ?`,
-      [nome, telefone, email, caf_dap, associacao_id, id, codigoIbge]
-    );
+  async update(id, codigoIbge, produtorData, enderecoData) {
+    const connection = await pool.getConnection();
+    try {
+      await connection.beginTransaction();
+
+      const { nome, cpf, data_nascimento, telefone, email, sexo, caf_dap, associacao_id } = produtorData;
+      const [result] = await connection.execute(
+        `UPDATE produtores
+         SET nome = ?, cpf = ?, data_nascimento = ?, telefone = ?, email = ?, sexo = ?, caf_dap = ?, associacao_id = ?
+         WHERE id = ? AND codigo_ibge = ?`,
+        [nome, cpf, data_nascimento || null, telefone || null, email || null, sexo || null, caf_dap || null, associacao_id || null, id, codigoIbge]
+      );
+
+      if (result.affectedRows === 0) {
+        await connection.rollback();
+        return false;
+      }
+
+      if (enderecoData) {
+        const { logradouro, numero, bairro, cidade, cep } = enderecoData;
+        const [enderecoResult] = await connection.execute(
+          `UPDATE enderecos_produtor
+           SET logradouro = ?, numero = ?, bairro = ?, cidade = ?, cep = ?
+           WHERE produtor_id = ?`,
+          [logradouro || null, numero || null, bairro || null, cidade || null, cep || null, id]
+        );
+
+        if (enderecoResult.affectedRows === 0) {
+          await connection.execute(
+            `INSERT INTO enderecos_produtor (produtor_id, logradouro, numero, bairro, cidade, cep)
+             VALUES (?, ?, ?, ?, ?, ?)`,
+            [id, logradouro || null, numero || null, bairro || null, cidade || null, cep || null]
+          );
+        }
+      }
+
+      await connection.commit();
+      return true;
+    } catch (error) {
+      await connection.rollback();
+      throw error;
+    } finally {
+      connection.release();
+    }
   }
 }
 

@@ -19,8 +19,8 @@ router.use(authMiddleware);
 
 router.get('/municipios', authorize('ADMIN_ESTADO', 'GESTOR_MUNICIPAL'), municipioController.listar);
 router.post('/municipios', authorize('ADMIN_ESTADO'), municipioController.criar);
-router.get('/meus-dados', tenantMiddleware, authorize('GESTOR_MUNICIPAL', 'ADMIN_ESTADO'), municipioController.meusDados);
-router.put('/meus-dados', tenantMiddleware, authorize('GESTOR_MUNICIPAL', 'ADMIN_ESTADO'), municipioController.salvarMeusDados);
+router.get('/meus-dados', authorize('GESTOR_MUNICIPAL', 'ADMIN_ESTADO', 'TECNICO', 'OPERADOR'), municipioController.meusDados);
+router.put('/meus-dados', authorize('GESTOR_MUNICIPAL', 'ADMIN_ESTADO', 'TECNICO', 'OPERADOR'), municipioController.salvarMeusDados);
 
 router.get('/usuarios', tenantMiddleware, authorize('ADMIN_ESTADO', 'GESTOR_MUNICIPAL'), userController.listar);
 router.post('/usuarios', tenantMiddleware, authorize('ADMIN_ESTADO', 'GESTOR_MUNICIPAL'), userController.criar);

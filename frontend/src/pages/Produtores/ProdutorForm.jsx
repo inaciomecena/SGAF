@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Save, Loader2, User, MapPin } from 'lucide-react';
 import produtorService from '../../services/produtorService';
 
+const onlyDigits = (value) => value.replace(/\D/g, '');
+
+const formatCep = (value) => {
+  const raw = onlyDigits(value).slice(0, 8);
+  if (raw.length <= 5) return raw;
+  return `${raw.slice(0, 5)}-${raw.slice(5)}`;
+};
+
 export default function ProdutorForm() {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const isEditMode = Boolean(id);
   const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(isEditMode);
+  const [cepLoading, setCepLoading] = useState(false);
+  const [cepLookupError, setCepLookupError] = useState('');
   
   // Estado para dados do produtor
   const [produtor, setProdutor] = useState({
@@ -28,6 +41,43 @@ export default function ProdutorForm() {
     cep: ''
   });
 
+  useEffect(() => {
+    if (!isEditMode) {
+      return;
+    }
+
+    const loadProdutor = async () => {
+      try {
+        const data = await produtorService.detalhar(id);
+        setProdutor({
+          nome: data.nome || '',
+          cpf: data.cpf || '',
+          data_nascimento: data.data_nascimento ? String(data.data_nascimento).split('T')[0] : '',
+          telefone: data.telefone || '',
+          email: data.email || '',
+          sexo: data.sexo || 'M',
+          caf_dap: data.caf_dap || '',
+          associacao_id: data.associacao_id ? String(data.associacao_id) : ''
+        });
+        setEndereco({
+          logradouro: data.logradouro || '',
+          numero: data.numero || '',
+          bairro: data.bairro || '',
+          cidade: data.cidade || '',
+          cep: data.cep || ''
+        });
+      } catch (error) {
+        console.error('Erro ao carregar produtor:', error);
+        alert('Não foi possível carregar o produtor.');
+        navigate('/produtores');
+      } finally {
+        setInitialLoading(false);
+      }
+    };
+
+    loadProdutor();
+  }, [id, isEditMode, navigate]);
+
   const handleChangeProdutor = (e) => {
     const { name, value } = e.target;
     setProdutor(prev => ({ ...prev, [name]: value }));
@@ -35,22 +85,67 @@ export default function ProdutorForm() {
 
   const handleChangeEndereco = (e) => {
     const { name, value } = e.target;
+    if (name === 'cep') {
+      setCepLookupError('');
+      setEndereco(prev => ({ ...prev, cep: formatCep(value) }));
+      return;
+    }
     setEndereco(prev => ({ ...prev, [name]: value }));
+  };
+
+  const buscarCepBrasilApi = async (cepValue) => {
+    const cepNumerico = onlyDigits(cepValue);
+    if (cepNumerico.length !== 8) return;
+
+    setCepLoading(true);
+    setCepLookupError('');
+    try {
+      const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cepNumerico}`);
+      if (!response.ok) {
+        throw new Error('CEP inválido');
+      }
+
+      const data = await response.json();
+      setEndereco((prev) => ({
+        ...prev,
+        cep: formatCep(cepNumerico),
+        logradouro: data?.street || prev.logradouro,
+        bairro: data?.neighborhood || prev.bairro,
+        cidade: data?.city || prev.cidade
+      }));
+    } catch {
+      setCepLookupError('Não foi possível consultar este CEP.');
+    } finally {
+      setCepLoading(false);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await produtorService.criar({ produtor, endereco });
+      if (isEditMode) {
+        await produtorService.atualizar(id, { produtor, endereco });
+      } else {
+        await produtorService.criar({ produtor, endereco });
+      }
       navigate('/produtores');
     } catch (error) {
       console.error('Erro ao salvar:', error);
-      alert('Erro ao salvar produtor. Verifique os dados.');
+      const status = error?.response?.status;
+      const serverMessage = error?.response?.data?.message;
+      const detail = status === 404
+        ? 'Endpoint de atualização não encontrado. Reinicie a API backend para carregar as rotas novas.'
+        : serverMessage || 'Verifique os dados informados.';
+      alert(`Erro ao salvar produtor. ${detail}`);
     } finally {
       setLoading(false);
     }
   };
+
+  if (initialLoading) {
+    return <div className="max-w-4xl mx-auto p-6 text-center text-gray-500">Carregando produtor...</div>;
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
@@ -62,8 +157,10 @@ export default function ProdutorForm() {
           <ArrowLeft className="w-6 h-6 text-gray-600" />
         </button>
         <div>
-          <h1 className="text-2xl font-bold text-gray-800">Novo Produtor</h1>
-          <p className="text-sm text-gray-500">Preencha os dados pessoais e de localização</p>
+          <h1 className="text-2xl font-bold text-gray-800">{isEditMode ? 'Detalhes do Produtor' : 'Novo Produtor'}</h1>
+          <p className="text-sm text-gray-500">
+            {isEditMode ? 'Edite os dados pessoais e de localização' : 'Preencha os dados pessoais e de localização'}
+          </p>
         </div>
       </div>
 
@@ -177,8 +274,13 @@ export default function ProdutorForm() {
                 name="cep"
                 value={endereco.cep}
                 onChange={handleChangeEndereco}
+                onBlur={() => buscarCepBrasilApi(endereco.cep)}
+                maxLength={9}
                 className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="00000-000"
               />
+              {cepLoading && <p className="text-xs text-blue-600">Consultando CEP...</p>}
+              {cepLookupError && <p className="text-xs text-rose-600">{cepLookupError}</p>}
             </div>
 
             <div className="space-y-2 md:col-span-2">
@@ -234,7 +336,7 @@ export default function ProdutorForm() {
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 transition-colors disabled:opacity-70 shadow-sm"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
-            Salvar Cadastro
+            {isEditMode ? 'Salvar Alterações' : 'Salvar Cadastro'}
           </button>
         </div>
       </form>

@@ -92,10 +92,11 @@ async function seedDatabase() {
       const tipoId = tiposAtendimentoIds[Math.floor(Math.random() * tiposAtendimentoIds.length)];
 
       await connection.execute(`
-        INSERT INTO atendimentos (produtor_id, tipo_atendimento_id, data_atendimento, descricao, codigo_ibge)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO atendimentos (produtor_id, tecnico_id, tipo_atendimento_id, data_atendimento, descricao, codigo_ibge)
+        VALUES (?, ?, ?, ?, ?, ?)
       `, [
         produtorId, 
+        tecnicoId,
         tipoId, 
         dataVisita, 
         'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.',

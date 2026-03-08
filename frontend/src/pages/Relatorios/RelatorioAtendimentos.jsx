@@ -71,7 +71,7 @@ export default function RelatorioAtendimentos() {
           </thead>
           <tbody>
             {atendimentos.map((item) => (
-              <tr key={item.id} className="border-b border-gray-100 text-sm">
+              <tr key={item.id} className="border-b border-gray-100 text-sm odd:bg-white even:bg-gray-50/70">
                 <td className="py-2">{new Date(item.data_visita).toLocaleDateString()}</td>
                 <td className="py-2">{item.produtor_nome}</td>
                 <td className="py-2">{item.motivo}</td>

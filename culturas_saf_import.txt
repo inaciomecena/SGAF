@@ -1,0 +1,2336 @@
+-- SQL gerado automaticamente a partir de culturas.txt
+-- Versão sem NULL: todas as colunas do INSERT são preenchidas
+-- Total de linhas de cultura detectadas: 300
+-- Total de culturas únicas (normalizadas): 291
+
+START TRANSACTION;
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Milho', 'Milho sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Milho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Arroz', 'Arroz sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Arroz') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Trigo', 'Trigo sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Trigo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cevada', 'Cevada sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cevada') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Aveia', 'Aveia sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Aveia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Centeio', 'Centeio sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Centeio') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Triticale', 'Triticale sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Triticale') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Milheto', 'Milheto sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Milheto') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Painço', 'Painco sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Painço') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sorgo', 'Sorgo sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sorgo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sorgo sacarino', 'Sorgo Sacarino sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sorgo sacarino') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Amaranto', 'Amaranto sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Amaranto') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Quinoa', 'Quinoa sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 1. Cereais e grãos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Quinoa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão comum', 'Feijao Comum sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão comum') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão caupi', 'Feijao Caupi sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão caupi') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão guandu', 'Feijao Guandu sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão guandu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão mungo', 'Feijao Mungo sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão mungo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão azuki', 'Feijao Azuki sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão azuki') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão fava', 'Feijao Fava sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão fava') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão jalo', 'Feijao Jalo sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão jalo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão rosinha', 'Feijao Rosinha sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão rosinha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Grão-de-bico', 'Grao De sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Grão-de-bico') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Lentilha', 'Lentilha sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Lentilha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ervilha', 'Ervilha sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 2. Leguminosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ervilha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Soja', 'Soja sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Soja') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Amendoim', 'Amendoim sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Amendoim') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Girassol', 'Girassol sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Girassol') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Gergelim', 'Gergelim sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Gergelim') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mamona', 'Mamona sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mamona') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Canola', 'Canola sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Canola') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Linhaça', 'Linhaca sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Linhaça') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Dendê', 'Dende sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Dendê') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Macaúba', 'Macauba sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Macaúba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pequi', 'Pequi sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pequi') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Baru', 'Baru sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Baru') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Castanha do Brasil', 'Castanha Do sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Castanha do Brasil') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Licuri', 'Licuri sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Licuri') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Babaçu', 'Babacu sp.', 'OLEAGINOSA', 'MEDIO', 'Óleo', 20, 'culturas.txt', 'Importado de 3. Oleaginosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Babaçu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mandioca', 'Mandioca sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mandioca') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Batata inglesa', 'Batata Inglesa sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Batata inglesa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Batata doce', 'Batata Doce sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Batata doce') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Inhame', 'Inhame sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Inhame') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cará', 'Cara sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cará') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mandioquinha', 'Mandioquinha sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mandioquinha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Beterraba', 'Beterraba sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Beterraba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cenoura', 'Cenoura sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cenoura') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Nabo', 'Nabo sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Nabo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Rabanete', 'Rabanete sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Rabanete') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Gengibre', 'Gengibre sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Gengibre') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Açafrão da terra', 'Acafrao Da sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 4. Raízes e tubérculos', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Açafrão da terra') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Alface', 'Alface sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Alface') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Rúcula', 'Rucula sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Rúcula') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Agrião', 'Agriao sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Agrião') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Couve', 'Couve sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Couve') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Couve-flor', 'Couve Flor sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Couve-flor') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Brócolis', 'Brocolis sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Brócolis') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Repolho', 'Repolho sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Repolho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Chicória', 'Chicoria sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Chicória') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Escarola', 'Escarola sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Escarola') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Endívia', 'Endivia sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Endívia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mostarda', 'Mostarda sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mostarda') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Espinafre', 'Espinafre sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 5. Hortaliças folhosas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Espinafre') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tomate', 'Tomate sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tomate') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pimentão', 'Pimentao sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pimentão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pimenta', 'Pimenta sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pimenta') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Quiabo', 'Quiabo sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Quiabo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pepino', 'Pepino sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pepino') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Abóbora', 'Abobora sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Abóbora') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Abobrinha', 'Abobrinha sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Abobrinha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Berinjela', 'Berinjela sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Berinjela') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Chuchu', 'Chuchu sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Chuchu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Maxixe', 'Maxixe sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Maxixe') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jiló', 'Jilo sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 6. Hortaliças fruto', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jiló') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Alho', 'Alho sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 7. Hortaliças bulbo', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Alho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cebola', 'Cebola sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 7. Hortaliças bulbo', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cebola') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cebolinha', 'Cebolinha sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 7. Hortaliças bulbo', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cebolinha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Alho-poró', 'Alho Poro sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 7. Hortaliças bulbo', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Alho-poró') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Banana', 'Banana sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Banana') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Abacaxi', 'Abacaxi sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Abacaxi') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mamão', 'Mamao sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mamão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Maracujá', 'Maracuja sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Maracujá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Manga', 'Manga sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Manga') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Goiaba', 'Goiaba sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Goiaba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Acerola', 'Acerola sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Acerola') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Caju', 'Caju sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Caju') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Graviola', 'Graviola sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Graviola') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Atemóia', 'Atemoia sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Atemóia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Açaí', 'Acai sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Açaí') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cupuaçu', 'Cupuacu sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cupuaçu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Buriti', 'Buriti sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Buriti') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pupunha', 'Pupunha sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pupunha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tucumã', 'Tucuma sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tucumã') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mangaba', 'Mangaba sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mangaba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Murici', 'Murici sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Murici') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cajá', 'Caja sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cajá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Seriguela', 'Seriguela sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Seriguela') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pitanga', 'Pitanga sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pitanga') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jabuticaba', 'Jabuticaba sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jabuticaba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jaca', 'Jaca sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jaca') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sapoti', 'Sapoti sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 8. Frutíferas tropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sapoti') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Laranja', 'Laranja sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Laranja') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Limão', 'Limao sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Limão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tangerina', 'Tangerina sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tangerina') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Bergamota', 'Bergamota sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Bergamota') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Poncã', 'Ponca sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Poncã') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Lima', 'Lima sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Lima') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Kumquat', 'Kumquat sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 9. Frutíferas cítricas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Kumquat') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Caqui', 'Caqui sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Caqui') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Figo', 'Figo sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Figo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Romã', 'Roma sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Romã') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Nêspera', 'Nespera sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Nêspera') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pêssego', 'Pessego sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pêssego') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ameixa', 'Ameixa sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ameixa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Nectarina', 'Nectarina sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 10. Frutíferas subtropicais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Nectarina') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Morango', 'Morango sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 11. Frutas pequenas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Morango') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Framboesa', 'Framboesa sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 11. Frutas pequenas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Framboesa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Amora', 'Amora sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 11. Frutas pequenas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Amora') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mirtilo', 'Mirtilo sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 11. Frutas pequenas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mirtilo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Physalis', 'Physalis sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 11. Frutas pequenas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Physalis') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pitaya', 'Pitaya sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 12. Frutas exóticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pitaya') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Rambutan', 'Rambutan sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 12. Frutas exóticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Rambutan') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Longan', 'Longan sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 12. Frutas exóticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Longan') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Lichia', 'Lichia sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 12. Frutas exóticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Lichia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tamarindo', 'Tamarindo sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 12. Frutas exóticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tamarindo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Noni', 'Noni sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 12. Frutas exóticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Noni') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cana-de-açúcar', 'Cana De sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cana-de-açúcar') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Algodão', 'Algodao sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Algodão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tabaco', 'Tabaco sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tabaco') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sisal', 'Sisal sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sisal') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Juta', 'Juta sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Juta') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Malva', 'Malva sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Malva') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Kenaf', 'Kenaf sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 13. Culturas industriais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Kenaf') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Café arábica', 'Cafe Arabica sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Café arábica') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Café conilon', 'Cafe Conilon sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Café conilon') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cacau', 'Cacau sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cacau') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guaraná', 'Guarana sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guaraná') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Baunilha', 'Baunilha sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Baunilha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pimenta-do-reino', 'Pimenta Do sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pimenta-do-reino') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Urucum', 'Urucum sp.', 'PERENE', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 14. Culturas comerciais perenes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Urucum') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Hortelã', 'Hortela sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Hortelã') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Erva cidreira', 'Erva Cidreira sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Erva cidreira') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim santo', 'Capim Santo sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim santo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Alecrim', 'Alecrim sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Alecrim') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Manjericão', 'Manjericao sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Manjericão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Camomila', 'Camomila sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Camomila') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Boldo', 'Boldo sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Boldo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sálvia', 'Salvia sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sálvia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Arruda', 'Arruda sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Arruda') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Alfazema', 'Alfazema sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Alfazema') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Erva doce', 'Erva Doce sp.', 'MEDICINAL', 'CURTO', 'Medicinal', 3, 'culturas.txt', 'Importado de 15. Plantas medicinais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Erva doce') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Coentro', 'Coentro sp.', 'CONDIMENTAR', 'MEDIO', 'Condimento', 3, 'culturas.txt', 'Importado de 16. Condimentares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Coentro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Curry', 'Curry sp.', 'CONDIMENTAR', 'MEDIO', 'Condimento', 3, 'culturas.txt', 'Importado de 16. Condimentares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Curry') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cominho', 'Cominho sp.', 'CONDIMENTAR', 'MEDIO', 'Condimento', 3, 'culturas.txt', 'Importado de 16. Condimentares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cominho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Páprica', 'Paprica sp.', 'CONDIMENTAR', 'MEDIO', 'Condimento', 3, 'culturas.txt', 'Importado de 16. Condimentares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Páprica') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ora-pro-nóbis', 'Ora Pro sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 17. Plantas alimentícias não convencionais (PANC)', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ora-pro-nóbis') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Taioba', 'Taioba sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 17. Plantas alimentícias não convencionais (PANC)', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Taioba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Bertalha', 'Bertalha sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 17. Plantas alimentícias não convencionais (PANC)', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Bertalha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Caruru', 'Caruru sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 17. Plantas alimentícias não convencionais (PANC)', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Caruru') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Peixinho da horta', 'Peixinho Da sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 17. Plantas alimentícias não convencionais (PANC)', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Peixinho da horta') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Major gomes', 'Major Gomes sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 17. Plantas alimentícias não convencionais (PANC)', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Major gomes') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mogno', 'Mogno sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mogno') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mogno africano', 'Mogno Africano sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mogno africano') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cedro', 'Cedro sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cedro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cedro australiano', 'Cedro Australiano sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cedro australiano') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ipê', 'Ipe sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ipê') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jatobá', 'Jatoba sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jatobá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Angelim', 'Angelim sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Angelim') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Andiroba', 'Andiroba sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Andiroba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Freijó', 'Freijo sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Freijó') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Paricá', 'Parica sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Paricá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Teca', 'Teca sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Teca') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Eucalipto', 'Eucalipto sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Eucalipto') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pinus', 'Pinus sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pinus') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sumaúma', 'Sumauma sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sumaúma') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pau brasil', 'Pau Brasil sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pau brasil') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Angico', 'Angico sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Angico') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pau ferro', 'Pau Ferro sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 18. Espécies florestais madeireiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pau ferro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ingá', 'Inga sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ingá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Embaúba', 'Embauba sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Embaúba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guapuruvu', 'Guapuruvu sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guapuruvu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mulungu', 'Mulungu sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mulungu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Leucena', 'Leucena sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Leucena') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Gliricídia', 'Gliricidia sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Gliricídia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Crotalária', 'Crotalaria sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Crotalária') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mucuna', 'Mucuna sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 19. Espécies usadas em SAF', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mucuna') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Braquiária', 'Braquiaria sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Braquiária') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Braquiária ruziziensis', 'Braquiaria Ruziziensis sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Braquiária ruziziensis') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Braquiária brizantha', 'Braquiaria Brizantha sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Braquiária brizantha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim mombaça', 'Capim Mombaca sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim mombaça') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim tanzânia', 'Capim Tanzania sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim tanzânia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim elefante', 'Capim Elefante sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim elefante') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim andropogon', 'Capim Andropogon sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim andropogon') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim estrela', 'Capim Estrela sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim estrela') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capim colonião', 'Capim Coloniao sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 20. Forrageiras', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capim colonião') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cana energia', 'Cana Energia sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 21. Culturas energéticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cana energia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Bambu', 'Bambu sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 21. Culturas energéticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Bambu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sorgo biomassa', 'Sorgo Biomassa sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 21. Culturas energéticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sorgo biomassa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pinhão manso', 'Pinhao Manso sp.', 'ENERGETICA', 'MEDIO', 'Energia', 10, 'culturas.txt', 'Importado de 21. Culturas energéticas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pinhão manso') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Araticum', 'Araticum sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Araticum') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Bacaba', 'Bacaba sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Bacaba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Bacuri', 'Bacuri sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Bacuri') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Uxi', 'Uxi sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Uxi') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Taperebá', 'Tapereba sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Taperebá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jenipapo', 'Jenipapo sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jenipapo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Araçá', 'Araca sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Araçá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cagaita', 'Cagaita sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cagaita') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guabiroba', 'Guabiroba sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guabiroba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Murta', 'Murta sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 22. Outras frutíferas regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Murta') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Inajá', 'Inaja sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 23. Palmeiras produtivas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Inajá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Capuchinha', 'Capuchinha sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 24. Culturas adicionais usadas em SAF e agroecologia', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Capuchinha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tagetes', 'Tagetes sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 24. Culturas adicionais usadas em SAF e agroecologia', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tagetes') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão de porco', 'Feijao De sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 24. Culturas adicionais usadas em SAF e agroecologia', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão de porco') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Amendoim forrageiro', 'Amendoim Forrageiro sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 24. Culturas adicionais usadas em SAF e agroecologia', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Amendoim forrageiro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Estilosantes', 'Estilosantes sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 24. Culturas adicionais usadas em SAF e agroecologia', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Estilosantes') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Kudzu tropical', 'Kudzu Tropical sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 24. Culturas adicionais usadas em SAF e agroecologia', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Kudzu tropical') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Copaíba', 'Copaiba sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Copaíba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cumaru', 'Cumaru sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cumaru') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guariroba', 'Guariroba sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guariroba') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pau d’arco', 'Pau Darco sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pau d’arco') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ipê amarelo', 'Ipe Amarelo sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ipê amarelo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ipê roxo', 'Ipe Roxo sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ipê roxo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Ipê branco', 'Ipe Branco sp.', 'FLORESTAL', 'LONGO', 'Madeira', 30, 'culturas.txt', 'Importado de 25. Espécies arbóreas nativas adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Ipê branco') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Chia', 'Chia sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 26. Outras espécies agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Chia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Sacha inchi', 'Sacha Inchi sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 26. Outras espécies agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Sacha inchi') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Camelina', 'Camelina sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 26. Outras espécies agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Camelina') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mostarda preta', 'Mostarda Preta sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 26. Outras espécies agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mostarda preta') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mostarda branca', 'Mostarda Branca sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 26. Outras espécies agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mostarda branca') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Girassol ornamental', 'Girassol Ornamental sp.', 'DIVERSA', 'MEDIO', 'Paisagismo', 5, 'culturas.txt', 'Importado de 27. Culturas ornamentais e paisagísticas agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Girassol ornamental') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cravo', 'Cravo sp.', 'DIVERSA', 'MEDIO', 'Paisagismo', 5, 'culturas.txt', 'Importado de 27. Culturas ornamentais e paisagísticas agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cravo') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Rosa', 'Rosa sp.', 'DIVERSA', 'MEDIO', 'Paisagismo', 5, 'culturas.txt', 'Importado de 27. Culturas ornamentais e paisagísticas agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Rosa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Lírio', 'Lirio sp.', 'DIVERSA', 'MEDIO', 'Paisagismo', 5, 'culturas.txt', 'Importado de 27. Culturas ornamentais e paisagísticas agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Lírio') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Orquídea', 'Orquidea sp.', 'DIVERSA', 'MEDIO', 'Paisagismo', 5, 'culturas.txt', 'Importado de 27. Culturas ornamentais e paisagísticas agrícolas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Orquídea') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Umbu', 'Umbu sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 28. Outras espécies regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Umbu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Umbu-cajá', 'Umbu Caja sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 28. Outras espécies regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Umbu-cajá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Araticum do cerrado', 'Araticum Do sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 28. Outras espécies regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Araticum do cerrado') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pequi do cerrado', 'Pequi Do sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 28. Outras espécies regionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pequi do cerrado') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Calopogônio', 'Calopogonio sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 29. Outras leguminosas e adubos verdes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Calopogônio') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Centrosema', 'Centrosema sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 29. Outras leguminosas e adubos verdes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Centrosema') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Estilosantes campo grande', 'Estilosantes Campo sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 29. Outras leguminosas e adubos verdes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Estilosantes campo grande') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guandu anão', 'Guandu Anao sp.', 'ADUBACAO_VERDE', 'CURTO', 'Solo', 1, 'culturas.txt', 'Importado de 29. Outras leguminosas e adubos verdes', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guandu anão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Angico vermelho', 'Angico Vermelho sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 30. Espécies complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Angico vermelho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Angico branco', 'Angico Branco sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 30. Espécies complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Angico branco') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guatambu', 'Guatambu sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 30. Espécies complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guatambu') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jequitibá', 'Jequitiba sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 30. Espécies complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jequitibá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Jacarandá', 'Jacaranda sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 30. Espécies complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Jacarandá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tamarilho', 'Tamarilho sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 31. Culturas diversas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tamarilho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Melão', 'Melao sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 31. Culturas diversas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Melão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Melancia', 'Melancia sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 31. Culturas diversas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Melancia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pepino japonês', 'Pepino Japones sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 31. Culturas diversas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pepino japonês') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tomate cereja', 'Tomate Cereja sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 31. Culturas diversas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tomate cereja') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Almeirão', 'Almeirao sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Almeirão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Catalonha', 'Catalonha sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Catalonha') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Chicória roxa', 'Chicoria Roxa sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Chicória roxa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Salsa', 'Salsa sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Salsa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Endro', 'Endro sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Endro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Estragão', 'Estragao sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Estragão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Louro', 'Louro sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Louro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Tomilho', 'Tomilho sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Tomilho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Manjerona', 'Manjerona sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Manjerona') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Funcho', 'Funcho sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Funcho') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Coentro vietnamita', 'Coentro Vietnamita sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 32. Finalizando a base', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Coentro vietnamita') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cardo mariano', 'Cardo Mariano sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 33. Culturas complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cardo mariano') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Artemísia', 'Artemisia sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 33. Culturas complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Artemísia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Guaco', 'Guaco sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 33. Culturas complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Guaco') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Erva baleeira', 'Erva Baleeira sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 33. Culturas complementares', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Erva baleeira') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Araucária', 'Araucaria sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 34. Espécies adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Araucária') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Castanha portuguesa', 'Castanha Portuguesa sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 34. Espécies adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Castanha portuguesa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pistache', 'Pistache sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 34. Espécies adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pistache') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Amêndoa', 'Amendoa sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 34. Espécies adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Amêndoa') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Noz', 'Noz sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 34. Espécies adicionais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Noz') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Macadâmia', 'Macadamia sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 35. Espécies finais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Macadâmia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pecã', 'Peca sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 35. Espécies finais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pecã') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Avelã', 'Avela sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 35. Espécies finais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Avelã') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Pinoli', 'Pinoli sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 35. Espécies finais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Pinoli') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cambuci', 'Cambuci sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 36. Outras frutas nativas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cambuci') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Uvaia', 'Uvaia sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 36. Outras frutas nativas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Uvaia') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Grumixama', 'Grumixama sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 36. Outras frutas nativas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Grumixama') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cambucá', 'Cambuca sp.', 'FRUTIFERA', 'LONGO', 'Comercial', 20, 'culturas.txt', 'Importado de 36. Outras frutas nativas', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cambucá') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Araçá-boi', 'Araca Boi sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 37. Encerramento', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Araçá-boi') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Cupuaí', 'Cupuai sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 37. Encerramento', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Cupuaí') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Bacuri-pari', 'Bacuri Pari sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 37. Encerramento', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Bacuri-pari') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Taperebá-mirim', 'Tapereba Mirim sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 37. Encerramento', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Taperebá-mirim') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Mangostão', 'Mangostao sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 38. Final da lista', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Mangostão') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Langsat', 'Langsat sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 38. Final da lista', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Langsat') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Santol', 'Santol sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 38. Final da lista', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Santol') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Durian', 'Durian sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 38. Final da lista', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Durian') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Feijão bambara', 'Feijao Bambara sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 39. Espécies experimentais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Feijão bambara') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Taro', 'Taro sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 39. Espécies experimentais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Taro') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Yacon', 'Yacon sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 39. Espécies experimentais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Yacon') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Konjac', 'Konjac sp.', 'ANUAL', 'CURTO', 'Alimentação', 1, 'culturas.txt', 'Importado de 39. Espécies experimentais', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Konjac') COLLATE utf8mb4_unicode_ci
+);
+
+INSERT INTO culturas_saf (nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo)
+SELECT 'Stevia', 'Stevia sp.', 'DIVERSA', 'MEDIO', 'Diversos', 5, 'culturas.txt', 'Importado de 40. Última', 1
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM culturas_saf c
+  WHERE LOWER(c.nome_cultura) COLLATE utf8mb4_unicode_ci = LOWER('Stevia') COLLATE utf8mb4_unicode_ci
+);
+
+COMMIT;

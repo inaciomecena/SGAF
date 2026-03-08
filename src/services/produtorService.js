@@ -20,6 +20,10 @@ class ProdutorService {
     return produtor;
   }
 
+  async atualizarProdutor(id, codigoIbge, dadosProdutor, dadosEndereco) {
+    return await produtorRepository.update(id, codigoIbge, dadosProdutor, dadosEndereco);
+  }
+
   // Métodos auxiliares para Associações/Cooperativas
   async criarAssociacao(dados) {
     return await associacaoRepository.create(dados);

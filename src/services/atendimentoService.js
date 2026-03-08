@@ -1,9 +1,24 @@
 const atendimentoRepository = require('../repositories/atendimentoRepository');
 const tecnicoRepository = require('../repositories/tecnicoRepository');
+const { normalizeRole } = require('../utils/roles');
 
 class AtendimentoService {
   async listarTecnicos(codigoIbge) {
     return await tecnicoRepository.findAllByIbge(codigoIbge);
+  }
+
+  async obterTecnicoValido(tecnicoId, codigoIbge) {
+    const tecnico = await tecnicoRepository.findByIdAndIbge(tecnicoId, codigoIbge);
+    if (!tecnico) {
+      return null;
+    }
+
+    const perfilNormalizado = normalizeRole(tecnico.perfil);
+    if (perfilNormalizado !== 'TECNICO') {
+      return null;
+    }
+
+    return tecnico;
   }
 
   async listarAtendimentos(codigoIbge) {

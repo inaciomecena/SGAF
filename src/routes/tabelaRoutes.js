@@ -7,5 +7,7 @@ router.use(authMiddleware);
 
 router.get('/culturas', culturaSafController.listar);
 router.post('/culturas', culturaSafController.criar);
+router.get('/culturas/:id', culturaSafController.detalhar);
+router.put('/culturas/:id', culturaSafController.atualizar);
 
 module.exports = router;

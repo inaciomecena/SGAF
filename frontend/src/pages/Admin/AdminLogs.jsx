@@ -134,7 +134,7 @@ export default function AdminLogs() {
                   </tr>
                 ) : (
                   logs.map((item) => (
-                    <tr key={`${tab}-${item.id}`} className="hover:bg-slate-50 transition-colors">
+                    <tr key={`${tab}-${item.id}`} className="odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors">
                       <td className="px-6 py-4 text-sm text-gray-700">
                         {new Date(tab === TAB_ACCESS ? item.data_login : item.data).toLocaleString('pt-BR')}
                       </td>

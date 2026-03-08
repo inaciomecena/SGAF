@@ -12,6 +12,7 @@ export default function MainLayout() {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const [tabelasExpanded, setTabelasExpanded] = useState(location.pathname.startsWith('/tabelas'));
 
   const handleLogout = async () => {
     await logout();
@@ -25,6 +26,7 @@ export default function MainLayout() {
     { icon: ClipboardList, label: 'Atendimentos', path: '/atendimentos' },
     { icon: Tractor, label: 'Recursos & Máquinas', path: '/recursos' },
     { icon: FileText, label: 'Relatórios', path: '/relatorios' },
+    { icon: Building2, label: 'Meus Dados', path: '/meus-dados' },
     { icon: Building2, label: 'SECRETARIA', path: '/secretaria', adminOnly: true },
   ];
 
@@ -76,32 +78,36 @@ export default function MainLayout() {
             })}
 
             <div className="mt-2">
-              <div
+              <button
+                type="button"
+                onClick={() => setTabelasExpanded((prev) => !prev)}
                 className={`
-                  flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg
-                  ${tabelasOpen ? 'bg-slate-700 text-white' : 'text-slate-300'}
+                  w-full flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg transition-colors
+                  ${tabelasOpen || tabelasExpanded ? 'bg-slate-700 text-white' : 'text-slate-300 hover:bg-slate-800 hover:text-white'}
                 `}
               >
                 <div className="flex items-center">
-                  <TableProperties className={`w-5 h-5 mr-3 ${tabelasOpen ? 'text-cyan-300' : 'text-slate-400'}`} />
+                  <TableProperties className={`w-5 h-5 mr-3 ${tabelasOpen || tabelasExpanded ? 'text-cyan-300' : 'text-slate-400'}`} />
                   Tabela
                 </div>
-                <ChevronDown className={`w-4 h-4 transition-transform ${tabelasOpen ? 'rotate-180 text-cyan-300' : 'text-slate-400'}`} />
-              </div>
-              <div className="mt-1 ml-6 space-y-1">
-                <Link
-                  to="/tabelas/culturas"
-                  className={`
-                    flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors
-                    ${location.pathname.startsWith('/tabelas/culturas')
-                      ? 'bg-slate-700 text-white'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'}
-                  `}
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  Culturas
-                </Link>
-              </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${tabelasExpanded ? 'rotate-180 text-cyan-300' : 'text-slate-400'}`} />
+              </button>
+              {tabelasExpanded && (
+                <div className="mt-1 ml-6 space-y-1">
+                  <Link
+                    to="/tabelas/culturas"
+                    className={`
+                      flex items-center px-4 py-2.5 text-sm font-medium rounded-lg transition-colors
+                      ${location.pathname.startsWith('/tabelas/culturas')
+                        ? 'bg-slate-700 text-white'
+                        : 'text-slate-300 hover:bg-slate-800 hover:text-white'}
+                    `}
+                    onClick={() => setSidebarOpen(false)}
+                  >
+                    Culturas
+                  </Link>
+                </div>
+              )}
             </div>
           </nav>
 

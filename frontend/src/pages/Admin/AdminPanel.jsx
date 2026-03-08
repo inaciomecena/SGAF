@@ -174,7 +174,7 @@ export default function AdminPanel() {
                 </tr>
               ) : (
                 municipios.map((municipio) => (
-                  <tr key={municipio.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={municipio.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors">
                     <td className="px-6 py-4">
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800">
                         {municipio.codigo_ibge}

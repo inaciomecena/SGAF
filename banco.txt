@@ -216,7 +216,7 @@ CREATE TABLE atendimentos (
  longitude DECIMAL(10,6),
  INDEX idx_atend_ibge(codigo_ibge),
  FOREIGN KEY (produtor_id) REFERENCES produtores(id),
- FOREIGN KEY (tecnico_id) REFERENCES tecnicos(id),
+ FOREIGN KEY (tecnico_id) REFERENCES usuarios(id),
  FOREIGN KEY (tipo_atendimento_id) REFERENCES tipos_atendimento(id)
 );
 

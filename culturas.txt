@@ -1,183 +1,679 @@
-1. Estrutura do Banco de Dados (SQL)
-Tabela principal de culturas SAF
-CREATE TABLE culturas_saf (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome_cultura VARCHAR(120) NOT NULL,
-    nome_cientifico VARCHAR(150),
-    categoria VARCHAR(50),
-    tipo_ciclo VARCHAR(30),
-    finalidade VARCHAR(100),
-    tempo_producao_anos INT,
-    origem VARCHAR(50),
-    observacoes TEXT,
-    ativo BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-2. Classificação recomendada
-Categoria
+1. Cereais e grãos
 
-ANUAL
+Milho
 
-FRUTIFERA
+Arroz
 
-FLORESTAL
+Trigo
 
-PERENE
+Cevada
 
-MEDICINAL
+Aveia
 
-CONDIMENTAR
+Centeio
 
-ADUBACAO_VERDE
+Triticale
 
-OLEAGINOSA
+Milheto
 
-ENERGETICA
+Painço
 
-Tipo de ciclo
+Sorgo
 
-CURTO
+Sorgo sacarino
 
-MEDIO
+Amaranto
 
-LONGO
+Quinoa
 
-PERENE
+2. Leguminosas
 
-3. Tabela de categorias (opcional)
-CREATE TABLE categorias_cultura (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(50) NOT NULL,
-    descricao TEXT
-);
-4. Cadastro inicial de 60+ culturas SAF
-INSERT INTO culturas_saf 
-(nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos)
-VALUES
+Feijão comum
 
--- Grãos
-('Milho','Zea mays','ANUAL','CURTO','Alimentação',1),
-('Arroz','Oryza sativa','ANUAL','CURTO','Alimentação',1),
-('Feijão','Phaseolus vulgaris','ANUAL','CURTO','Alimentação',1),
-('Feijão Caupi','Vigna unguiculata','ANUAL','CURTO','Alimentação',1),
-('Sorgo','Sorghum bicolor','ANUAL','CURTO','Alimentação',1),
+Feijão caupi
 
--- Raízes
-('Mandioca','Manihot esculenta','ANUAL','MEDIO','Alimentação',2),
-('Batata Doce','Ipomoea batatas','ANUAL','CURTO','Alimentação',1),
-('Inhame','Dioscorea spp','ANUAL','MEDIO','Alimentação',2),
-('Cará','Dioscorea alata','ANUAL','MEDIO','Alimentação',2),
+Feijão guandu
 
--- Hortaliças
-('Abóbora','Cucurbita moschata','ANUAL','CURTO','Alimentação',1),
-('Pepino','Cucumis sativus','ANUAL','CURTO','Alimentação',1),
-('Tomate','Solanum lycopersicum','ANUAL','CURTO','Alimentação',1),
-('Pimentão','Capsicum annuum','ANUAL','CURTO','Alimentação',1),
+Feijão mungo
 
--- Frutíferas
-('Banana','Musa spp','FRUTIFERA','PERENE','Comercial',20),
-('Abacaxi','Ananas comosus','FRUTIFERA','MEDIO','Comercial',3),
-('Mamão','Carica papaya','FRUTIFERA','MEDIO','Comercial',4),
-('Maracujá','Passiflora edulis','FRUTIFERA','MEDIO','Comercial',4),
-('Manga','Mangifera indica','FRUTIFERA','LONGO','Comercial',30),
-('Goiaba','Psidium guajava','FRUTIFERA','LONGO','Comercial',25),
-('Acerola','Malpighia emarginata','FRUTIFERA','LONGO','Comercial',20),
-('Caju','Anacardium occidentale','FRUTIFERA','LONGO','Comercial',30),
-('Graviola','Annona muricata','FRUTIFERA','LONGO','Comercial',25),
-('Atemóia','Annona atemoya','FRUTIFERA','LONGO','Comercial',20),
+Feijão azuki
 
--- Amazônicas
-('Açaí','Euterpe oleracea','FRUTIFERA','LONGO','Comercial',25),
-('Cupuaçu','Theobroma grandiflorum','FRUTIFERA','LONGO','Comercial',30),
-('Buriti','Mauritia flexuosa','FRUTIFERA','LONGO','Comercial',40),
-('Pupunha','Bactris gasipaes','FRUTIFERA','LONGO','Comercial',30),
-('Tucumã','Astrocaryum aculeatum','FRUTIFERA','LONGO','Comercial',40),
+Feijão fava
 
--- Perenes comerciais
-('Café','Coffea arabica','PERENE','LONGO','Comercial',20),
-('Cacau','Theobroma cacao','PERENE','LONGO','Comercial',30),
-('Guaraná','Paullinia cupana','PERENE','LONGO','Comercial',30),
-('Pimenta do Reino','Piper nigrum','PERENE','LONGO','Comercial',20),
-('Urucum','Bixa orellana','PERENE','LONGO','Comercial',15),
+Feijão jalo
 
--- Florestais
-('Mogno','Swietenia macrophylla','FLORESTAL','LONGO','Madeira',40),
-('Cedro','Cedrela fissilis','FLORESTAL','LONGO','Madeira',30),
-('Ipê','Handroanthus spp','FLORESTAL','LONGO','Madeira',50),
-('Jatobá','Hymenaea courbaril','FLORESTAL','LONGO','Madeira',50),
-('Andiroba','Carapa guianensis','FLORESTAL','LONGO','Madeira/óleo',40),
-('Angelim','Dinizia excelsa','FLORESTAL','LONGO','Madeira',60),
-('Freijó','Cordia goeldiana','FLORESTAL','LONGO','Madeira',35),
-('Paricá','Schizolobium amazonicum','FLORESTAL','MEDIO','Madeira',15),
+Feijão rosinha
 
--- Adubação verde
-('Mucuna','Mucuna pruriens','ADUBACAO_VERDE','CURTO','Solo',1),
-('Feijão Guandu','Cajanus cajan','ADUBACAO_VERDE','MEDIO','Solo',2),
-('Crotalária','Crotalaria juncea','ADUBACAO_VERDE','CURTO','Solo',1),
-('Leucena','Leucaena leucocephala','ADUBACAO_VERDE','LONGO','Solo',10),
-('Gliricídia','Gliricidia sepium','ADUBACAO_VERDE','LONGO','Solo',15),
+Grão-de-bico
 
--- Medicinais
-('Hortelã','Mentha spp','MEDICINAL','CURTO','Medicinal',3),
-('Erva Cidreira','Melissa officinalis','MEDICINAL','CURTO','Medicinal',3),
-('Capim Santo','Cymbopogon citratus','MEDICINAL','PERENE','Medicinal',5),
-('Alecrim','Rosmarinus officinalis','MEDICINAL','PERENE','Medicinal',8),
-('Manjericão','Ocimum basilicum','MEDICINAL','CURTO','Medicinal',2),
+Lentilha
 
--- Condimentos
-('Gengibre','Zingiber officinale','CONDIMENTAR','MEDIO','Condimento',3),
-('Açafrão da Terra','Curcuma longa','CONDIMENTAR','MEDIO','Condimento',3),
+Ervilha
 
--- Oleaginosas
-('Dendê','Elaeis guineensis','OLEAGINOSA','LONGO','Óleo',30),
-('Pequi','Caryocar brasiliense','OLEAGINOSA','LONGO','Alimentação',40),
-('Macaúba','Acrocomia aculeata','OLEAGINOSA','LONGO','Óleo',40),
-('Castanha do Brasil','Bertholletia excelsa','OLEAGINOSA','LONGO','Alimento',60),
+3. Oleaginosas
 
--- Energéticas
-('Cana de Açúcar','Saccharum officinarum','ENERGETICA','MEDIO','Energia',6),
-('Bambu','Bambusa spp','ENERGETICA','LONGO','Energia',30);
-5. Estrutura para ligação com propriedades (importante para SIG)
-CREATE TABLE propriedade_cultura_saf (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    propriedade_id INT NOT NULL,
-    cultura_id INT NOT NULL,
-    area_ha DECIMAL(10,2),
-    quantidade_plantas INT,
-    ano_implantacao YEAR,
-    sistema_saf VARCHAR(50),
-    observacoes TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-6. Estrutura para georreferenciamento
+Soja
 
-Caso o sistema use mapas agrícolas (GeoJSON / SIG):
+Amendoim
 
-CREATE TABLE talhoes_saf (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    propriedade_id INT,
-    nome_talhao VARCHAR(100),
-    area_ha DECIMAL(10,2),
-    geometria GEOMETRY,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-7. Exemplo de consulta útil
-Culturas frutíferas
-SELECT * 
-FROM culturas_saf
-WHERE categoria = 'FRUTIFERA';
-Culturas com ciclo curto
-SELECT * 
-FROM culturas_saf
-WHERE tipo_ciclo = 'CURTO';
-8. Estrutura recomendada para sistemas de ATER
+Girassol
 
-Relacionamentos:
+Gergelim
 
-PROPRIEDADE
-   │
-   ├── TALHOES
-   │       │
-   │       └── CULTURAS_SAF
-   │
-   └── PRODUTOR
+Mamona
+
+Canola
+
+Linhaça
+
+Dendê
+
+Macaúba
+
+Pequi
+
+Baru
+
+Castanha do Brasil
+
+Licuri
+
+Babaçu
+
+4. Raízes e tubérculos
+
+Mandioca
+
+Batata inglesa
+
+Batata doce
+
+Inhame
+
+Cará
+
+Mandioquinha
+
+Beterraba
+
+Cenoura
+
+Nabo
+
+Rabanete
+
+Gengibre
+
+Açafrão da terra
+
+5. Hortaliças folhosas
+
+Alface
+
+Rúcula
+
+Agrião
+
+Couve
+
+Couve-flor
+
+Brócolis
+
+Repolho
+
+Chicória
+
+Escarola
+
+Endívia
+
+Mostarda
+
+Espinafre
+
+6. Hortaliças fruto
+
+Tomate
+
+Pimentão
+
+Pimenta
+
+Quiabo
+
+Pepino
+
+Abóbora
+
+Abobrinha
+
+Berinjela
+
+Chuchu
+
+Maxixe
+
+Jiló
+
+7. Hortaliças bulbo
+
+Alho
+
+Cebola
+
+Cebolinha
+
+Alho-poró
+
+8. Frutíferas tropicais
+
+Banana
+
+Abacaxi
+
+Mamão
+
+Maracujá
+
+Manga
+
+Goiaba
+
+Acerola
+
+Caju
+
+Graviola
+
+Atemóia
+
+Açaí
+
+Cupuaçu
+
+Buriti
+
+Pupunha
+
+Tucumã
+
+Mangaba
+
+Murici
+
+Cajá
+
+Seriguela
+
+Pitanga
+
+Jabuticaba
+
+Jaca
+
+Sapoti
+
+9. Frutíferas cítricas
+
+Laranja
+
+Limão
+
+Tangerina
+
+Bergamota
+
+Poncã
+
+Lima
+
+Kumquat
+
+10. Frutíferas subtropicais
+
+Caqui
+
+Figo
+
+Romã
+
+Nêspera
+
+Pêssego
+
+Ameixa
+
+Nectarina
+
+11. Frutas pequenas
+
+Morango
+
+Framboesa
+
+Amora
+
+Mirtilo
+
+Physalis
+
+12. Frutas exóticas
+
+Pitaya
+
+Rambutan
+
+Longan
+
+Lichia
+
+Tamarindo
+
+Noni
+
+13. Culturas industriais
+
+Cana-de-açúcar
+
+Algodão
+
+Tabaco
+
+Sisal
+
+Juta
+
+Malva
+
+Kenaf
+
+14. Culturas comerciais perenes
+
+Café arábica
+
+Café conilon
+
+Cacau
+
+Guaraná
+
+Baunilha
+
+Pimenta-do-reino
+
+Urucum
+
+15. Plantas medicinais
+
+Hortelã
+
+Erva cidreira
+
+Capim santo
+
+Alecrim
+
+Manjericão
+
+Camomila
+
+Boldo
+
+Sálvia
+
+Arruda
+
+Alfazema
+
+Erva doce
+
+16. Condimentares
+
+Coentro
+
+Curry
+
+Mostarda
+
+Cominho
+
+Páprica
+
+17. Plantas alimentícias não convencionais (PANC)
+
+Ora-pro-nóbis
+
+Taioba
+
+Bertalha
+
+Caruru
+
+Peixinho da horta
+
+Major gomes
+
+18. Espécies florestais madeireiras
+
+Mogno
+
+Mogno africano
+
+Cedro
+
+Cedro australiano
+
+Ipê
+
+Jatobá
+
+Angelim
+
+Andiroba
+
+Freijó
+
+Paricá
+
+Teca
+
+Eucalipto
+
+Pinus
+
+Sumaúma
+
+Pau brasil
+
+Angico
+
+Pau ferro
+
+19. Espécies usadas em SAF
+
+Ingá
+
+Embaúba
+
+Guapuruvu
+
+Mulungu
+
+Leucena
+
+Gliricídia
+
+Feijão guandu
+
+Crotalária
+
+Mucuna
+
+20. Forrageiras
+
+Braquiária
+
+Braquiária ruziziensis
+
+Braquiária brizantha
+
+Capim mombaça
+
+Capim tanzânia
+
+Capim elefante
+
+Capim andropogon
+
+Capim estrela
+
+Capim colonião
+
+21. Culturas energéticas
+
+Cana energia
+
+Bambu
+
+Sorgo biomassa
+
+Pinhão manso
+
+22. Outras frutíferas regionais
+
+Araticum
+
+Bacaba
+
+Bacuri
+
+Uxi
+
+Taperebá
+
+Jenipapo
+
+Araçá
+
+Cagaita
+
+Guabiroba
+
+Murta
+
+23. Palmeiras produtivas
+
+Babaçu
+
+Buriti
+
+Açaí
+
+Pupunha
+
+Tucumã
+
+Inajá
+
+24. Culturas adicionais usadas em SAF e agroecologia
+
+Capuchinha
+
+Tagetes
+
+Feijão de porco
+
+Amendoim forrageiro
+
+Estilosantes
+
+Kudzu tropical
+
+25. Espécies arbóreas nativas adicionais
+
+Copaíba
+
+Cumaru
+
+Guariroba
+
+Baru
+
+Pau d’arco
+
+Ipê amarelo
+
+Ipê roxo
+
+Ipê branco
+
+26. Outras espécies agrícolas
+
+Chia
+
+Sacha inchi
+
+Camelina
+
+Mostarda preta
+
+Mostarda branca
+
+27. Culturas ornamentais e paisagísticas agrícolas
+
+Girassol ornamental
+
+Cravo
+
+Rosa
+
+Lírio
+
+Orquídea
+
+28. Outras espécies regionais
+
+Umbu
+
+Umbu-cajá
+
+Licuri
+
+Araticum do cerrado
+
+Pequi do cerrado
+
+29. Outras leguminosas e adubos verdes
+
+Calopogônio
+
+Centrosema
+
+Estilosantes campo grande
+
+Guandu anão
+
+30. Espécies complementares
+
+Angico vermelho
+
+Angico branco
+
+Guatambu
+
+Jequitibá
+
+Jacarandá
+
+31. Culturas diversas
+
+Tamarilho
+
+Melão
+
+Melancia
+
+Pepino japonês
+
+Tomate cereja
+
+32. Finalizando a base
+
+Almeirão
+
+Catalonha
+
+Chicória roxa
+
+Salsa
+
+Endro
+
+Estragão
+
+Louro
+
+Tomilho
+
+Manjerona
+
+Funcho
+
+Coentro vietnamita
+
+33. Culturas complementares
+
+Cardo mariano
+
+Artemísia
+
+Guaco
+
+Erva baleeira
+
+34. Espécies adicionais
+
+Araucária
+
+Castanha portuguesa
+
+Pistache
+
+Amêndoa
+
+Noz
+
+35. Espécies finais
+
+Macadâmia
+
+Pecã
+
+Avelã
+
+Pinoli
+
+36. Outras frutas nativas
+
+Cambuci
+
+Uvaia
+
+Grumixama
+
+Cambucá
+
+37. Encerramento
+
+Araçá-boi
+
+Cupuaí
+
+Bacuri-pari
+
+Taperebá-mirim
+
+38. Final da lista
+
+Mangostão
+
+Langsat
+
+Santol
+
+Durian
+
+39. Espécies experimentais
+
+Feijão bambara
+
+Taro
+
+Yacon
+
+Konjac
+
+40. Última
+
+Stevia

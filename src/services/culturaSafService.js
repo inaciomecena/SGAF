@@ -101,6 +101,16 @@ class CulturaSafService {
     await this.inicializarBase();
     return culturaSafRepository.create(dados);
   }
+
+  async detalhar(id) {
+    await this.inicializarBase();
+    return culturaSafRepository.findById(id);
+  }
+
+  async atualizar(id, dados) {
+    await this.inicializarBase();
+    return culturaSafRepository.update(id, dados);
+  }
 }
 
 module.exports = new CulturaSafService();

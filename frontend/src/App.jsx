@@ -24,6 +24,7 @@ import AdminPanel from './pages/Admin/AdminPanel';
 import AdminLogs from './pages/Admin/AdminLogs';
 import CulturaList from './pages/Tabelas/CulturaList';
 import CulturaForm from './pages/Tabelas/CulturaForm';
+import MeusDados from './pages/Secretaria/MeusDados';
 import { canManageUsers } from './utils/roles';
 
 const PrivateRoute = ({ children }) => {
@@ -136,6 +137,7 @@ function AppRoutes() {
 
         <Route path="produtores" element={<ProdutorList />} />
         <Route path="produtores/novo" element={<ProdutorForm />} />
+        <Route path="produtores/:id" element={<ProdutorForm />} />
 
         <Route path="propriedades" element={<PropriedadeList />} />
         <Route path="propriedades/novo" element={<PropriedadeForm />} />
@@ -154,6 +156,11 @@ function AppRoutes() {
         <Route path="relatorios/propriedades" element={<RelatorioPropriedades />} />
         <Route path="tabelas/culturas" element={<CulturaList />} />
         <Route path="tabelas/culturas/nova" element={<CulturaForm />} />
+        <Route path="tabelas/culturas/:id/editar" element={<CulturaForm />} />
+        <Route
+          path="meus-dados"
+          element={<MeusDados />}
+        />
       </Route>
     </Routes>
   );

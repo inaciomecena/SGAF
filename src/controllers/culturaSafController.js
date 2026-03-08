@@ -27,6 +27,36 @@ class CulturaSafController {
       return res.status(500).json({ message: 'Erro ao cadastrar cultura' });
     }
   }
+
+  async detalhar(req, res) {
+    try {
+      const cultura = await culturaSafService.detalhar(req.params.id);
+      if (!cultura) {
+        return res.status(404).json({ message: 'Cultura não encontrada' });
+      }
+      return res.json(cultura);
+    } catch (error) {
+      return res.status(500).json({ message: 'Erro ao detalhar cultura' });
+    }
+  }
+
+  async atualizar(req, res) {
+    try {
+      const { nome_cultura } = req.body;
+      if (!nome_cultura) {
+        return res.status(400).json({ message: 'Nome da cultura é obrigatório' });
+      }
+
+      const atualizado = await culturaSafService.atualizar(req.params.id, req.body);
+      if (!atualizado) {
+        return res.status(404).json({ message: 'Cultura não encontrada' });
+      }
+
+      return res.json({ message: 'Cultura atualizada com sucesso' });
+    } catch (error) {
+      return res.status(500).json({ message: 'Erro ao atualizar cultura' });
+    }
+  }
 }
 
 module.exports = new CulturaSafController();

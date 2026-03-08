@@ -16,7 +16,7 @@ const tenantMiddleware = (req, res, next) => {
     return res.status(403).json({ message: 'Acesso negado: Usuário sem vínculo municipal' });
   }
 
-  req.tenantId = req.user.codigo_ibge;
+  req.tenantId = normalizedRole === 'ADMIN_ESTADO' ? null : req.user.codigo_ibge;
 
   next();
 };

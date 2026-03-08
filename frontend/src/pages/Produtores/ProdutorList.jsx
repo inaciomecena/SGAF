@@ -99,7 +99,7 @@ export default function ProdutorList() {
                 </tr>
               ) : (
                 filteredProdutores.map((produtor) => (
-                  <tr key={produtor.id} className="hover:bg-slate-50 transition-colors cursor-pointer" onClick={() => navigate(`/produtores/${produtor.id}`)}>
+                  <tr key={produtor.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors cursor-pointer" onClick={() => navigate(`/produtores/${produtor.id}`)}>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 font-bold">

@@ -86,28 +86,28 @@ CREATE TABLE IF NOT EXISTS `atendimentos` (
   KEY `tecnico_id` (`tecnico_id`),
   KEY `tipo_atendimento_id` (`tipo_atendimento_id`),
   CONSTRAINT `atendimentos_ibfk_1` FOREIGN KEY (`produtor_id`) REFERENCES `produtores` (`id`),
-  CONSTRAINT `atendimentos_ibfk_2` FOREIGN KEY (`tecnico_id`) REFERENCES `tecnicos` (`id`),
+  CONSTRAINT `atendimentos_ibfk_2` FOREIGN KEY (`tecnico_id`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `atendimentos_ibfk_3` FOREIGN KEY (`tipo_atendimento_id`) REFERENCES `tipos_atendimento` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela agricultura_municipal.atendimentos: ~15 rows (aproximadamente)
 DELETE FROM `atendimentos`;
 INSERT INTO `atendimentos` (`id`, `codigo_ibge`, `produtor_id`, `tecnico_id`, `tipo_atendimento_id`, `data_atendimento`, `descricao`, `latitude`, `longitude`) VALUES
-	(1, '1234567', 1, NULL, 5, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(2, '1234567', 1, NULL, 2, '2026-02-10', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(3, '1234567', 4, NULL, 3, '2026-02-17', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(4, '1234567', 3, NULL, 1, '2026-02-11', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(5, '1234567', 4, NULL, 5, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(6, '1234567', 2, NULL, 5, '2026-02-19', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(7, '1234567', 2, NULL, 4, '2026-03-05', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(8, '1234567', 5, NULL, 1, '2026-02-06', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(9, '1234567', 4, NULL, 2, '2026-02-27', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(10, '1234567', 2, NULL, 3, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(11, '1234567', 2, NULL, 2, '2026-03-03', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(12, '1234567', 5, NULL, 3, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(13, '1234567', 5, NULL, 3, '2026-02-23', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(14, '1234567', 5, NULL, 3, '2026-02-05', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
-	(15, '1234567', 5, NULL, 1, '2026-03-05', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL);
+	(1, '1234567', 1, 2, 5, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(2, '1234567', 1, 2, 2, '2026-02-10', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(3, '1234567', 4, 2, 3, '2026-02-17', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(4, '1234567', 3, 2, 1, '2026-02-11', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(5, '1234567', 4, 2, 5, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(6, '1234567', 2, 2, 5, '2026-02-19', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(7, '1234567', 2, 2, 4, '2026-03-05', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(8, '1234567', 5, 2, 1, '2026-02-06', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(9, '1234567', 4, 2, 2, '2026-02-27', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(10, '1234567', 2, 2, 3, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(11, '1234567', 2, 2, 2, '2026-03-03', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(12, '1234567', 5, 2, 3, '2026-02-20', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(13, '1234567', 5, 2, 3, '2026-02-23', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(14, '1234567', 5, 2, 3, '2026-02-05', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL),
+	(15, '1234567', 5, 2, 1, '2026-03-05', 'Atendimento realizado com sucesso. Produtor orientado sobre as melhores práticas.', NULL, NULL);
 
 -- Copiando estrutura para tabela agricultura_municipal.auditoria
 DROP TABLE IF EXISTS `auditoria`;

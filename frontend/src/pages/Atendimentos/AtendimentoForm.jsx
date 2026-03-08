@@ -4,14 +4,19 @@ import { ArrowLeft, Save, Loader2, Calendar, FileText } from 'lucide-react';
 import atendimentoService from '../../services/atendimentoService';
 import produtorService from '../../services/produtorService';
 import propriedadeService from '../../services/propriedadeService';
+import { useAuth } from '../../contexts/AuthContext';
+import { normalizeRole } from '../../utils/roles';
 
 export default function AtendimentoForm() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [produtores, setProdutores] = useState([]);
   const [propriedades, setPropriedades] = useState([]);
+  const [tecnicos, setTecnicos] = useState([]);
   
   const [formData, setFormData] = useState({
+    tecnico_id: '',
     produtor_id: '',
     propriedade_id: '',
     data_visita: new Date().toISOString().split('T')[0],
@@ -22,6 +27,7 @@ export default function AtendimentoForm() {
 
   useEffect(() => {
     loadProdutores();
+    loadTecnicos();
   }, []);
 
   // Carrega propriedades quando o produtor é selecionado
@@ -39,6 +45,15 @@ export default function AtendimentoForm() {
       setProdutores(data);
     } catch (error) {
       console.error('Erro ao carregar produtores:', error);
+    }
+  };
+
+  const loadTecnicos = async () => {
+    try {
+      const data = await atendimentoService.listarTecnicos();
+      setTecnicos(data);
+    } catch (error) {
+      console.error('Erro ao carregar técnicos:', error);
     }
   };
 
@@ -70,6 +85,24 @@ export default function AtendimentoForm() {
     }
   };
 
+  useEffect(() => {
+    if (!tecnicos.length || formData.tecnico_id) {
+      return;
+    }
+
+    const perfilAtual = normalizeRole(user?.perfil);
+    if (perfilAtual !== 'TECNICO') {
+      return;
+    }
+
+    const tecnicoAtual = tecnicos.find((tecnico) => Number(tecnico.id) === Number(user?.id));
+    if (!tecnicoAtual) {
+      return;
+    }
+
+    setFormData((prev) => ({ ...prev, tecnico_id: String(tecnicoAtual.id) }));
+  }, [tecnicos, formData.tecnico_id, user?.id, user?.perfil]);
+
   return (
     <div className="max-w-4xl mx-auto space-y-6 pb-10">
       <div className="flex items-center gap-4">
@@ -87,6 +120,22 @@ export default function AtendimentoForm() {
 
       <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-700">Técnico responsável *</label>
+            <select
+              name="tecnico_id"
+              required
+              value={formData.tecnico_id}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+            >
+              <option value="">Selecione...</option>
+              {tecnicos.map((tecnico) => (
+                <option key={tecnico.id} value={tecnico.id}>{tecnico.nome}</option>
+              ))}
+            </select>
+          </div>
+
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700">Produtor *</label>
             <select

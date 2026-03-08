@@ -23,9 +23,18 @@ class AtendimentoController {
 
   async registrar(req, res) {
     try {
-      const dados = req.body;
+      const { tecnico_id: tecnicoIdInformado, ...dados } = req.body;
       const codigo_ibge = req.tenantId;
-      const tecnico_id = req.user.id; // O técnico é o usuário logado
+      const tecnico_id = tecnicoIdInformado ? Number(tecnicoIdInformado) : Number(req.user.id);
+
+      if (!Number.isInteger(tecnico_id) || tecnico_id <= 0) {
+        return res.status(400).json({ message: 'tecnico_id inválido' });
+      }
+
+      const tecnico = await atendimentoService.obterTecnicoValido(tecnico_id, codigo_ibge);
+      if (!tecnico) {
+        return res.status(400).json({ message: 'tecnico_id deve ser de um usuário com perfil técnico do município' });
+      }
 
       const id = await atendimentoService.registrarAtendimento({
         ...dados,

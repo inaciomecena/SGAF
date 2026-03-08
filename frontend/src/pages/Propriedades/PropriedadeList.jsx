@@ -114,7 +114,7 @@ export default function PropriedadeList() {
                 </tr>
               ) : (
                 filteredPropriedades.map((propriedade) => (
-                  <tr key={propriedade.id} className="hover:bg-slate-50 transition-colors">
+                  <tr key={propriedade.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700">

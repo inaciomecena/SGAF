@@ -46,6 +46,29 @@ class ProdutorController {
     }
   }
 
+  async atualizar(req, res) {
+    try {
+      const { id } = req.params;
+      const { produtor, endereco } = req.body;
+      const existe = await produtorService.detalharProdutor(id, req.tenantId);
+
+      if (!existe) {
+        return res.status(404).json({ message: 'Produtor não encontrado' });
+      }
+
+      const atualizado = await produtorService.atualizarProdutor(id, req.tenantId, produtor, endereco);
+      if (!atualizado) {
+        return res.status(404).json({ message: 'Produtor não encontrado' });
+      }
+
+      const produtorAtualizado = await produtorService.detalharProdutor(id, req.tenantId);
+      res.json({ message: 'Produtor atualizado com sucesso', produtor: produtorAtualizado });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao atualizar produtor' });
+    }
+  }
+
   async criarPropriedade(req, res) {
     try {
       const { produtorId } = req.params;

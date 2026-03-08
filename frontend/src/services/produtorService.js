@@ -15,6 +15,11 @@ const produtorService = {
     const response = await api.post('/rural/produtores', dados);
     return response.data;
   },
+
+  atualizar: async (id, dados) => {
+    const response = await api.put(`/rural/produtores/${id}`, dados);
+    return response.data;
+  },
 };
 
 export default produtorService;

@@ -115,6 +115,17 @@ class CulturaSafRepository {
     return rows;
   }
 
+  async findById(id) {
+    const [rows] = await pool.execute(
+      `SELECT id, nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes, ativo
+       FROM culturas_saf
+       WHERE id = ? AND ativo = TRUE
+       LIMIT 1`,
+      [id]
+    );
+    return rows[0] || null;
+  }
+
   async create(data) {
     const { nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes } = data;
     const [result] = await pool.execute(
@@ -133,6 +144,27 @@ class CulturaSafRepository {
       ]
     );
     return result.insertId;
+  }
+
+  async update(id, data) {
+    const { nome_cultura, nome_cientifico, categoria, tipo_ciclo, finalidade, tempo_producao_anos, origem, observacoes } = data;
+    const [result] = await pool.execute(
+      `UPDATE culturas_saf
+       SET nome_cultura = ?, nome_cientifico = ?, categoria = ?, tipo_ciclo = ?, finalidade = ?, tempo_producao_anos = ?, origem = ?, observacoes = ?
+       WHERE id = ? AND ativo = TRUE`,
+      [
+        nome_cultura,
+        nome_cientifico || null,
+        categoria || null,
+        tipo_ciclo || null,
+        finalidade || null,
+        tempo_producao_anos || null,
+        origem || null,
+        observacoes || null,
+        id
+      ]
+    );
+    return result.affectedRows > 0;
   }
 }
 

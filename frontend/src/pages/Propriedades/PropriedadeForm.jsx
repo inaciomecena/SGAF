@@ -1,8 +1,21 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import { ArrowLeft, Save, Loader2, Pencil, Trash2, X } from 'lucide-react';
+import { ArrowLeft, Save, Loader2, Pencil, Trash2, X, LocateFixed } from 'lucide-react';
 import propriedadeService from '../../services/propriedadeService';
 import produtorService from '../../services/produtorService';
+
+const SISTEMAS_SAF_SUGESTOES = [
+  'Agroflorestal Sucessional',
+  'Silviagrícola',
+  'Silvipastoril',
+  'Agrossilvipastoril',
+  'SAF Frutífero',
+  'SAF Madeireiro',
+  'SAF de Recuperação Ambiental',
+  'Quintal Agroflorestal',
+  'SAF Biodiverso',
+  'SAF Comercial'
+];
 
 export default function PropriedadeForm() {
   const navigate = useNavigate();
@@ -20,6 +33,7 @@ export default function PropriedadeForm() {
   const [producoes, setProducoes] = useState([]);
   const [loadingProducoes, setLoadingProducoes] = useState(false);
   const [savingProducao, setSavingProducao] = useState(false);
+  const [gettingLocation, setGettingLocation] = useState(false);
   const produtorIdInicial = location.state?.produtorId || '';
   const [producaoForm, setProducaoForm] = useState({
     id: '',
@@ -262,8 +276,35 @@ export default function PropriedadeForm() {
     }
   };
 
+  const handlePegarLocalizacao = () => {
+    if (!navigator.geolocation) {
+      alert('Geolocalização não suportada neste navegador.');
+      return;
+    }
+
+    setGettingLocation(true);
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        setFormData((prev) => ({
+          ...prev,
+          latitude: Number(coords.latitude).toFixed(6),
+          longitude: Number(coords.longitude).toFixed(6)
+        }));
+        setGettingLocation(false);
+      },
+      () => {
+        alert('Não foi possível obter a localização. Verifique as permissões do navegador.');
+        setGettingLocation(false);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 15000
+      }
+    );
+  };
+
   if (initialLoading) {
-    return <div className="max-w-3xl mx-auto p-6 text-center text-gray-500">Carregando propriedade...</div>;
+    return <div className="max-w-6xl mx-auto p-6 text-center text-gray-500">Carregando propriedade...</div>;
   }
 
   const areaTotal = Number(formData.area_total) || 0;
@@ -272,7 +313,7 @@ export default function PropriedadeForm() {
   const areaNaoProdutiva = Math.max(areaTotal - areaProdutiva, 0).toFixed(2);
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-10">
+    <div className="max-w-6xl mx-auto space-y-6 pb-10">
       <div className="flex items-center gap-4">
         <button
           onClick={() => navigate('/propriedades')}
@@ -418,8 +459,8 @@ export default function PropriedadeForm() {
             )}
 
             <div className="border border-gray-200 rounded-xl p-4 space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                <div className="space-y-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-4">
+                <div className="space-y-2 xl:col-span-3">
                   <label className="text-sm font-medium text-gray-700">Cultura *</label>
                   <select
                     name="cultura_id"
@@ -437,7 +478,7 @@ export default function PropriedadeForm() {
                   </select>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 xl:col-span-2">
                   <label className="text-sm font-medium text-gray-700">Ano de Implantação</label>
                   <input
                     type="number"
@@ -452,7 +493,7 @@ export default function PropriedadeForm() {
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 xl:col-span-2">
                   <label className="text-sm font-medium text-gray-700">Área (ha)</label>
                   <input
                     type="number"
@@ -465,7 +506,7 @@ export default function PropriedadeForm() {
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 xl:col-span-2">
                   <label className="text-sm font-medium text-gray-700">Quantidade de Plantas</label>
                   <input
                     type="number"
@@ -478,10 +519,11 @@ export default function PropriedadeForm() {
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 xl:col-span-3">
                   <label className="text-sm font-medium text-gray-700">Sistema SAF</label>
                   <input
                     type="text"
+                    list="sistema-saf-sugestoes"
                     name="sistema_saf"
                     value={producaoForm.sistema_saf}
                     onChange={handleProducaoChange}
@@ -489,6 +531,11 @@ export default function PropriedadeForm() {
                     className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none disabled:bg-gray-100"
                     placeholder="Ex: Agroflorestal Sucessional"
                   />
+                  <datalist id="sistema-saf-sugestoes">
+                    {SISTEMAS_SAF_SUGESTOES.map((sistema) => (
+                      <option key={sistema} value={sistema} />
+                    ))}
+                  </datalist>
                 </div>
               </div>
 
@@ -533,8 +580,8 @@ export default function PropriedadeForm() {
               </div>
             </div>
 
-            <div className="border border-gray-200 rounded-xl overflow-hidden">
-              <table className="w-full text-sm">
+            <div className="border border-gray-200 rounded-xl overflow-x-auto">
+              <table className="w-full text-sm min-w-[780px]">
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="text-left px-4 py-3 font-semibold text-gray-700">Cultura</th>
@@ -557,7 +604,7 @@ export default function PropriedadeForm() {
                     </tr>
                   )}
                   {!loadingProducoes && producoes.map((producao) => (
-                    <tr key={producao.id} className="border-t border-gray-100">
+                    <tr key={producao.id} className="border-t border-gray-100 odd:bg-white even:bg-slate-50/60 hover:bg-slate-100 transition-colors">
                       <td className="px-4 py-3 text-gray-800">{producao.cultura_nome}</td>
                       <td className="px-4 py-3 text-gray-700">{producao.ano_implantacao || '-'}</td>
                       <td className="px-4 py-3 text-gray-700">{producao.area_ha ?? '-'}</td>
@@ -620,6 +667,22 @@ export default function PropriedadeForm() {
                   className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
                   placeholder="-46.6333"
                 />
+              </div>
+
+              <div className="md:col-span-2 flex justify-end">
+                <button
+                  type="button"
+                  onClick={handlePegarLocalizacao}
+                  disabled={gettingLocation}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors disabled:opacity-60"
+                >
+                  {gettingLocation ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <LocateFixed className="w-4 h-4" />
+                  )}
+                  {gettingLocation ? 'Obtendo localização...' : 'Pegar Localização'}
+                </button>
               </div>
             </div>
           </section>
