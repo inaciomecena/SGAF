@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Save, Loader2, Calendar, FileText } from 'lucide-react';
+import { ArrowLeft, Save, Loader2, Calendar, FileText, Car } from 'lucide-react';
 import atendimentoService from '../../services/atendimentoService';
 import produtorService from '../../services/produtorService';
 import propriedadeService from '../../services/propriedadeService';
-import { useAuth } from '../../contexts/AuthContext';
+import frotaService from '../../services/frotaService';
+import { useAuth } from '../../contexts/useAuth';
 import { normalizeRole } from '../../utils/roles';
 
 export default function AtendimentoForm() {
@@ -14,6 +15,7 @@ export default function AtendimentoForm() {
   const [produtores, setProdutores] = useState([]);
   const [propriedades, setPropriedades] = useState([]);
   const [tecnicos, setTecnicos] = useState([]);
+  const [veiculos, setVeiculos] = useState([]);
   
   const [formData, setFormData] = useState({
     tecnico_id: '',
@@ -22,12 +24,16 @@ export default function AtendimentoForm() {
     data_visita: new Date().toISOString().split('T')[0],
     motivo: '',
     observacoes: '',
-    recomendacoes: ''
+    recomendacoes: '',
+    veiculo_id: '',
+    km_saida: '',
+    km_chegada: ''
   });
 
   useEffect(() => {
     loadProdutores();
     loadTecnicos();
+    loadVeiculos();
   }, []);
 
   // Carrega propriedades quando o produtor é selecionado
@@ -57,6 +63,15 @@ export default function AtendimentoForm() {
     }
   };
 
+  const loadVeiculos = async () => {
+    try {
+      const data = await frotaService.listarVeiculos();
+      setVeiculos(data);
+    } catch (error) {
+      console.error('Erro ao carregar veículos:', error);
+    }
+  };
+
   const loadPropriedades = async (produtorId) => {
     try {
       const data = await propriedadeService.listarPorProdutor(produtorId);
@@ -68,6 +83,17 @@ export default function AtendimentoForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
+    if (name === 'veiculo_id') {
+      const veiculo = veiculos.find(v => String(v.id) === String(value));
+      setFormData(prev => ({
+        ...prev,
+        [name]: value,
+        km_saida: veiculo ? veiculo.odometro_atual : ''
+      }));
+      return;
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -191,6 +217,54 @@ export default function AtendimentoForm() {
               placeholder="Ex: Análise de solo, Pragas, etc."
               className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
+          </div>
+
+          <div className="md:col-span-2 border-t pt-4 mt-2">
+            <h3 className="text-lg font-medium text-gray-800 mb-4 flex items-center gap-2">
+              <Car className="w-5 h-5 text-gray-500" />
+              Deslocamento (Opcional)
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700">Veículo Utilizado</label>
+                <select
+                  name="veiculo_id"
+                  value={formData.veiculo_id}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                >
+                  <option value="">Nenhum</option>
+                  {veiculos.map(v => (
+                    <option key={v.id} value={v.id}>{v.modelo} - {v.placa}</option>
+                  ))}
+                </select>
+              </div>
+              
+              {formData.veiculo_id && (
+                <>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-700">KM Saída</label>
+                    <input
+                      type="number"
+                      name="km_saida"
+                      value={formData.km_saida}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-700">KM Chegada</label>
+                    <input
+                      type="number"
+                      name="km_chegada"
+                      value={formData.km_chegada}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
           <div className="md:col-span-2 space-y-2">

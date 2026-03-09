@@ -1,6 +1,7 @@
 const produtorService = require('../services/produtorService');
 const propriedadeRepository = require('../repositories/propriedadeRepository');
 const culturaSafService = require('../services/culturaSafService');
+const syncService = require('../services/syncService');
 
 class ProdutorController {
   async listar(req, res) {
@@ -22,6 +23,13 @@ class ProdutorController {
         { ...produtor, codigo_ibge },
         endereco
       );
+
+      await syncService.registrarEventoDominio({
+        codigoIbge: codigo_ibge,
+        entity: 'produtor',
+        recordId: id,
+        action: 'create'
+      });
       
       res.status(201).json({ id, message: 'Produtor cadastrado com sucesso' });
     } catch (error) {
@@ -60,6 +68,13 @@ class ProdutorController {
       if (!atualizado) {
         return res.status(404).json({ message: 'Produtor não encontrado' });
       }
+
+      await syncService.registrarEventoDominio({
+        codigoIbge: req.tenantId,
+        entity: 'produtor',
+        recordId: Number(id),
+        action: 'update'
+      });
 
       const produtorAtualizado = await produtorService.detalharProdutor(id, req.tenantId);
       res.json({ message: 'Produtor atualizado com sucesso', produtor: produtorAtualizado });

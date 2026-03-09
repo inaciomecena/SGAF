@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 require('dotenv').config();
@@ -10,13 +11,18 @@ const aterRoutes = require('./routes/aterRoutes');
 const recursoRoutes = require('./routes/recursoRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const tabelaRoutes = require('./routes/tabelaRoutes');
+const syncRoutes = require('./routes/syncRoutes');
+const frotaRoutes = require('./routes/frotaRoutes');
 
 const app = express();
 
 // Middlewares Globais
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.resolve(__dirname, '../uploads')));
 
 // Rotas
 app.use('/api/auth', authRoutes);
@@ -26,6 +32,8 @@ app.use('/api/ater', aterRoutes);
 app.use('/api/recursos', recursoRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/tabelas', tabelaRoutes);
+app.use('/api/sync', syncRoutes);
+app.use('/api/frota', frotaRoutes);
 
 // Rota de Health Check
 app.get('/', (req, res) => {

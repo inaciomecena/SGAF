@@ -122,7 +122,10 @@ export default function AtendimentoList() {
                       </div>
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <button className="text-sm font-medium text-slate-700 hover:text-slate-900">
+                      <button
+                        onClick={() => navigate(`/atendimentos/${atendimento.id}`)}
+                        className="text-sm font-medium text-slate-700 hover:text-slate-900"
+                      >
                         Detalhes
                       </button>
                     </td>

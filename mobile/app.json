@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "SGAF Mobile",
+    "slug": "sgaf-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "sgafmobile",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.sgaf.mobile",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "INTERNET"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.sgaf.mobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1117482d-e0f7-41d3-833e-6a2f4a42139a"
+      }
+    }
+  }
+}

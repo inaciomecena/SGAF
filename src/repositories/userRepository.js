@@ -3,7 +3,7 @@ const pool = require('../config/database');
 class UserRepository {
   async findByEmail(email) {
     const [rows] = await pool.execute(
-      'SELECT * FROM usuarios WHERE email = ? AND ativo = TRUE',
+      'SELECT * FROM usuarios WHERE LOWER(email) = LOWER(?) AND ativo = TRUE',
       [email]
     );
     return rows[0];
@@ -27,7 +27,7 @@ class UserRepository {
 
   async findByEmailAnyStatus(email) {
     const [rows] = await pool.execute(
-      'SELECT id, email, ativo FROM usuarios WHERE email = ?',
+      'SELECT id, email, ativo FROM usuarios WHERE LOWER(email) = LOWER(?)',
       [email]
     );
     return rows[0];

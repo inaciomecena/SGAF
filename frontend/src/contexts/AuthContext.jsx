@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { normalizeRole } from '../utils/roles';
-
-const AuthContext = createContext({});
+import { AuthContext } from './AuthContextStore';
 const normalizeUser = (rawUser) => {
   if (!rawUser) return rawUser;
   return {
@@ -72,5 +71,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => useContext(AuthContext);

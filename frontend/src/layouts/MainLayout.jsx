@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/useAuth';
 import { canManageUsers } from '../utils/roles';
 import { 
-  Menu, Home, Users, Sprout, Tractor,
+  Menu, Home, Users, Sprout, Tractor, Car,
   ClipboardList, LogOut, FileText, Building2, TableProperties, ChevronDown
 } from 'lucide-react';
 
@@ -25,6 +25,7 @@ export default function MainLayout() {
     { icon: Sprout, label: 'Propriedades', path: '/propriedades' },
     { icon: ClipboardList, label: 'Atendimentos', path: '/atendimentos' },
     { icon: Tractor, label: 'Recursos & Máquinas', path: '/recursos' },
+    { icon: Car, label: 'Frota', path: '/frota' },
     { icon: FileText, label: 'Relatórios', path: '/relatorios' },
     { icon: Building2, label: 'Meus Dados', path: '/meus-dados' },
     { icon: Building2, label: 'SECRETARIA', path: '/secretaria', adminOnly: true },

@@ -1,4 +1,6 @@
 const atendimentoService = require('../services/atendimentoService');
+const { normalizeRole } = require('../utils/roles');
+const syncService = require('../services/syncService');
 
 class AtendimentoController {
   async listarTecnicos(req, res) {
@@ -42,6 +44,13 @@ class AtendimentoController {
         tecnico_id
       });
 
+      await syncService.registrarEventoDominio({
+        codigoIbge: codigo_ibge,
+        entity: 'atendimento',
+        recordId: id,
+        action: 'create'
+      });
+
       res.status(201).json({ id, message: 'Atendimento registrado com sucesso' });
     } catch (error) {
       console.error(error);
@@ -69,8 +78,9 @@ class AtendimentoController {
         return res.status(404).json({ message: 'Atendimento não encontrado' });
       }
 
-      // Verificação de segurança simples (idealmente validar codigo_ibge também)
-      if (atendimento.codigo_ibge !== req.tenantId) {
+      const perfil = normalizeRole(req.user?.perfil);
+      const podeAcessar = perfil === 'ADMIN_ESTADO' || atendimento.codigo_ibge === req.tenantId;
+      if (!podeAcessar) {
          return res.status(403).json({ message: 'Acesso negado' });
       }
 
@@ -78,6 +88,67 @@ class AtendimentoController {
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Erro ao buscar atendimento' });
+    }
+  }
+
+  async anexarFotos(req, res) {
+    try {
+      const { id } = req.params;
+      const atendimento = await atendimentoService.detalharAtendimento(id);
+
+      if (!atendimento) {
+        return res.status(404).json({ message: 'Atendimento não encontrado' });
+      }
+
+      const perfil = normalizeRole(req.user?.perfil);
+      const podeAcessar = perfil === 'ADMIN_ESTADO' || atendimento.codigo_ibge === req.tenantId;
+      if (!podeAcessar) {
+        return res.status(403).json({ message: 'Acesso negado' });
+      }
+
+      if (!req.files?.length) {
+        return res.status(400).json({ message: 'Nenhuma foto enviada' });
+      }
+
+      for (const foto of req.files) {
+        await atendimentoService.adicionarFoto(Number(id), `/uploads/atendimentos/${foto.filename}`);
+      }
+
+      await syncService.registrarEventoDominio({
+        codigoIbge: atendimento.codigo_ibge,
+        entity: 'atendimento',
+        recordId: Number(id),
+        action: 'update'
+      });
+
+      const atualizado = await atendimentoService.detalharAtendimento(id);
+      res.status(201).json(atualizado);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao anexar fotos' });
+    }
+  }
+
+  async removerFoto(req, res) {
+    try {
+      const { id } = req.params;
+      const foto = await atendimentoService.removerFoto(id);
+
+      if (!foto) {
+        return res.status(404).json({ message: 'Foto não encontrada' });
+      }
+
+      await syncService.registrarEventoDominio({
+        codigoIbge: req.tenantId, // Assumindo que quem remove tem permissão no tenant
+        entity: 'foto_atendimento',
+        recordId: Number(id),
+        action: 'delete'
+      });
+
+      res.status(200).json({ message: 'Foto removida com sucesso' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erro ao remover foto' });
     }
   }
 }

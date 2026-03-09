@@ -33,9 +33,10 @@ class AtendimentoRepository {
 
   async findById(id) {
     const [rows] = await pool.execute(
-      `SELECT a.*, u.nome as tecnico_nome, COALESCE(t.descricao, a.descricao) as motivo
+      `SELECT a.*, u.nome as tecnico_nome, p.nome as produtor_nome, COALESCE(t.descricao, a.descricao) as motivo
        FROM atendimentos a
        LEFT JOIN usuarios u ON a.tecnico_id = u.id
+       LEFT JOIN produtores p ON a.produtor_id = p.id
        LEFT JOIN tipos_atendimento t ON a.tipo_atendimento_id = t.id
        WHERE a.id = ?`,
       [id]
@@ -56,19 +57,34 @@ class AtendimentoRepository {
     return result.insertId;
   }
 
-  async addFoto(atendimentoId, caminhoArquivo, descricao) {
+  async addFoto(atendimentoId, arquivo) {
     await pool.execute(
-      'INSERT INTO fotos_atendimento (atendimento_id, caminho_arquivo, descricao) VALUES (?, ?, ?)',
-      [atendimentoId, caminhoArquivo, descricao]
+      'INSERT INTO fotos_atendimento (atendimento_id, arquivo) VALUES (?, ?)',
+      [atendimentoId, arquivo]
     );
   }
 
   async getFotos(atendimentoId) {
     const [rows] = await pool.execute(
-      'SELECT * FROM fotos_atendimento WHERE atendimento_id = ?',
+      'SELECT id, atendimento_id, arquivo FROM fotos_atendimento WHERE atendimento_id = ? ORDER BY id DESC',
       [atendimentoId]
     );
     return rows;
+  }
+
+  async getFotoById(fotoId) {
+    const [rows] = await pool.execute(
+      'SELECT * FROM fotos_atendimento WHERE id = ?',
+      [fotoId]
+    );
+    return rows[0];
+  }
+
+  async removeFoto(fotoId) {
+    await pool.execute(
+      'DELETE FROM fotos_atendimento WHERE id = ?',
+      [fotoId]
+    );
   }
 }
 

@@ -11,7 +11,8 @@ const { normalizeRole } = require('../utils/roles');
 
 class AuthService {
   async login(email, password) {
-    const user = await userRepository.findByEmail(email);
+    const normalizedEmail = String(email || '').trim().toLowerCase();
+    const user = await userRepository.findByEmail(normalizedEmail);
     
     if (!user) {
       throw new Error('Credenciais inválidas');
@@ -69,7 +70,8 @@ class AuthService {
   }
 
   async forgotPassword(email) {
-    const user = await userRepository.findByEmail(email);
+    const normalizedEmail = String(email || '').trim().toLowerCase();
+    const user = await userRepository.findByEmail(normalizedEmail);
     if (!user) {
       return { message: 'Se o email existir, você receberá instruções para redefinir sua senha' };
     }

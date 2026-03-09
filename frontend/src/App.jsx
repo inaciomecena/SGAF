@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { useAuth } from './contexts/useAuth';
 import { ToastProvider } from './contexts/ToastContext';
 import Login from './pages/Login';
 import MainLayout from './layouts/MainLayout';
@@ -13,8 +14,10 @@ import PropriedadeList from './pages/Propriedades/PropriedadeList';
 import PropriedadeForm from './pages/Propriedades/PropriedadeForm';
 import AtendimentoList from './pages/Atendimentos/AtendimentoList';
 import AtendimentoForm from './pages/Atendimentos/AtendimentoForm';
+import AtendimentoDetalhes from './pages/Atendimentos/AtendimentoDetalhes';
 import MaquinaList from './pages/Recursos/MaquinaList';
 import MaquinaForm from './pages/Recursos/MaquinaForm';
+import VeiculosList from './pages/Frota/VeiculosList';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Relatorios from './pages/Relatorios/Relatorios';
 import RelatorioProdutores from './pages/Relatorios/RelatorioProdutores';
@@ -145,10 +148,14 @@ function AppRoutes() {
 
         <Route path="atendimentos" element={<AtendimentoList />} />
         <Route path="atendimentos/novo" element={<AtendimentoForm />} />
+        <Route path="atendimentos/:id" element={<AtendimentoDetalhes />} />
 
         <Route path="recursos" element={<MaquinaList />} />
         <Route path="recursos/maquinas" element={<MaquinaList />} />
         <Route path="recursos/maquinas/novo" element={<MaquinaForm />} />
+        <Route path="recursos/:id/editar" element={<MaquinaForm />} />
+
+        <Route path="frota" element={<VeiculosList />} />
 
         <Route path="relatorios" element={<Relatorios />} />
         <Route path="relatorios/produtores" element={<RelatorioProdutores />} />

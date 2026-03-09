@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Building2, Plus, ScrollText, Users } from 'lucide-react';
 import municipioService from '../../services/municipioService';
 import { isAdminEstado } from '../../utils/roles';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/useAuth';
 
 export default function AdminPanel() {
   const { user } = useAuth();

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import logService from '../../services/logService';
 import { isAdminEstado, roleLabel } from '../../utils/roles';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/useAuth';
 
 const TAB_ACCESS = 'access';
 const TAB_SYSTEM = 'system';

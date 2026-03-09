@@ -3,7 +3,7 @@ import { Plus, Search, Mail, Phone } from 'lucide-react';
 import userService from '../../services/userService';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { isAdminEstado, normalizeRole, roleLabel } from '../../utils/roles';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../contexts/useAuth';
 
 export default function UserList() {
   const { user: currentUser } = useAuth();

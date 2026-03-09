@@ -27,10 +27,10 @@ class AuthController {
       });
       res.json(result);
     } catch (error) {
-      console.error(error);
       if (error.message === 'Credenciais inválidas') {
         return res.status(401).json({ message: error.message });
       }
+      console.error(error);
       res.status(500).json({ message: 'Erro interno do servidor' });
     }
   }
