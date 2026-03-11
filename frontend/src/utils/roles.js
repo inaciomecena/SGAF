@@ -39,6 +39,16 @@ export const canManageUsers = (role) => {
   return normalized === 'ADMIN_ESTADO' || normalized === 'GESTOR_MUNICIPAL';
 };
 
+export const canAccessPmaf = (role) => {
+  const normalized = normalizeRole(role);
+  return normalized === 'ADMIN_ESTADO' || normalized === 'TECNICO';
+};
+
+export const canAccessSim = (role) => {
+  const normalized = normalizeRole(role);
+  return normalized === 'TECNICO' || normalized === 'GESTOR_MUNICIPAL';
+};
+
 export const roleLabel = (role) => {
   const normalized = normalizeRole(role);
 

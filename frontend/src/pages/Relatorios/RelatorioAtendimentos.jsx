@@ -82,7 +82,7 @@ export default function RelatorioAtendimentos() {
         </table>
         
         <div className="mt-8 text-xs text-gray-400 text-center print:fixed print:bottom-4 print:left-0 print:w-full">
-          Sistema de Gestão da Agricultura Familiar - SGAF
+          SAF - Sistema Agricultura Familiar
         </div>
       </div>
     </div>

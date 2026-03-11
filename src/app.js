@@ -13,8 +13,11 @@ const dashboardRoutes = require('./routes/dashboardRoutes');
 const tabelaRoutes = require('./routes/tabelaRoutes');
 const syncRoutes = require('./routes/syncRoutes');
 const frotaRoutes = require('./routes/frotaRoutes');
+const pmafRoutes = require('./routes/pmafRoutes');
+const simRoutes = require('./routes/simRoutes');
 
 const app = express();
+const frontendDistPath = path.resolve(__dirname, '../frontend/dist');
 
 // Middlewares Globais
 app.use(helmet({
@@ -34,11 +37,19 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/tabelas', tabelaRoutes);
 app.use('/api/sync', syncRoutes);
 app.use('/api/frota', frotaRoutes);
+app.use('/api/pmaf', pmafRoutes);
+app.use('/api/sim', simRoutes);
 
-// Rota de Health Check
-app.get('/', (req, res) => {
-  res.json({ message: 'API SGAF Online', version: '1.0.0' });
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(frontendDistPath));
+  app.get(/^\/(?!api\/|uploads\/).*/, (_req, res) => {
+    res.sendFile(path.join(frontendDistPath, 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.json({ message: 'API SGAF Online', version: '1.0.0' });
+  });
+}
 
 // Middleware de erro global
 app.use((err, req, res, next) => {

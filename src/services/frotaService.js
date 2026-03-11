@@ -1,30 +1,40 @@
 const frotaRepository = require('../repositories/frotaRepository');
 
 const frotaService = {
+  ensureReady: async () => {
+    await frotaRepository.ensureSchema();
+  },
+
   // Veículos
   listarVeiculos: async (codigoIbge) => {
+    await frotaService.ensureReady();
     return await frotaRepository.listarVeiculos(codigoIbge);
   },
 
   criarVeiculo: async (dados) => {
+    await frotaService.ensureReady();
     // Validações básicas se necessário
     return await frotaRepository.criarVeiculo(dados);
   },
 
   atualizarVeiculo: async (id, dados) => {
+    await frotaService.ensureReady();
     return await frotaRepository.atualizarVeiculo(id, dados);
   },
 
   removerVeiculo: async (id) => {
+    await frotaService.ensureReady();
     return await frotaRepository.removerVeiculo(id);
   },
 
   // Abastecimentos
   listarAbastecimentos: async (veiculoId) => {
+    await frotaService.ensureReady();
     return await frotaRepository.listarAbastecimentos(veiculoId);
   },
 
   registrarAbastecimento: async (dados) => {
+    await frotaService.ensureReady();
     // Ao registrar abastecimento, atualiza o odômetro do veículo se for maior que o atual
     const veiculo = await frotaRepository.getVeiculoById(dados.veiculo_id);
     if (veiculo && dados.odometro > veiculo.odometro_atual) {
@@ -35,6 +45,7 @@ const frotaService = {
 
   // Transporte em Atendimento
   vincularAtendimento: async (atendimentoId, dadosTransporte) => {
+    await frotaService.ensureReady();
     const { veiculo_id, km_chegada } = dadosTransporte;
     
     // Calcula KM percorrido se não vier
@@ -64,6 +75,7 @@ const frotaService = {
   },
   
   getTransporte: async (atendimentoId) => {
+    await frotaService.ensureReady();
     return await frotaRepository.getTransporteByAtendimentoId(atendimentoId);
   }
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/useAuth';
-import { canManageUsers } from '../utils/roles';
+import { canAccessPmaf, canAccessSim, canManageUsers } from '../utils/roles';
 import { 
   Menu, Home, Users, Sprout, Tractor, Car,
   ClipboardList, LogOut, FileText, Building2, TableProperties, ChevronDown
@@ -28,6 +28,8 @@ export default function MainLayout() {
     { icon: Car, label: 'Frota', path: '/frota' },
     { icon: FileText, label: 'Relatórios', path: '/relatorios' },
     { icon: Building2, label: 'Meus Dados', path: '/meus-dados' },
+    { icon: FileText, label: 'SIM', path: '/sim', simOnly: true },
+    { icon: FileText, label: 'PMAF', path: '/pmaf', pmafOnly: true },
     { icon: Building2, label: 'SECRETARIA', path: '/secretaria', adminOnly: true },
   ];
 
@@ -50,12 +52,14 @@ export default function MainLayout() {
       >
         <div className="h-full flex flex-col">
           <div className="h-16 flex items-center px-6 border-b border-slate-800">
-            <span className="text-lg font-bold text-white tracking-wide">SGAF</span>
+            <span className="text-lg font-bold text-white tracking-wide">SAF</span>
           </div>
 
           <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
             {menuItems.map((item) => {
               if (item.adminOnly && !canManageUsers(user?.perfil)) return null;
+              if (item.pmafOnly && !canAccessPmaf(user?.perfil)) return null;
+              if (item.simOnly && !canAccessSim(user?.perfil)) return null;
               
               const isActive = item.path === '/'
                 ? location.pathname === '/'
@@ -143,7 +147,7 @@ export default function MainLayout() {
               <Menu className="w-6 h-6" />
             </button>
             <div>
-              <p className="text-sm text-slate-500">Sistema de Gestão Agrícola Familiar</p>
+              <p className="text-sm text-slate-500">Sistema Agricultura Familiar</p>
               <p className="text-base font-semibold text-slate-800">Painel de Controle</p>
             </div>
           </div>

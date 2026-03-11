@@ -28,7 +28,9 @@ import AdminLogs from './pages/Admin/AdminLogs';
 import CulturaList from './pages/Tabelas/CulturaList';
 import CulturaForm from './pages/Tabelas/CulturaForm';
 import MeusDados from './pages/Secretaria/MeusDados';
-import { canManageUsers } from './utils/roles';
+import PmafHome from './pages/PMAF/PmafHome';
+import SimHome from './pages/SIM/SimHome';
+import { canAccessPmaf, canAccessSim, canManageUsers } from './utils/roles';
 
 const PrivateRoute = ({ children }) => {
   const { signed, loading } = useAuth();
@@ -43,6 +45,16 @@ const PrivateRoute = ({ children }) => {
 const AdminRoute = ({ children }) => {
   const { user } = useAuth();
   return canManageUsers(user?.perfil) ? children : <Navigate to="/" />;
+};
+
+const PmafRoute = ({ children }) => {
+  const { user } = useAuth();
+  return canAccessPmaf(user?.perfil) ? children : <Navigate to="/" />;
+};
+
+const SimRoute = ({ children }) => {
+  const { user } = useAuth();
+  return canAccessSim(user?.perfil) ? children : <Navigate to="/" />;
 };
 
 function AppRoutes() {
@@ -167,6 +179,32 @@ function AppRoutes() {
         <Route
           path="meus-dados"
           element={<MeusDados />}
+        />
+
+        <Route
+          path="pmaf"
+          element={(
+            <PmafRoute>
+              <PmafHome />
+            </PmafRoute>
+          )}
+        />
+        <Route
+          path="pmaf/:codigoIbge"
+          element={(
+            <PmafRoute>
+              <PmafHome />
+            </PmafRoute>
+          )}
+        />
+
+        <Route
+          path="sim"
+          element={(
+            <SimRoute>
+              <SimHome />
+            </SimRoute>
+          )}
         />
       </Route>
     </Routes>

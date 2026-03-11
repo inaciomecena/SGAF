@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Plus, Search, Edit, Trash2, Fuel, Car, Calendar, Gauge, History } from 'lucide-react';
 import frotaService from '../../services/frotaService';
 import { useToast } from '../../contexts/ToastContext';
 
 export default function VeiculosList() {
-  const toast = useToast();
+  const { error: toastError, success: toastSuccess } = useToast();
   const [veiculos, setVeiculos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,32 +36,31 @@ export default function VeiculosList() {
     tipo_combustivel: 'Gasolina'
   });
 
-  useEffect(() => {
-    carregarVeiculos();
-  }, []);
-
-  const carregarVeiculos = async () => {
+  const carregarVeiculos = useCallback(async () => {
     try {
       setLoading(true);
       const data = await frotaService.listarVeiculos();
       setVeiculos(data);
-    } catch (error) {
-      toast.error('Erro ao carregar veículos');
-      console.error(error);
+    } catch {
+      toastError('Erro ao carregar veículos');
     } finally {
       setLoading(false);
     }
-  };
+  }, [toastError]);
+
+  useEffect(() => {
+    carregarVeiculos();
+  }, [carregarVeiculos]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (editando) {
         await frotaService.atualizarVeiculo(editando.id, formData);
-        toast.success('Veículo atualizado com sucesso');
+        toastSuccess('Veículo atualizado com sucesso');
       } else {
         await frotaService.criarVeiculo(formData);
-        toast.success('Veículo cadastrado com sucesso');
+        toastSuccess('Veículo cadastrado com sucesso');
       }
       setModalOpen(false);
       setEditando(null);
@@ -75,8 +74,8 @@ export default function VeiculosList() {
         status: 'disponivel'
       });
       carregarVeiculos();
-    } catch (error) {
-      toast.error('Erro ao salvar veículo');
+    } catch {
+      toastError('Erro ao salvar veículo');
     }
   };
 
@@ -87,7 +86,7 @@ export default function VeiculosList() {
         ...abastecimentoData,
         veiculo_id: veiculoSelecionado.id
       });
-      toast.success('Abastecimento registrado com sucesso');
+      toastSuccess('Abastecimento registrado com sucesso');
       setAbastecimentoModalOpen(false);
       setVeiculoSelecionado(null);
       setAbastecimentoData({
@@ -99,8 +98,8 @@ export default function VeiculosList() {
         tipo_combustivel: 'Gasolina'
       });
       carregarVeiculos(); // Atualiza odômetro na lista
-    } catch (error) {
-      toast.error('Erro ao registrar abastecimento');
+    } catch {
+      toastError('Erro ao registrar abastecimento');
     }
   };
 
@@ -122,10 +121,10 @@ export default function VeiculosList() {
     if (window.confirm('Tem certeza que deseja remover este veículo?')) {
       try {
         await frotaService.removerVeiculo(id);
-        toast.success('Veículo removido com sucesso');
+        toastSuccess('Veículo removido com sucesso');
         carregarVeiculos();
-      } catch (error) {
-        toast.error('Erro ao remover veículo');
+      } catch {
+        toastError('Erro ao remover veículo');
       }
     }
   };
@@ -142,8 +141,8 @@ export default function VeiculosList() {
       const dados = await frotaService.listarAbastecimentos(veiculo.id);
       setHistoricoAbastecimentos(dados);
       setHistoricoModalOpen(true);
-    } catch (error) {
-      toast.error('Erro ao carregar histórico');
+    } catch {
+      toastError('Erro ao carregar histórico');
     }
   };
 

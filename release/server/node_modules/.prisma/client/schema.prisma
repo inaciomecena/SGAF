@@ -1,0 +1,386 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum TipoPessoa {
+  FISICA
+  JURIDICA
+}
+
+enum AtividadePrincipal {
+  CARNE
+  LEITE
+  OVOS
+  MEL
+  PESCADO
+}
+
+enum StatusEstabelecimento {
+  EM_ANALISE
+  PENDENTE_AJUSTES
+  EM_CREDENCIAMENTO
+  APROVADO
+  REPROVADO
+}
+
+enum StatusDocumento {
+  PENDENTE
+  ENVIADO
+  APROVADO
+  REJEITADO
+}
+
+enum CargoUsuario {
+  ADMIN
+  ANALISTA
+  FISCAL
+}
+
+enum TipoSolicitacao {
+  REGISTRO_ESTABELECIMENTO
+  REGISTRO_PRODUTO
+  RENOVACAO
+}
+
+enum StatusProtocolo {
+  EM_ANALISE
+  EM_VISTORIA
+  PENDENTE_AJUSTES
+  APROVADO
+  REPROVADO
+}
+
+enum TipoVistoria {
+  PREVIA
+  ROTINA
+  DENUNCIA
+  REINSPECAO
+}
+
+enum ResultadoVistoria {
+  APROVADO
+  REPROVADO
+  COM_RESTRICOES
+}
+
+enum TipoRespostaChecklist {
+  C
+  NC
+  NA
+  CR
+}
+
+enum TipoDocumentoLegal {
+  TAC
+  TERMO_FISCALIZACAO
+  AUTO_INFRACAO
+  LAUDO
+}
+
+enum TipoMapaRegistro {
+  MATERIA_PRIMA
+  PRODUCAO
+  EXPEDICAO
+}
+
+model Usuario {
+  id         String      @id @default(uuid())
+  nome       String
+  email      String      @unique
+  senha      String
+  cargo      CargoUsuario @default(ADMIN)
+  ativo      Boolean     @default(true)
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+
+  vistorias  Vistoria[]
+}
+
+model Estabelecimento {
+  id                                   String   @id @default(uuid())
+  tipo_pessoa                          TipoPessoa @default(JURIDICA)
+  cnpj_cpf                             String   @unique
+  razao_social                         String
+  nome_fantasia                        String?
+  inscricao_estadual                   String?
+  endereco                             String
+  numero                               String?
+  bairro                               String?
+  complemento                          String?
+  municipio                            String
+  uf                                   String   @default("MT")
+  cep                                  String
+  telefone                             String
+  email                                String   @unique
+  atividade_principal                  AtividadePrincipal
+  classificacao                        String?
+  agricultura_familiar                 Boolean  @default(false)
+  latitude                             String?
+  longitude                            String?
+  localizacao                          String?
+  produtos                             String?
+  possui_capacitacao                   Boolean  @default(false)
+  possui_assistencia_tecnica           Boolean  @default(false)
+  possui_registro_anterior             Boolean  @default(false)
+  compartilha_area_producao            Boolean  @default(false)
+  resp_cadastro_nome                   String?
+  resp_cadastro_entidade               String?
+  resp_cadastro_is_dono                Boolean  @default(false)
+  ciente_requisitos                    Boolean  @default(false)
+  area_construida                      Decimal  @db.Decimal(10, 2)
+  faturamento_anual                    Decimal? @db.Decimal(15, 2)
+  atende_limite_area                   Boolean  @default(true)
+  atende_limite_faturamento            Boolean  @default(true)
+  participa_outra_empresa              Boolean  @default(false)
+  possui_filial                        Boolean  @default(false)
+  participa_capital_outra              Boolean  @default(false)
+  socio_outra_empresa_nao_beneficiada  Boolean  @default(false)
+  socio_administrador_outra            Boolean  @default(false)
+  resp_legal_nome                      String
+  resp_legal_cpf                       String
+  resp_tecnico_nome                    String?
+  resp_tecnico_conselho                String?
+  senha                                String?
+  primeiro_acesso                      Boolean  @default(true)
+  status                               StatusEstabelecimento @default(EM_ANALISE)
+  created_at                           DateTime @default(now())
+  updated_at                           DateTime @updatedAt
+
+  responsaveis Responsavel[]
+  documentos   Documento[]
+  produtos_rel Produto[]
+  protocolos   Protocolo[]
+  vistorias    Vistoria[]
+  mapas        MapaMensal[]
+  titulos      RegistroTitulo[]
+  checklist_preenchimentos ChecklistPreenchimento[]
+}
+
+model Responsavel {
+  id                 String         @id @default(uuid())
+  estabelecimento_id String
+  estabelecimento    Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  cpf                String
+  nome               String
+  funcao             String
+  conselho           String?
+  created_at         DateTime @default(now())
+}
+
+model Documento {
+  id                 String         @id @default(uuid())
+  estabelecimento_id String
+  estabelecimento    Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  tipo               String
+  url                String?
+  status             StatusDocumento @default(PENDENTE)
+  data_envio         DateTime?
+  created_at         DateTime @default(now())
+}
+
+model Categoria {
+  id         String   @id @default(uuid())
+  nome       String   @unique
+  created_at DateTime @default(now())
+  produtos   Produto[]
+}
+
+model Produto {
+  id                      String   @id @default(uuid())
+  estabelecimento_id      String
+  estabelecimento         Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  categoria_id            String?
+  categoria               Categoria? @relation(fields: [categoria_id], references: [id])
+  nome                    String
+  marca                   String?
+  composicao              String?  @db.Text
+  processo_fabricacao     String?  @db.Text
+  tipo_embalagem          String?
+  peso_volume             String?
+  rotulo_url              String?
+  prazo_validade          String?
+  temperatura_conservacao String?
+  status                  StatusProtocolo @default(EM_ANALISE)
+  created_at              DateTime @default(now())
+  updated_at              DateTime @updatedAt
+
+  mapa_itens MapaItem[]
+}
+
+model Protocolo {
+  id                 String   @id @default(uuid())
+  numero_protocolo   String   @unique
+  estabelecimento_id String
+  estabelecimento    Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  tipo               TipoSolicitacao
+  status_atual       StatusProtocolo @default(EM_ANALISE)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  eventos ProtocoloEvento[]
+}
+
+model ProtocoloEvento {
+  id            String   @id @default(uuid())
+  protocolo_id  String
+  protocolo     Protocolo @relation(fields: [protocolo_id], references: [id], onDelete: Cascade)
+  status        StatusProtocolo
+  observacao    String?  @db.Text
+  created_at    DateTime @default(now())
+}
+
+model ChecklistModelo {
+  id             String   @id @default(uuid())
+  titulo         String
+  tipo_industria AtividadePrincipal
+  versao         String
+  ativo          Boolean  @default(true)
+  created_at     DateTime @default(now())
+
+  itens     ChecklistItem[]
+  vistorias Vistoria[]
+  preenchimentos ChecklistPreenchimento[]
+}
+
+model ChecklistItem {
+  id             String   @id @default(uuid())
+  modelo_id      String
+  modelo         ChecklistModelo @relation(fields: [modelo_id], references: [id], onDelete: Cascade)
+  grupo          String
+  texto_pergunta String  @db.Text
+  ordem          Int
+  peso_risco     String?
+  created_at     DateTime @default(now())
+
+  respostas VistoriaResposta[]
+  respostas_preenchimento ChecklistPreenchimentoItem[]
+}
+
+model ChecklistPreenchimento {
+  id                 String   @id @default(uuid())
+  estabelecimento_id String
+  estabelecimento    Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  checklist_modelo_id String
+  checklist_modelo   ChecklistModelo @relation(fields: [checklist_modelo_id], references: [id], onDelete: Cascade)
+  status             String   @default("RASCUNHO")
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  itens ChecklistPreenchimentoItem[]
+}
+
+model ChecklistPreenchimentoItem {
+  id               String   @id @default(uuid())
+  preenchimento_id String
+  preenchimento    ChecklistPreenchimento @relation(fields: [preenchimento_id], references: [id], onDelete: Cascade)
+  item_id          String
+  item             ChecklistItem @relation(fields: [item_id], references: [id], onDelete: Cascade)
+  resposta         TipoRespostaChecklist
+  observacao       String? @db.Text
+  created_at       DateTime @default(now())
+}
+
+model Vistoria {
+  id                     String   @id @default(uuid())
+  estabelecimento_id     String
+  estabelecimento        Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  fiscal_user_id         String
+  fiscal                 Usuario @relation(fields: [fiscal_user_id], references: [id])
+  checklist_modelo_id    String?
+  checklist_modelo       ChecklistModelo? @relation(fields: [checklist_modelo_id], references: [id])
+  data_realizacao        DateTime @default(now())
+  tipo_vistoria          TipoVistoria @default(PREVIA)
+  pontuacao_final        Decimal? @db.Decimal(10, 2)
+  resultado              ResultadoVistoria?
+  parecer_final          String? @db.Text
+  dados_formulario       Json?
+  geolocalizacao_checkin String?
+  created_at             DateTime @default(now())
+  updated_at             DateTime @updatedAt
+
+  respostas  VistoriaResposta[]
+  fotos      VistoriaFoto[]
+  documentos DocumentoLegal[]
+}
+
+model VistoriaResposta {
+  id         String   @id @default(uuid())
+  vistoria_id String
+  vistoria   Vistoria @relation(fields: [vistoria_id], references: [id], onDelete: Cascade)
+  item_id    String
+  item       ChecklistItem @relation(fields: [item_id], references: [id], onDelete: Cascade)
+  resposta   TipoRespostaChecklist
+  opcoes_marcadas Json?
+  observacao String? @db.Text
+  created_at DateTime @default(now())
+}
+
+model VistoriaFoto {
+  id               String   @id @default(uuid())
+  vistoria_id      String
+  vistoria         Vistoria @relation(fields: [vistoria_id], references: [id], onDelete: Cascade)
+  item_id          String?
+  caminho_arquivo  String
+  data_hora_foto   DateTime @default(now())
+  coordenadas_foto String?
+}
+
+model DocumentoLegal {
+  id                 String   @id @default(uuid())
+  vistoria_id        String?
+  vistoria           Vistoria? @relation(fields: [vistoria_id], references: [id], onDelete: SetNull)
+  estabelecimento_id String?
+  tipo               TipoDocumentoLegal
+  conteudo_gerado    String? @db.LongText
+  arquivo_url        String?
+  data_emissao       DateTime @default(now())
+  prazo_cumprimento  DateTime?
+  status_cumprimento String?
+  created_at         DateTime @default(now())
+}
+
+model RegistroTitulo {
+  id                  String   @id @default(uuid())
+  estabelecimento_id  String
+  estabelecimento     Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  numero_registro     String   @unique
+  data_concessao      DateTime
+  data_validade       DateTime
+  arquivo_pdf_assinado String?
+  created_at          DateTime @default(now())
+}
+
+model MapaMensal {
+  id                 String   @id @default(uuid())
+  estabelecimento_id String
+  estabelecimento    Estabelecimento @relation(fields: [estabelecimento_id], references: [id], onDelete: Cascade)
+  mes_referencia     Int
+  ano_referencia     Int
+  data_envio         DateTime?
+  status             String   @default("RASCUNHO")
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  itens MapaItem[]
+}
+
+model MapaItem {
+  id                  String   @id @default(uuid())
+  mapa_id             String
+  mapa                MapaMensal @relation(fields: [mapa_id], references: [id], onDelete: Cascade)
+  tipo_registro       TipoMapaRegistro
+  data_ocorrencia     DateTime
+  produto_id          String?
+  produto             Produto? @relation(fields: [produto_id], references: [id], onDelete: SetNull)
+  produto_nome        String?
+  quantidade          Decimal? @db.Decimal(10, 3)
+  unidade_medida      String? @default("kg")
+  lote                String?
+  origem_destino_info String?
+  created_at          DateTime @default(now())
+}

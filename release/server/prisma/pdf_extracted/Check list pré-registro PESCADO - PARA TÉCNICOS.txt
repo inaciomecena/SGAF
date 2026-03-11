@@ -1,0 +1,604 @@
+CHECK LIST PRÉ-REGISTRO PESCADO DATA / / TF Nº
+Estabelecimento: Município:
+Proprietário / responsável: Telefone(s):
+N° funcionários - Familiar: ♀ ♂ - Não Familiar: ♀ ♂ Coordenadas: S W0
+Possui algum registro em Serviços de Inspeção? Não
+Sim Ação requerida:
+Vistoria prévia de estabelecimento
+Vistoria final de estabelecimento
+Possui item impeditivo para registro? Não
+Sim (Qual? )
+Legenda: C – Conforme; CR – Com restrições; NC – Não conforme; NA – Não se aplica.
+Nos itens de “marcar x” mais de uma opção pode ser selecionada, de acordo com a realidade do estabelecimento (podendo ou não estar conforme).
+Os itens descritos em linhas com coloração diferente são requisitos mínimos obrigatórios para registro (e alguns são meramente informativos).
+Situações não citadas neste checklist e/ou prazos podem ser alterados de acordo com a situação encontrada em cada estabelecimento (análise técnica).
+01. PARTE GERAL:
+Item Requisito C CR NC NA Observação / Prazo
+01
+ÁREA EXTERNA
+Afastado das vias públicas
+afastamento mínimo de 5m das vias públicas
+afastamento menor do que 5m das vias públicas, com medidas
+mitigadoras
+afastamento menor do que 5m das vias públicas, sem medidas
+mitigadoras (sendo possível instalá-las)
+afastamento menor do que 5m das vias públicas, sem medidas
+mitigadoras (não sendo possível instalá-las)
+Imediato - para apresentar as medidas mitigadoras de
+contaminação
+Prazo ? - para instalar as medidas
+* se não é possível instalar as medidas mitigadoras, é impeditivo
+para registro.
+02
+Área suficiente para circulação interna de veículos (o veículo não estaciona
+em vias públicas, permanecendo totalmente dentro do perímetro do
+estabelecimento e/ou propriedade) nas operações de recepção e expedição.
+
+-- 1 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+03 Em boas condições de higiene e organização. Ausência de entulho, materiais
+em desuso, lixo, etc
+Imediato - se quantidade exagerada ou for lixo
+02 meses - se pequena ou média quantidade
+04 Situado em zona isenta de contaminantes ambientais, como fumaça, poeira,
+odores indesejáveis, aterro sanitário, lixão, etc.
+* se está numa com contaminantes ambientais, é impeditivo para
+registro.
+05
+Área não sujeita a inundações
+facilidade de escoamento das águas pluviais
+distância adequada de rios, córregos, lagoas etc.
+* se está numa área sujeita a inundações, é impeditivo para registro.
+06
+Delimitação adequada do estabelecimento
+delimitação total delimitação parcial muro cerca de arame
+tela alambrado
+04 meses - se presença de animais soltos na propriedade.
+18 meses - se ausência de animais
+07 Ausência de animais ao redor do estabelecimento * Seguir os prazos determinados para a delimitação, caso haja
+presença de animais (ou vestígios da presença dos mesmos).
+08
+Circulação de veículos (do portão de entrada até o local onde descarrega a
+matéria-prima e/ou embarca o produto) asfalto/cimento
+bloco de concreto/pav’s brita
+24 meses - para a pavimentação na área de circulação de veículos.
+09
+Circulação de pessoas (da dependência sanitária/vestiário até o gabinete
+sanitário)
+asfalto/cimento bloco brita cerâmica
+possui cobertura não possui cobertura
+30 dias - capa de chuva e guarda-chuva
+09 meses - para a pavimentação se a área de circulação de
+pessoas for terra.
+18 meses - para a pavimentação se a área de circulação de
+pessoas for grama ou brita
+10
+Controle de pragas
+ausência de sinais indicativos da presença de pragas na área externa
+presença de sinais indicativos da presença de pragas na área externa
+armadilhas iscas barreiras
+30 dias - se sinais indicativos de pragas na área externa do
+estabelecimento.
+11
+ÁGUA DE ABASTECIMENTO
+Origem da água de abastecimento
+rede pública nascente poço artesiano
+rios / córregos
+Somente informativo.
+12
+Rede de abastecimento água - Capacidade de armazenamento l
+anotação diária do teor de cloro na água
+última limpeza do reservatório de água há menos de 06 meses
+30 dias - anotação diária do teor de cloro na água.
+* Limpeza de acordo com o Manual de BPF
+13
+Sistema de filtragem da água captada (quando não é proveniente da rede
+pública)
+filtro local adequado funcionando
+
+-- 2 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+14 Dosador e medidor cloro (inclusive quando proveniente da rede pública)
+local adequado funcionando/possui pastilha
+15
+Rede de abastecimento de água
+presença de reservatório de água presença de tampa no reservatório
+boas condições de conservação, sem apresentar vazamentos, trincas,
+mofos ou infiltrações, etc.
+16
+ENERGIA
+Disponibilidade de rede elétrica
+monofásica bifásica trifásica 110 220
+Somente informativo.
+17
+ÁREA DE PRODUÇÃO
+Presença de gabinete de higienização em todos os acessos às áreas de
+produção.
+18
+Gabinete de higienização
+lava botas escova para limpeza das botas
+recipiente com sabão líquido neutro e inodoro
+torneira de acionamento não manual
+torneira de acionamento manual
+recipiente com papel toalha não reciclado
+recipiente com papel toalha reciclado
+lixeira com tampa de acionamento não manual funcionando
+possui cobertura possui paredes
+boas condições de conservação e limpeza
+30 dias - sabão líquido neutro e inodoro; papel toalha de primeiro
+uso.
+03 meses - substituição da torneira para acionamento não manual.
+04 meses - cobertura.
+09 meses - correção do fluxo ou fechamento com paredes.
+19
+Ventilação
+natural exaustor climatização
+adequada (tipo de produto, sensação térmica etc)
+20
+Iluminação/energia
+natural artificial
+protegida contra estilhaçamento/material que não estilhaça
+material que estilhaça e não protegida
+fiação embutida nas paredes fiação externa por tubulação
+sem fiação exposta tomadas com proteção contra água
+tomadas sem proteção contra água
+30 dias - instalação de protetores para lâmpadas, troca de lâmpadas
+queimadas, correção da fiação elétrica, instalação de proteção contra
+água.
+
+-- 3 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+21
+Hidro-sanitário
+encanamento embutido nas paredes
+encanamento externo às paredes
+presença de rede de esgoto sanitário junto a paredes, pisos e tetos da
+área industrial
+ausência de rede de esgoto sanitário junto a paredes, pisos e tetos da
+área industrial
+22 Pé direito
+≥ 3m < 3m com medidas compensatórias
+Imediato - para apresentar as medidas compensatórias (se
+necessário - condensação, baixa ventilação, pouca iluminação).
+Prazo ? - para instalar as medidas.
+23
+Cobertura, revestimento e forros
+telha metálica telha colonial telhas de fibrocimento
+forro de PVC forro de laje pintado com tinta lavável
+forro de laje revestido de cerâmica
+forro de gesso pintado com tinta lavável
+boas condições de higiene condições irregulares de higiene
+24
+Cobertura, revestimento e forros
+boas condições de conservação
+condições irregulares de conservação
+04 meses - para manutenção, se pequena/não permitindo entrada
+de sujidades, porém devendo apresentar boa higienização.
+25
+Janelas e/ou óculos
+alumínio vidro madeira
+boas condições de higiene condições irregulares de higiene
+26
+Janelas e/ou óculos
+tela milimétrica tiraflex presença de película nos vidros
+ausência de película nos vidros pintura com tinta lavável na madeira
+ausência de pintura na madeira boas condições de conservação
+condições irregulares de conservação
+30 dias - trocar telas rasgadas; película de proteção nos vidros;
+pintura da madeira com tinta lavável.
+04 meses - trocar janelas em mau estado de conservação
+12 meses - trocar janelas se bom estado de conservação, mas de
+material inadequado.
+27
+Portas e batentes
+alumínio ferro madeira vidro
+fácil abertura da porta entre gabinete sanitário e área útil (sentido correto e
+não dependente de maçaneta)
+abertura manual da porta entre gabinete sanitário e área de produção
+(sentido incorreto e/ou dependente de maçaneta)
+boas condições de higiene condições irregulares de higiene
+
+-- 4 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+28
+Portas e batentes
+presença de película nos vidros ausência de película nos vidros
+pintura com tinta lavável na madeira e no ferro
+ausência de pintura na madeira e no ferro
+fechamento automático da porta entre gabinete sanitário e área de
+produção
+ausência de sistema de fechamento automático da porta
+sistema de vedação contra pragas e sujidades na parte inferior da porta
+ausência de vedação contra pragas e sujidades na parte inferior da porta
+boas condições de conservação
+condições irregulares de conservação
+30 dias - película de proteção (porta de vidro); pintura da madeira ou
+do ferro com tinta lavável.
+02 meses - substituição se em mau estado de conservação
+independente do material,
+04 meses - fechamento automático, sistema “vai-e-vem”, e sistema
+de vedação.
+09 meses - substituição por portas e batentes que não sejam de
+material adequado por outras de material adequado (desde que as
+atuais estejam em bom estado de conservação e higiene).
+29
+Parede
+cerâmica / azulejo tinta lavável isopainel
+revestidas de material não absorvente e lavável por no mín. 2m
+revestidas por material não absorvente e lavável em toda a sua extensão
+pintura descamável / sem revestimento
+boas condições de higiene condições irregulares de higiene
+30
+Parede
+cor clara cor escura
+rejuntes de cor clara rejuntes de cor escura
+rejuntes com espaçamento mínimo
+rejuntes com grande espaçamento
+boas condições de conservação
+condições irregulares de conservação
+04 meses - para a manutenção do revestimento em mau estado de
+conservação, porém devendo apresentar boa higienização.
+09 meses – substituição do rejunte escuro por outro de cor clara
+31
+Piso
+cerâmica korodur gressit
+industrial monolítico material adequado
+boas condições de higiene condições irregulares de higiene
+32
+Piso
+cor clara cor escura
+com declividade adequada (sem acúmulo de água no piso)
+boas condições de conservação
+condições irregulares de conservação
+04 meses - para a manutenção do revestimento em mau estado de
+conservação
+09 meses - para troca completa de todo o piso (cor escura ou
+danificado).
+33 Presença de pia para higienização de mãos na área de produção
+
+-- 5 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+34
+Presença de pia para higienização de mãos na área de produção
+pia com torneira de acionamento não manual
+pia com torneira de acionamento manual
+recipiente com sabão líquido neutro e inodoro
+papel toalha não reciclado (opcional)
+lixeira (obrigatória se presença do papel toalha)
+30 dias - sabão liquido neutro e inodoro; papel toalha de primeiro
+uso.
+02 meses - instalação de torneira de acionamento não manual.
+35 Sistema de provimento de água quente
+adequado bom estado de conservação 04 meses - manutenção se mau estado de conservação
+36 Suporte próprio e fixo para mangueiras da área de produção 30 dias - instalação dos suportes
+37 Sistema de drenagem eficiente * Deve ser avaliado o impacto na inocuidade do produto.
+Dificilmente visualiza no momento da vistoria pré-registro.
+38
+Rede de esgoto
+canaleta ralo sifonados não sifonado
+parafusado não parafusado sistema abre e fecha
+não possui sistema abre e fecha
+no canto da área de produção no meio da área de produção
+30 dias - parafusar ralo e instalar sistema abre e fecha.
+06 meses - troca do ralo comum para o sifonado.
+* Não é obrigatório ser no canto da área de produção.
+39
+Origem da matéria-prima
+produção primária tanque
+própria propriedade terceiros (propriedade rural)
+estabelecimento sob inspeção
+cadastro do produtor junto aos órgão oficial de defesa sanitária animal
+registro atualizado dos fornecedores de matéria-prima
+(nome da propriedade, quantidade média fornecida e endereço)
+se estabelecimento em zona urbana: matéria-prima da região/estado
+30 dias - apresentar junto ao SIAPP, lista atualizada dos
+fornecedores.
+40
+Ingredientes e demais insumos:
+origem registrada/aprovada na embalagem original
+fora da embalagem original e identificados
+fora da embalagem original e não identificados
+30 dias - apresentar junto ao SIAPP, lista atualizada dos
+fornecedores (quando cabível).
+41
+Recepção da matéria-prima
+independente/exclusiva via óculo túnel de lavagem
+entrada única (recepção + expedição)
+veículo encosta direto na plataforma
+funcionário do veículo transportador não acessa a área de produção
+42 Recepção da matéria-prima
+possui prolongamento da cobertura 18 meses - prolongamento de cobertura
+
+-- 6 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+43
+Local para armazenamento de matéria-prima
+adequado organizado (PVPS) fluxograma adequado
+não há local para armazenamento da matéria-prima (chegou-processou)
+boas condições de conservação boas condições de higiene
+condições irregulares de conservação
+condições irregulares de higiene
+44
+Utensílios
+de material adequado, não absorvente, resistentes, próprio para uso em
+alimentos
+separados e identificados comestíveis de não comestíveis
+boas condições de higiene condições irregulares de higiene
+45
+Utensílios
+quantidade suficiente em todos os setores/áreas e para todos os
+funcionários
+uso exclusivo local para lavagem adequado
+local para armazenamento adequado
+boas condições de conservação
+condições irregulares de conservação
+30 dias - adequar e identificar o local, adquirir em quantidade
+suficiente.
+46
+Equipamentos
+material adequado para área de produção (sem rachaduras, sem
+porosidades, trincas, ferrugem, soldas ou emendas grosseiras que dificultem
+a higienização ou de material não absorvente)
+de uso exclusivo na agroindústria.
+boas condições de higiene condições irregulares de higiene
+47
+Equipamentos
+obedecem um fluxograma operacional
+não obedecem um fluxograma operacional, mas é possível fazer o ajuste
+afastamento suficiente entre si e em relação a colunas, paredes e
+divisórias
+boas condições de conservação
+condições irregulares de conservação
+30 dias - ajuste do fluxograma
+48
+Mesas e bancadas
+granito azulejo inox
+boas condições de higiene condições irregulares de higiene
+
+-- 7 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+49
+Mesas e bancadas
+em bom estado de conservação (sem rachaduras, sem porosidades,
+trincas, ferrugem, soldas ou emendas grosseiras que dificultem a
+higienização ou de material não absorvente.)
+condições irregulares de conservação
+02 meses - troca/reforma dos pés
+12 meses - se for de material inadequado, porém em bom estado de
+conservação e higiene.
+50
+Instalações de frio
+adequadas ao tipo de matéria-prima e produto geladeira
+freezer câmara ausência de ralos e de canaletas nas câmaras
+organizada ausência de itens não pertinentes
+boas condições de higiene condições irregulares de higiene
+51
+Instalações de frio
+dispositivo para controle de temperatura
+desnível em direção à porta estrados removíveis
+pallet´s prateleiras de material adequado
+boas condições de conservação
+condições irregulares de conservação
+30 dias - dispositivo para controle de temperatura; colocação de
+estrados/pallets/estrados/prateleiras.
+52
+Controle de temperatura nas áreas de:
+armazenamento da matéria-prima
+processamento armazenamento de produtos
+30 dias - anotação em planilha (se aplicável).
+53
+Local para armazenamento de produtos acabados
+fluxograma adequado organizado (PVPS)
+freezer câmara de resfriamento/congelamento
+prateleiras pallets/estrados caixas empilháveis
+boas condições de conservação boas condições de higiene
+condições irregulares de conservação
+condições irregulares de higiene
+54
+Expedição
+independente/exclusiva via óculo via porta
+veículo encosta direto na plataforma
+entrada única (recepção + expedição)
+55 Expedição de produtos
+possui prolongamento na expedição 18 meses - prolongamento de cobertura na área de expedição.
+56
+Fluxograma de produção adequado
+equipamentos e áreas de produção sem contrafluxo
+recepção de matéria-prima e expedição de produtos ocorrem na mesma
+área, em momentos distintos.
+
+-- 8 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+57
+Armazenamento - embalagens e/ou rótulos
+área organizada e limpa estrutura física adequada
+dimensões suficientes prateleiras/estrados/pallet´s
+recipientes com tampa para armazenamento
+exclusivo compartilhado externo ao estabelecimento
+no interior/contíguo da área de produção
+30 dias - recipientes adequados para armazenamento
+04 meses - instalação de prateleiras/estrados/pallet´s, evitando
+empilhamento.
+09 meses - se reforma ou construção devido estrutura física
+inadequada ou dimensões insuficientes, desde que os mesmos sejam
+mantidos protegidos.
+58
+Armazenamento - materiais de limpeza
+produtos registrados e no prazo de validade
+área organizada e limpa estrutura física adequada
+dimensões suficientes prateleiras/estrados/pallet´s
+vassouras e rodos pendurados na posição correta
+exclusivo compartilhado externo ao estabelecimento
+no interior/contíguo da área de produção
+30 dias - organização; posição correta para pendurar vassouras e
+rodos.
+04 meses - instalação de prateleiras/estrados/pallet´s, evitando
+empilhamento.
+09 meses - se reforma ou construção devido a estrutura física
+inadequada ou dimensões insuficientes.
+59 Ausência de equipamentos e/ou utensílios que não são pertinentes a
+nenhuma etapa do processamento em todas as áreas/setores/salas
+60 Ausência de sinais indicativos da presença de pragas dentro da área de
+processamento
+61
+FUNCIONÁRIOS
+Ausência de uso de adornos (brincos, alianças, cordões, relógios etc), assim
+como unhas compridas e esmalte/base.
+62 Os homens que usam barba/bigode fazem uso adequado de máscara
+descartável.
+63
+Uniformes
+cor clara quantidade suficiente
+boas condições de conservação boas condições de higiene
+64
+TRANSPORTE
+Tipo de veículo:
+próprio terceirizado refrigerado baú
+baú isotérmico coberto passeio
+02 meses - adequar veículo.
+
+-- 9 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+65
+Local / forma de transporte do produto
+organizado caixa/embalagem secundária caixa reutilizável
+caixa isotérmica caixa de isopor
+termômetro e planilha de controle de temperatura
+boas condições de conservação boas condições de higiene
+condições irregulares de conservação
+☐condições irregulares de higiene
+30 dias - termômetro para controle da temperatura durante o
+transporte.
+02 meses - substituir as caixas de isopor e as muito danificadas por
+caixas de material lavável e não absorvente.
+66 Local adequado para higienização e depósito de caixas usadas para o
+transporte dos produtos.
+67
+OPERACIONAL
+Manual de Boas Práticas de Fabricação Recomendado em 06 meses
+68 Atestado de saúde ocupacional 06 meses - apresentação da ASO para manipulação de alimentos
+69
+Curso de Boas Práticas de Fabricação
+proprietário/responsável legal pelo estabelecimento
+funcionários envolvidos diretamente no processo produtivo
+Recomendado em 06 meses
+70 Identificação de todos os setores/áreas 30 dias - fixar as placas identificativas.
+71 Presença de cartazes orientativos nos locais pertinentes 30 dias - fixar cartazes orientativos.
+72
+DEPENDÊNCIAS AUXILIARES
+Depósito de resíduos
+afastado da área de produção instalação recipiente
+06 meses - para construção, se for o caso, mantendo os resíduos
+acondicionados em local adequado com tampa e fazendo o
+recolhimento com periodicidade necessária de acordo com o volume
+até o final desse prazo.
+73
+Caldeira
+afastamento mín. de 3 metros depósito de lenha coberto/organizado
+autorização para consumidor de lenha
+30 dias - depósito de lenha coberto e organizado
+60 dias - autorização para consumidor de lenha junto ao SIAPP
+74
+Dependências sanitárias em boas condições de conservação e de higiene,
+quantidade adequada
+acesso independente da área de produção na residência
+separado por gênero junto com o vestiário
+independente do vestiário pia sabonete líquido papel toalha
+lixeira com tampa de acionamento não manual
+vaso sanitário com tampa/mictório/papel higiênico
+dimensão e quantidade suficiente para o número de funcionários
+distância máxima de 40m da área de produção
+cartazes com orientação quanto à obrigatoriedade de higienizar as mãos
+após o uso dos sanitários
+30 dias - aquisição de lixeira com tampa de acionamento não
+manual, papel toalha de primeiro uso, tampa para o vaso sanitário,
+cartaz orientativo.
+04 meses - reforma, se local e quantidade adequados, mas em
+estado de conservação ruim.
+
+-- 10 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+75
+Vestiários em boas condições de conservação e de higiene
+acesso independente da área de produção na residência
+separado por gênero junto da dependência sanitária
+independente da dependência sanitária
+chuveiro armários/prateleiras bancos
+dimensão e quantidade suficiente para o número de funcionários
+distância máxima de 40m da área de produção
+30 dias - aquisição de banco.
+04 meses - armário/prateleira.
+02. PARTE ESPECÍFICA
+Item Requisito C CR NC NA Observação / Prazo
+76
+Cais ou trapiche para embarcações pesqueiras atracarem
+possui cobertura nos locais de descarga dos barcos
+não possui cobertura nos locais de descarga dos barco
+possui proteção contra o acesso de animais ao estabelecimento
+não possui proteção contra o acesso de animais ao estabelecimento
+possui instalações e equipamentos adequados para a operação de
+descarga dos barcos
+não possui instalações e equipamentos adequados para a operação de
+descarga dos barcos
+possui vestiário e sanitário privativos para a tripulação dos barcos
+não possui vestiário e sanitário privativos para a tripulação dos barcos
+77 Dispõe de câmara de espera de pescados (se produção primária)
+78
+Fábrica de gelo
+anexa à área produtiva água potável
+não possui (aquisição de gelo de terceiros)
+79 Área de processamento
+climatizada não climatizada
+80
+Lavagem da matéria-prima
+cilindro esteira de lavagem outro equipamento
+água sob pressão e com renovação constante imersão
+água hiperclorada a 5ppm
+81
+Moluscos bivalves
+depuração lavagem drenagem contínua da água residual
+retirada prévia de lodo, areia etc com água sob pressão
+
+-- 11 of 12 --
+
+Item Requisito C CR NC NA Observação / Prazo
+82 Evisceração, descabeçamento e retirada das brânquias e nadadeiras
+área própria mesa separada na área de processamento
+83
+Descongelamento é realizado
+em equipamentos apropriados em condições autorizadas pelo Siapp
+após o descongelamento o pescado é mantido sob as mesmas condições
+de conservação para pescado fresco
+84 O pescado descongelado não é recongelado.
+85
+Defumador e área de defumação
+possui antessala com porta com dispositivo de fechamento automático e
+sistema de exaustão
+não possui antessala
+contíguo à área de processamento
+localizado separado do prédio industrial - trajeto coberto e pavimentado;
+as operações de carga e descarga ocorrem em dependência fechada;
+produtos transportados em recipientes fechados
+localizado separado do prédio industrial – possui bancada na barreira
+sanitária para apoio dos recipientes usados para transporte
+estrutura de material adequado
+estrutura não é de material adequado
+abastecimento por alimentação externa
+uso de madeira seca, dura e não resinosa
+autorização para consumidor de lenha
+02 meses - instalação de sistemas de exaustão e de fechamento
+automático da porta.
+OBS:
+
+-- 12 of 12 --
+

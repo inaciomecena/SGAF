@@ -12,6 +12,13 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const backgroundStyle = {
+    backgroundImage: `linear-gradient(120deg, rgba(30, 64, 175, 0.55), rgba(2, 6, 23, 0.40)), url('/login-bg.jpg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -28,14 +35,14 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center p-4" style={backgroundStyle}>
+      <div className="max-w-md w-full bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8 border border-white/60">
         <div className="flex flex-col items-center mb-8">
           <div className="bg-blue-100 p-3 rounded-full mb-4">
             <Leaf className="w-8 h-8 text-blue-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">SGAF</h2>
-          <p className="text-gray-500 text-sm mt-1">Sistema de Gestão da Agricultura Familiar</p>
+          <h2 className="text-2xl font-bold text-gray-800">SAF</h2>
+          <p className="text-gray-500 text-sm mt-1">Sistema Agricultura Familiar</p>
         </div>
 
         {error && (
@@ -86,7 +93,7 @@ export default function Login() {
         </form>
         
         <div className="mt-6 text-center text-xs text-gray-400">
-          &copy; 2026 Sistema de Gestão da Agricultura Familiar
+          &copy; 2026 SAF - Sistema Agricultura Familiar
         </div>
       </div>
     </div>

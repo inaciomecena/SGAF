@@ -5,6 +5,9 @@ const resolveBaseURL = () => {
   if (explicitBaseURL) {
     return explicitBaseURL;
   }
+  if (import.meta.env.PROD) {
+    return '/api';
+  }
   if (typeof window !== 'undefined') {
     const protocol = window.location.protocol || 'http:';
     const hostname = window.location.hostname || 'localhost';
