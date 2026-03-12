@@ -6,7 +6,12 @@ const frotaService = require('./frotaService');
 const { normalizeRole } = require('../utils/roles');
 
 class AtendimentoService {
+  async ensureReady() {
+    await atendimentoRepository.ensureSchema();
+  }
+
   async listarTecnicos(codigoIbge) {
+    await this.ensureReady();
     return await tecnicoRepository.findAllByIbge(codigoIbge);
   }
 
@@ -25,10 +30,12 @@ class AtendimentoService {
   }
 
   async listarAtendimentos(codigoIbge) {
+    await this.ensureReady();
     return await atendimentoRepository.findAllByIbge(codigoIbge);
   }
 
   async registrarAtendimento(dadosAtendimento) {
+    await this.ensureReady();
     // Futuramente: Validar se técnico pertence ao município, se produtor existe, etc.
     const atendimentoId = await atendimentoRepository.create(dadosAtendimento);
 
@@ -51,10 +58,12 @@ class AtendimentoService {
   }
 
   async historicoProdutor(produtorId) {
+    await this.ensureReady();
     return await atendimentoRepository.findByProdutor(produtorId);
   }
 
   async detalharAtendimento(id) {
+    await this.ensureReady();
     const atendimento = await atendimentoRepository.findById(id);
     if (atendimento) {
       atendimento.fotos = await atendimentoRepository.getFotos(id);
@@ -63,11 +72,40 @@ class AtendimentoService {
     return atendimento;
   }
 
+  async atualizarKmChegada({ atendimentoId, kmChegada }) {
+    await this.ensureReady();
+
+    const transporteAtual = await frotaService.getTransporte(atendimentoId);
+    if (!transporteAtual) {
+      throw new Error('Atendimento não possui deslocamento.');
+    }
+
+    const kmChegadaNum = Number.parseInt(String(kmChegada), 10);
+    if (!Number.isFinite(kmChegadaNum)) {
+      throw new Error('Informe o KM de chegada.');
+    }
+
+    const kmSaida = transporteAtual.km_saida ?? null;
+    if (kmSaida !== null && kmChegadaNum < kmSaida) {
+      throw new Error('KM de chegada não pode ser menor que o KM de saída.');
+    }
+
+    await frotaService.vincularAtendimento(atendimentoId, {
+      veiculo_id: transporteAtual.veiculo_id,
+      km_saida: kmSaida,
+      km_chegada: kmChegadaNum
+    });
+
+    return await frotaService.getTransporte(atendimentoId);
+  }
+
   async adicionarFoto(atendimentoId, arquivo) {
+    await this.ensureReady();
     await atendimentoRepository.addFoto(atendimentoId, arquivo);
   }
 
   async removerFoto(fotoId) {
+    await this.ensureReady();
     const foto = await atendimentoRepository.getFotoById(fotoId);
     if (!foto) {
       return null;

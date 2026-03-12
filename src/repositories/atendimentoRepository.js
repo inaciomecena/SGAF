@@ -1,6 +1,21 @@
 const pool = require('../config/database');
 
 class AtendimentoRepository {
+  async ensureSchema() {
+    const [rows] = await pool.execute(
+      `SELECT DATA_TYPE
+       FROM INFORMATION_SCHEMA.COLUMNS
+       WHERE TABLE_SCHEMA = DATABASE()
+         AND TABLE_NAME = 'atendimentos'
+         AND COLUMN_NAME = 'data_atendimento'`
+    );
+
+    const dataType = rows?.[0]?.DATA_TYPE;
+    if (String(dataType).toLowerCase() === 'date') {
+      await pool.execute('ALTER TABLE atendimentos MODIFY data_atendimento DATETIME NULL');
+    }
+  }
+
   async findByProdutor(produtorId) {
     const [rows] = await pool.execute(
       `SELECT a.*, u.nome as tecnico_nome, NULL as propriedade_nome, COALESCE(t.descricao, a.descricao) as motivo
@@ -45,8 +60,8 @@ class AtendimentoRepository {
   }
 
   async create(data) {
-    const { codigo_ibge, tecnico_id, produtor_id, data_visita, data_atendimento, motivo, observacoes, recomendacoes, latitude, longitude } = data;
-    const dataAtendimento = data_visita || data_atendimento || null;
+    const { codigo_ibge, tecnico_id, produtor_id, data_visita, hora_visita, data_atendimento, motivo, observacoes, recomendacoes, latitude, longitude } = data;
+    const dataAtendimento = data_atendimento || (data_visita && hora_visita ? `${data_visita} ${hora_visita}:00` : data_visita) || null;
     const descricao = [motivo, observacoes, recomendacoes].filter(Boolean).join(' | ') || null;
 
     const [result] = await pool.execute(

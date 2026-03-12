@@ -10,12 +10,15 @@ export default function AtendimentoDetalhes() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [deleting, setDeleting] = useState(null);
+  const [editandoChegada, setEditandoChegada] = useState(false);
+  const [kmChegada, setKmChegada] = useState('');
+  const [salvandoChegada, setSalvandoChegada] = useState(false);
   const [erro, setErro] = useState('');
   const [arquivos, setArquivos] = useState([]);
 
   const fotos = atendimento?.fotos || [];
   const dataAtendimento = atendimento?.data_atendimento
-    ? new Date(atendimento.data_atendimento).toLocaleDateString()
+    ? new Date(atendimento.data_atendimento).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
     : '-';
 
   const descricaoPartes = useMemo(() => {
@@ -46,6 +49,26 @@ export default function AtendimentoDetalhes() {
   useEffect(() => {
     carregar();
   }, [carregar]);
+
+  useEffect(() => {
+    const chegadaAtual = atendimento?.transporte?.km_chegada;
+    setKmChegada(chegadaAtual === null || chegadaAtual === undefined ? '' : String(chegadaAtual));
+    setEditandoChegada(false);
+  }, [atendimento?.transporte?.km_chegada]);
+
+  const handleSalvarKmChegada = async () => {
+    setErro('');
+    setSalvandoChegada(true);
+    try {
+      const atualizado = await atendimentoService.atualizarTransporte(id, { km_chegada: kmChegada });
+      setAtendimento(atualizado);
+      setEditandoChegada(false);
+    } catch (error) {
+      setErro(error.response?.data?.message || 'Erro ao atualizar KM de chegada');
+    } finally {
+      setSalvandoChegada(false);
+    }
+  };
 
   const handleSelecionarArquivos = (event) => {
     const lista = Array.from(event.target.files || []);
@@ -176,12 +199,56 @@ export default function AtendimentoDetalhes() {
               <div>
                 <p className="text-xs text-slate-500 uppercase tracking-wide">KM Percorrido</p>
                 <p className="font-medium text-slate-700">
-                  {atendimento.transporte.km_percorrido} km
+                  {atendimento.transporte.km_percorrido ?? '-'}{atendimento.transporte.km_percorrido !== null && atendimento.transporte.km_percorrido !== undefined ? ' km' : ''}
                 </p>
               </div>
-              <div className="text-xs text-slate-500">
-                <p>Saída: {atendimento.transporte.km_saida}</p>
-                <p>Chegada: {atendimento.transporte.km_chegada}</p>
+              <div className="space-y-2">
+                <div className="text-xs text-slate-500">
+                  <p>Saída: {atendimento.transporte.km_saida ?? '-'}</p>
+                  <p>Chegada: {atendimento.transporte.km_chegada ?? '-'}</p>
+                </div>
+
+                {editandoChegada ? (
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      name="km_chegada"
+                      value={kmChegada}
+                      onChange={(e) => setKmChegada(e.target.value)}
+                      className="w-32 px-3 py-2 rounded-lg border border-slate-300 text-slate-800"
+                      placeholder="KM chegada"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleSalvarKmChegada}
+                      disabled={salvandoChegada}
+                      className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 disabled:opacity-60 text-white px-3 py-2 rounded-lg text-sm"
+                    >
+                      {salvandoChegada ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                      Salvar
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const chegadaAtual = atendimento?.transporte?.km_chegada;
+                        setKmChegada(chegadaAtual === null || chegadaAtual === undefined ? '' : String(chegadaAtual));
+                        setEditandoChegada(false);
+                      }}
+                      className="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setEditandoChegada(true)}
+                    className="px-3 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm w-fit"
+                  >
+                    {atendimento.transporte.km_chegada === null || atendimento.transporte.km_chegada === undefined ? 'Lançar KM de chegada' : 'Editar KM de chegada'}
+                  </button>
+                )}
               </div>
             </div>
           </div>

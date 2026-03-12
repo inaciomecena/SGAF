@@ -43,16 +43,66 @@ class RecursoController {
       const id = await recursoService.criarAgendamento(req.body);
       res.status(201).json({ id, message: 'Agendamento criado' });
     } catch (error) {
-      res.status(500).json({ message: 'Erro ao criar agendamento' });
+      console.error('Erro ao criar agendamento:', error);
+      res.status(500).json({ message: error?.message || 'Erro ao criar agendamento' });
     }
   }
   
   async listarAgendamentos(req, res) {
     try {
-      const agendamentos = await recursoService.listarAgendamentos(req.tenantId);
+      const { ano, mes, tecnicoId } = req.query;
+      const filtros = {};
+      if (ano) filtros.ano = Number(ano);
+      if (mes) filtros.mes = Number(mes);
+      if (tecnicoId) filtros.tecnicoId = Number(tecnicoId);
+
+      const agendamentos = await recursoService.listarAgendamentos(req.tenantId, filtros);
       res.json(agendamentos);
     } catch (error) {
       res.status(500).json({ message: 'Erro ao listar agendamentos' });
+    }
+  }
+
+  async obterAgendamento(req, res) {
+    try {
+      const { id } = req.params;
+      const agendamento = await recursoService.obterAgendamento(Number(id));
+      if (!agendamento) {
+        return res.status(404).json({ message: 'Agendamento não encontrado' });
+      }
+      res.json(agendamento);
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao buscar agendamento' });
+    }
+  }
+
+  async atualizarAgendamento(req, res) {
+    try {
+      const { id } = req.params;
+      const atualizado = await recursoService.atualizarAgendamento(Number(id), req.body);
+      res.json({ message: 'Agendamento atualizado', agendamento: atualizado });
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao atualizar agendamento' });
+    }
+  }
+
+  async removerAgendamento(req, res) {
+    try {
+      const { id } = req.params;
+      await recursoService.removerAgendamento(Number(id));
+      res.status(204).send();
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao remover agendamento' });
+    }
+  }
+
+  async listarAgendamentosPorAtendimento(req, res) {
+    try {
+      const { atendimentoId } = req.params;
+      const agendamentos = await recursoService.listarAgendamentosPorAtendimento(Number(atendimentoId));
+      res.json(agendamentos);
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao listar agendamentos do atendimento' });
     }
   }
 

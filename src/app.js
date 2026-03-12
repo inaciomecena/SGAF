@@ -1,8 +1,17 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
 const helmet = require('helmet');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+const envCandidates = [path.resolve(process.cwd(), '.env'), path.resolve(process.cwd(), '.env.production')];
+const envPath = envCandidates.find((p) => fs.existsSync(p));
+if (envPath) {
+  dotenv.config({ path: envPath });
+} else {
+  dotenv.config();
+}
 
 const authRoutes = require('./routes/authRoutes');
 const adminRoutes = require('./routes/adminRoutes');
@@ -17,7 +26,12 @@ const pmafRoutes = require('./routes/pmafRoutes');
 const simRoutes = require('./routes/simRoutes');
 
 const app = express();
-const frontendDistPath = path.resolve(__dirname, '../frontend/dist');
+const frontendDistCandidates = [
+  path.resolve(__dirname, '../frontend/dist'),
+  path.resolve(__dirname, '../../clientsaf'),
+  path.resolve(process.cwd(), '../clientsaf')
+];
+const frontendDistPath = frontendDistCandidates.find((candidate) => fs.existsSync(path.join(candidate, 'index.html'))) || frontendDistCandidates[0];
 
 // Middlewares Globais
 app.use(helmet({

@@ -13,6 +13,10 @@ router.get('/operadores', recursoController.listarOperadores);
 router.post('/operadores', recursoController.criarOperador);
 router.get('/agendamentos', recursoController.listarAgendamentos);
 router.post('/agendamentos', recursoController.criarAgendamento);
+router.get('/agendamentos/:id', recursoController.obterAgendamento);
+router.put('/agendamentos/:id', recursoController.atualizarAgendamento);
+router.delete('/agendamentos/:id', recursoController.removerAgendamento);
+router.get('/agendamentos/atendimento/:atendimentoId', recursoController.listarAgendamentosPorAtendimento);
 
 // --- PROGRAMAS ---
 router.get('/programas', recursoController.listarProgramas);

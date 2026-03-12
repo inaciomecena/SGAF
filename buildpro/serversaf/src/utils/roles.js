@@ -42,6 +42,16 @@ const canManageUsers = (role) => {
 
 const isAdminEstado = (role) => normalizeRole(role) === 'ADMIN_ESTADO';
 
+const canAccessPmaf = (role) => {
+  const normalizedRole = normalizeRole(role);
+  return normalizedRole === 'ADMIN_ESTADO' || normalizedRole === 'TECNICO';
+};
+
+const canAccessSim = (role) => {
+  const normalizedRole = normalizeRole(role);
+  return normalizedRole === 'TECNICO' || normalizedRole === 'GESTOR_MUNICIPAL';
+};
+
 const allowedProfilesToCreate = (role) => {
   const normalizedRole = normalizeRole(role);
 
@@ -60,5 +70,7 @@ module.exports = {
   normalizeRole,
   canManageUsers,
   isAdminEstado,
+  canAccessPmaf,
+  canAccessSim,
   allowedProfilesToCreate
 };

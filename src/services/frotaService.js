@@ -46,28 +46,42 @@ const frotaService = {
   // Transporte em Atendimento
   vincularAtendimento: async (atendimentoId, dadosTransporte) => {
     await frotaService.ensureReady();
-    const { veiculo_id, km_chegada } = dadosTransporte;
+    const veiculoId = Number.parseInt(String(dadosTransporte.veiculo_id), 10);
+    if (!Number.isFinite(veiculoId)) {
+      throw new Error('veiculo_id inválido');
+    }
+
+    const parseKm = (value) => {
+      if (value === null || value === undefined) return null;
+      const raw = String(value).trim();
+      if (!raw) return null;
+      const num = Number.parseInt(raw, 10);
+      return Number.isFinite(num) ? num : null;
+    };
+
+    const kmSaida = parseKm(dadosTransporte.km_saida);
+    const kmChegada = parseKm(dadosTransporte.km_chegada);
     
     // Calcula KM percorrido se não vier
-    let km_percorrido = dadosTransporte.km_percorrido;
-    if (!km_percorrido && dadosTransporte.km_saida && km_chegada) {
-      km_percorrido = km_chegada - dadosTransporte.km_saida;
+    let kmPercorrido = parseKm(dadosTransporte.km_percorrido);
+    if (kmPercorrido === null && kmSaida !== null && kmChegada !== null) {
+      kmPercorrido = kmChegada - kmSaida;
     }
 
     // Registra o vínculo
     const result = await frotaRepository.vincularAtendimento({
       atendimento_id: atendimentoId,
-      veiculo_id,
-      km_saida: dadosTransporte.km_saida,
-      km_chegada,
-      km_percorrido
+      veiculo_id: veiculoId,
+      km_saida: kmSaida,
+      km_chegada: kmChegada,
+      km_percorrido: kmPercorrido
     });
 
     // Atualiza odômetro do veículo
-    if (km_chegada) {
-      const veiculo = await frotaRepository.getVeiculoById(veiculo_id);
-      if (veiculo && km_chegada > veiculo.odometro_atual) {
-        await frotaRepository.atualizarOdometro(veiculo_id, km_chegada);
+    if (kmChegada !== null) {
+      const veiculo = await frotaRepository.getVeiculoById(veiculoId);
+      if (veiculo && kmChegada > veiculo.odometro_atual) {
+        await frotaRepository.atualizarOdometro(veiculoId, kmChegada);
       }
     }
 

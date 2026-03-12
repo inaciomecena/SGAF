@@ -91,6 +91,40 @@ class AtendimentoController {
     }
   }
 
+  async atualizarTransporte(req, res) {
+    try {
+      const { id } = req.params;
+      const atendimento = await atendimentoService.detalharAtendimento(id);
+
+      if (!atendimento) {
+        return res.status(404).json({ message: 'Atendimento não encontrado' });
+      }
+
+      const perfil = normalizeRole(req.user?.perfil);
+      const podeAcessar = perfil === 'ADMIN_ESTADO' || atendimento.codigo_ibge === req.tenantId;
+      if (!podeAcessar) {
+        return res.status(403).json({ message: 'Acesso negado' });
+      }
+
+      const transporte = await atendimentoService.atualizarKmChegada({
+        atendimentoId: Number(id),
+        kmChegada: req.body?.km_chegada
+      });
+
+      await syncService.registrarEventoDominio({
+        codigoIbge: atendimento.codigo_ibge,
+        entity: 'atendimento_transporte',
+        recordId: Number(id),
+        action: 'update'
+      });
+
+      res.json({ ...atendimento, transporte });
+    } catch (error) {
+      console.error(error);
+      res.status(400).json({ message: error.message || 'Erro ao atualizar transporte' });
+    }
+  }
+
   async anexarFotos(req, res) {
     try {
       const { id } = req.params;

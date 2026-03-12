@@ -26,13 +26,31 @@ class RecursoService {
     return await maquinaRepository.createManutencao(dados);
   }
   
-  async listarAgendamentos(codigoIbge) {
-    return await agendamentoRepository.findAllByIbge(codigoIbge);
+  async listarAgendamentos(codigoIbge, filtros = {}) {
+    const { ano, mes, tecnicoId } = filtros;
+    return await agendamentoRepository.findAllByIbge({ codigoIbge, ano, mes, tecnicoId });
   }
   
   async criarAgendamento(dados) {
     // Aqui poderia validar disponibilidade da máquina
     return await agendamentoRepository.create(dados);
+  }
+
+  async obterAgendamento(id) {
+    return await agendamentoRepository.findById(id);
+  }
+
+  async atualizarAgendamento(id, dados) {
+    await agendamentoRepository.update(id, dados);
+    return await agendamentoRepository.findById(id);
+  }
+
+  async removerAgendamento(id) {
+    await agendamentoRepository.delete(id);
+  }
+
+  async listarAgendamentosPorAtendimento(atendimentoId) {
+    return await agendamentoRepository.findByAtendimento(atendimentoId);
   }
 
   // --- PROGRAMAS ---

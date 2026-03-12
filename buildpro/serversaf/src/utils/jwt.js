@@ -1,5 +1,13 @@
 const jwt = require('jsonwebtoken');
 
+const getAccessSecret = () => {
+  const secret = process.env.JWT_SECRET;
+  if (typeof secret !== 'string' || secret.trim().length === 0) {
+    throw new Error('JWT_SECRET não configurado. Defina JWT_SECRET no arquivo .env do servidor (ou variável de ambiente).');
+  }
+  return secret;
+};
+
 const getRefreshSecret = () => process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET;
 const getResetSecret = () => process.env.JWT_RESET_SECRET || process.env.JWT_SECRET;
 
@@ -11,7 +19,7 @@ const generateAccessToken = (user) => {
       perfil: user.perfil,
       email: user.email 
     },
-    process.env.JWT_SECRET,
+    getAccessSecret(),
     { expiresIn: '8h' }
   );
 };
@@ -38,7 +46,7 @@ const generatePasswordResetToken = (user) => {
 };
 
 const verifyAccessToken = (token) => {
-  return jwt.verify(token, process.env.JWT_SECRET);
+  return jwt.verify(token, getAccessSecret());
 };
 
 const verifyRefreshToken = (token) => {

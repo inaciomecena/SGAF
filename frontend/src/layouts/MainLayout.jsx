@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/useAuth';
 import { canAccessPmaf, canAccessSim, canManageUsers } from '../utils/roles';
 import { 
   Menu, Home, Users, Sprout, Tractor, Car,
-  ClipboardList, LogOut, FileText, Building2, TableProperties, ChevronDown
+  ClipboardList, LogOut, FileText, Building2, TableProperties, ChevronDown, Calendar
 } from 'lucide-react';
 
 export default function MainLayout() {
@@ -24,6 +24,7 @@ export default function MainLayout() {
     { icon: Users, label: 'Produtores', path: '/produtores' },
     { icon: Sprout, label: 'Propriedades', path: '/propriedades' },
     { icon: ClipboardList, label: 'Atendimentos', path: '/atendimentos' },
+    { icon: Calendar, label: 'Agenda', path: '/agenda' },
     { icon: Tractor, label: 'Recursos & Máquinas', path: '/recursos' },
     { icon: Car, label: 'Frota', path: '/frota' },
     { icon: FileText, label: 'Relatórios', path: '/relatorios' },

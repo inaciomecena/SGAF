@@ -16,6 +16,11 @@ const atendimentoService = {
     return response.data;
   },
 
+  atualizarTransporte: async (id, payload) => {
+    const response = await api.put(`/ater/atendimentos/${id}/transporte`, payload);
+    return response.data;
+  },
+
   anexarFotos: async (id, arquivos) => {
     const formData = new FormData();
     arquivos.forEach((arquivo) => formData.append('fotos', arquivo));

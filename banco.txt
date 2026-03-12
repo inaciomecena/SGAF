@@ -1,3 +1,374 @@
+-- DDL completo + seed para agricultura_municipal
+-- Gerado a partir de banco.sql, com dados expandidos para pelo menos 50 registros nas tabelas principais
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+CREATE DATABASE IF NOT EXISTS `agricultura_municipal` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
+USE `agricultura_municipal`;
+
+-- ======================
+-- Tabela: usuarios
+-- ======================
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL,
+  `senha_hash` varchar(255) DEFAULT NULL,
+  `perfil` varchar(50) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `ativo` tinyint(1) DEFAULT 1,
+  `ultimo_login` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `idx_usuario_ibge` (`codigo_ibge`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `usuarios`;
+INSERT INTO `usuarios` (`id`, `codigo_ibge`, `nome`, `email`, `senha_hash`, `perfil`, `telefone`, `ativo`, `ultimo_login`, `created_at`) VALUES
+(1, NULL, 'Administrador', 'admin@sgaf.com', '$2b$10$.7GVy47/OIRmnG/eDt6XWuQncAAaZG8b9a4O8lzEiCjVzPepMU7Ee', 'ADMIN_ESTADO', NULL, 1, NULL, NOW()),
+(2, '1234567', 'Técnico 01', 'tecnico01@sgaf.com', '$2b$10$.7GVy47/OIRmnG/eDt6XWuQncAAaZG8b9a4O8lzEiCjVzPepMU7Ee', 'TECNICO', NULL, 1, NULL, NOW());
+
+-- Gera mais técnicos/usuários até 50 registros
+INSERT INTO `usuarios` (`codigo_ibge`, `nome`, `email`, `senha_hash`, `perfil`, `telefone`, `ativo`, `ultimo_login`, `created_at`)
+SELECT '1234567',
+       CONCAT('Técnico ', LPAD(n, 2, '0')),
+       CONCAT('tecnico', LPAD(n, 2, '0'), '@sgaf.com'),
+       '$2b$10$.7GVy47/OIRmnG/eDt6XWuQncAAaZG8b9a4O8lzEiCjVzPepMU7Ee',
+       'TECNICO',
+       NULL,
+       1,
+       NULL,
+       NOW()
+FROM (
+  SELECT 3 AS n UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL
+  SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11 UNION ALL SELECT 12 UNION ALL
+  SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL SELECT 16 UNION ALL SELECT 17 UNION ALL
+  SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL SELECT 21 UNION ALL SELECT 22 UNION ALL
+  SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL SELECT 26 UNION ALL SELECT 27 UNION ALL
+  SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL SELECT 31 UNION ALL SELECT 32 UNION ALL
+  SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL SELECT 36 UNION ALL SELECT 37 UNION ALL
+  SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL SELECT 41 UNION ALL SELECT 42 UNION ALL
+  SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL SELECT 46 UNION ALL SELECT 47 UNION ALL
+  SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Tabela: associacoes
+-- ======================
+DROP TABLE IF EXISTS `associacoes`;
+CREATE TABLE IF NOT EXISTS `associacoes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `tipo` varchar(50) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_associacao_ibge` (`codigo_ibge`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `associacoes`;
+INSERT INTO `associacoes` (`codigo_ibge`, `nome`, `tipo`, `telefone`)
+SELECT '1234567',
+       CONCAT('Associação ', LPAD(n, 2, '0')),
+       CASE WHEN n % 2 = 0 THEN 'COOPERATIVA' ELSE 'ASSOCIACAO' END,
+       CONCAT('(65) 9', LPAD(600000 + n, 6, '0'))
+FROM (
+  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL
+  SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL
+  SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL
+  SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Tabela: produtores
+-- ======================
+DROP TABLE IF EXISTS `produtores`;
+CREATE TABLE IF NOT EXISTS `produtores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `cpf` varchar(14) DEFAULT NULL,
+  `data_nascimento` date DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `email` varchar(120) DEFAULT NULL,
+  `sexo` varchar(10) DEFAULT NULL,
+  `caf_dap` varchar(50) DEFAULT NULL,
+  `associacao_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `idx_produtores_ibge` (`codigo_ibge`),
+  KEY `associacao_id` (`associacao_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `produtores`;
+INSERT INTO `produtores` (`codigo_ibge`, `nome`, `cpf`, `data_nascimento`, `telefone`, `email`, `sexo`, `caf_dap`, `associacao_id`, `created_at`)
+SELECT '1234567',
+       CONCAT('Produtor ', LPAD(n, 2, '0')),
+       CONCAT(LPAD(n, 3, '0'), '.', LPAD(n, 3, '0'), '.', LPAD(n, 3, '0'), '-00'),
+       DATE_SUB(CURDATE(), INTERVAL (20 + (n % 30)) YEAR),
+       CONCAT('(65) 9', LPAD(700000 + n, 6, '0')),
+       CONCAT('produtor', LPAD(n, 2, '0'), '@exemplo.com'),
+       CASE WHEN n % 2 = 0 THEN 'M' ELSE 'F' END,
+       CONCAT('CAF', LPAD(n, 5, '0')),
+       (n % 50) + 1,
+       NOW()
+FROM (
+  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL
+  SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL
+  SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL
+  SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Tabela: propriedades
+-- ======================
+DROP TABLE IF EXISTS `propriedades`;
+CREATE TABLE IF NOT EXISTS `propriedades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `produtor_id` int(11) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `area_total` decimal(10,2) DEFAULT NULL,
+  `area_produtiva` decimal(10,2) DEFAULT NULL,
+  `latitude` decimal(10,6) DEFAULT NULL,
+  `longitude` decimal(10,6) DEFAULT NULL,
+  `tipo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_prop_ibge` (`codigo_ibge`),
+  KEY `produtor_id` (`produtor_id`),
+  KEY `tipo` (`tipo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `propriedades`;
+INSERT INTO `propriedades` (`codigo_ibge`, `produtor_id`, `nome`, `area_total`, `area_produtiva`, `latitude`, `longitude`, `tipo`)
+SELECT '1234567',
+       ((n - 1) % 50) + 1,
+       CONCAT('Propriedade ', LPAD(n, 2, '0')),
+       10 + (n * 1.5),
+       5 + (n * 1.0),
+       -15.0 + (n * 0.01),
+       -56.0 - (n * 0.01),
+       NULL
+FROM (
+  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL
+  SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL
+  SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL
+  SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Tabela: maquinas
+-- ======================
+DROP TABLE IF EXISTS `maquinas`;
+CREATE TABLE IF NOT EXISTS `maquinas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `modelo` varchar(120) DEFAULT NULL,
+  `ano` int(11) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_maquina_ibge` (`codigo_ibge`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `maquinas`;
+INSERT INTO `maquinas` (`codigo_ibge`, `nome`, `modelo`, `ano`, `status`)
+SELECT '1234567',
+       CONCAT('Máquina ', LPAD(n, 2, '0')),
+       CONCAT('Modelo ', CHAR(64 + (n % 26))),
+       2000 + (n % 25),
+       CASE 
+         WHEN n % 5 = 0 THEN 'Manutenção'
+         WHEN n % 3 = 0 THEN 'Parada'
+         ELSE 'Operacional'
+       END
+FROM (
+  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL
+  SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL
+  SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL
+  SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Tabela: agendamentos_maquinas (agenda)
+-- ======================
+DROP TABLE IF EXISTS `agendamentos_maquinas`;
+CREATE TABLE IF NOT EXISTS `agendamentos_maquinas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `maquina_id` int(11) DEFAULT NULL,
+  `produtor_id` int(11) DEFAULT NULL,
+  `data_inicio` datetime DEFAULT NULL,
+  `data_fim` datetime DEFAULT NULL,
+  `operador_id` int(11) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `tecnico_id` int(11) DEFAULT NULL,
+  `atendimento_id` int(11) DEFAULT NULL,
+  `tipo` ENUM('MAQUINA','VISITA','COMPROMISSO') NOT NULL DEFAULT 'MAQUINA',
+  PRIMARY KEY (`id`),
+  KEY `maquina_id` (`maquina_id`),
+  KEY `produtor_id` (`produtor_id`),
+  KEY `operador_id` (`operador_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `agendamentos_maquinas`;
+
+-- 50 agendamentos distribuídos ao longo do mês atual
+INSERT INTO `agendamentos_maquinas` (`maquina_id`, `produtor_id`, `data_inicio`, `data_fim`, `operador_id`, `titulo`, `descricao`, `tecnico_id`, `atendimento_id`, `tipo`)
+SELECT
+  CASE WHEN n % 3 = 0 THEN NULL ELSE ((n - 1) % 50) + 1 END AS maquina_id,
+  ((n - 1) % 50) + 1 AS produtor_id,
+  DATE_ADD(DATE_FORMAT(CURDATE(), '%Y-%m-01'), INTERVAL (n - 1) DAY) + INTERVAL 8 HOUR AS data_inicio,
+  DATE_ADD(DATE_FORMAT(CURDATE(), '%Y-%m-01'), INTERVAL (n - 1) DAY) + INTERVAL 10 HOUR AS data_fim,
+  NULL AS operador_id,
+  CONCAT('Agendamento ', LPAD(n, 2, '0')) AS titulo,
+  CONCAT('Atividade ', LPAD(n, 2, '0'), ' planejada pela secretaria.') AS descricao,
+  ((n - 1) % 48) + 3 AS tecnico_id,
+  NULL AS atendimento_id,
+  CASE 
+    WHEN n % 3 = 0 THEN 'VISITA'
+    WHEN n % 5 = 0 THEN 'COMPROMISSO'
+    ELSE 'MAQUINA'
+  END AS tipo
+FROM (
+  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL
+  SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL
+  SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL
+  SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Tabela: atendimentos
+-- ======================
+DROP TABLE IF EXISTS `atendimentos`;
+CREATE TABLE IF NOT EXISTS `atendimentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `produtor_id` int(11) DEFAULT NULL,
+  `tecnico_id` int(11) DEFAULT NULL,
+  `tipo_atendimento_id` int(11) DEFAULT NULL,
+  `data_atendimento` datetime DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `latitude` decimal(10,6) DEFAULT NULL,
+  `longitude` decimal(10,6) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_atend_ibge` (`codigo_ibge`),
+  KEY `produtor_id` (`produtor_id`),
+  KEY `tecnico_id` (`tecnico_id`),
+  KEY `tipo_atendimento_id` (`tipo_atendimento_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+DELETE FROM `atendimentos`;
+INSERT INTO `atendimentos` (`codigo_ibge`, `produtor_id`, `tecnico_id`, `tipo_atendimento_id`, `data_atendimento`, `descricao`, `latitude`, `longitude`)
+SELECT
+  '1234567',
+  ((n - 1) % 50) + 1 AS produtor_id,
+  ((n - 1) % 48) + 3 AS tecnico_id,
+  ((n - 1) % 5) + 1 AS tipo_atendimento_id,
+  DATE_SUB(NOW(), INTERVAL n DAY),
+  CONCAT('Atendimento ', LPAD(n, 2, '0'), ' realizado com orientações técnicas ao produtor.'),
+  NULL,
+  NULL
+FROM (
+  SELECT 1 AS n UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+  SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL
+  SELECT 11 UNION ALL SELECT 12 UNION ALL SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL
+  SELECT 16 UNION ALL SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20 UNION ALL
+  SELECT 21 UNION ALL SELECT 22 UNION ALL SELECT 23 UNION ALL SELECT 24 UNION ALL SELECT 25 UNION ALL
+  SELECT 26 UNION ALL SELECT 27 UNION ALL SELECT 28 UNION ALL SELECT 29 UNION ALL SELECT 30 UNION ALL
+  SELECT 31 UNION ALL SELECT 32 UNION ALL SELECT 33 UNION ALL SELECT 34 UNION ALL SELECT 35 UNION ALL
+  SELECT 36 UNION ALL SELECT 37 UNION ALL SELECT 38 UNION ALL SELECT 39 UNION ALL SELECT 40 UNION ALL
+  SELECT 41 UNION ALL SELECT 42 UNION ALL SELECT 43 UNION ALL SELECT 44 UNION ALL SELECT 45 UNION ALL
+  SELECT 46 UNION ALL SELECT 47 UNION ALL SELECT 48 UNION ALL SELECT 49 UNION ALL SELECT 50
+) AS nums;
+
+-- ======================
+-- Demais tabelas (estrutura básica, sem necessidade de 50 registros)
+-- ======================
+
+DROP TABLE IF EXISTS `culturas`;
+CREATE TABLE IF NOT EXISTS `culturas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(120) DEFAULT NULL,
+  `tipo` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DELETE FROM `culturas`;
+
+DROP TABLE IF EXISTS `insumos`;
+CREATE TABLE IF NOT EXISTS `insumos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `tipo` varchar(100) DEFAULT NULL,
+  `unidade` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_insumo_ibge` (`codigo_ibge`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DELETE FROM `insumos`;
+
+DROP TABLE IF EXISTS `eventos`;
+CREATE TABLE IF NOT EXISTS `eventos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo_ibge` varchar(10) DEFAULT NULL,
+  `nome` varchar(150) DEFAULT NULL,
+  `local` varchar(150) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `instrutor` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_evento_ibge` (`codigo_ibge`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DELETE FROM `eventos`;
+
+DROP TABLE IF EXISTS `tipos_atendimento`;
+CREATE TABLE IF NOT EXISTS `tipos_atendimento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DELETE FROM `tipos_atendimento`;
+INSERT INTO `tipos_atendimento` (`descricao`) VALUES
+('Assistência Técnica'),
+('Visita de Rotina'),
+('Entrega de Insumos'),
+('Análise de Solo'),
+('Vistoria');
+
+-- Fim do script
+
 -- =====================================================
 -- BANCO
 -- =====================================================
@@ -409,3 +780,5 @@ CREATE TABLE auditoria (
  ip VARCHAR(50),
  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -105,6 +105,9 @@ export default function AtendimentoList() {
                         <Calendar className="w-4 h-4 text-gray-400" />
                         {new Date(atendimento.data_atendimento || atendimento.data_visita).toLocaleDateString()}
                       </div>
+                      <div className="text-[11px] text-gray-400 mt-1">
+                        ID: {atendimento.id}
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="font-medium text-gray-900">{atendimento.produtor_nome}</div>

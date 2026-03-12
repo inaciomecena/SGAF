@@ -27,6 +27,7 @@ import AdminPanel from './pages/Admin/AdminPanel';
 import AdminLogs from './pages/Admin/AdminLogs';
 import CulturaList from './pages/Tabelas/CulturaList';
 import CulturaForm from './pages/Tabelas/CulturaForm';
+import AgendaPage from './pages/Agenda/AgendaPage';
 import MeusDados from './pages/Secretaria/MeusDados';
 import PmafHome from './pages/PMAF/PmafHome';
 import SimHome from './pages/SIM/SimHome';
@@ -166,6 +167,8 @@ function AppRoutes() {
         <Route path="recursos/maquinas" element={<MaquinaList />} />
         <Route path="recursos/maquinas/novo" element={<MaquinaForm />} />
         <Route path="recursos/:id/editar" element={<MaquinaForm />} />
+
+        <Route path="agenda" element={<AgendaPage />} />
 
         <Route path="frota" element={<VeiculosList />} />
 

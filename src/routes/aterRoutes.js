@@ -40,6 +40,7 @@ router.get('/tecnicos', atendimentoController.listarTecnicos);
 router.get('/atendimentos', atendimentoController.listar);
 router.post('/atendimentos', atendimentoController.registrar);
 router.get('/atendimentos/:id', atendimentoController.detalhar);
+router.put('/atendimentos/:id/transporte', atendimentoController.atualizarTransporte);
 router.post('/atendimentos/:id/fotos', upload.array('fotos', 8), atendimentoController.anexarFotos);
 router.delete('/atendimentos/fotos/:id', atendimentoController.removerFoto);
 
